@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#2f7d57"/>
-  <text x="32" y="39" text-anchor="middle" fill="#fffefa" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900">26</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Election 2026">
+  <rect width="64" height="64" rx="12" fill="#1a3a2a"/>
+  <rect y="0" width="21.33" height="3" fill="#274c98"/>
+  <rect x="21.33" y="0" width="21.34" height="3" fill="#1a3a2a"/>
+  <rect x="42.67" y="0" width="21.33" height="3" fill="#c52e26"/>
+  <text x="14" y="46" text-anchor="middle" fill="#274c98" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900">2</text>
+  <polygon points="32,18 33.6,23 39,23 34.7,26.4 36.2,31.5 32,28.5 27.8,31.5 29.3,26.4 25,23 30.4,23" fill="#faf7f3"/>
+  <text x="50" y="46" text-anchor="middle" fill="#c52e26" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900">6</text>
 </svg>
