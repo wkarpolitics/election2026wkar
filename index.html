@@ -2582,6 +2582,22 @@
       position: relative;
       z-index: 1;
     }
+    .signal-plus-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.25rem;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid rgba(61, 122, 89, 0.35);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--wkar-green);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1.15;
+      text-transform: uppercase;
+      white-space: normal;
+    }
     .signal-section-head .brand-logo--sm {
       height: clamp(56px, 7.2vw, 76px);
     }
@@ -5586,6 +5602,186 @@
         display: none;
       }
     }
+
+    /* ── Final stability layer: mobile first, photo visibility, calm motion ── */
+    body.election-hub .hero-headlines-band {
+      position: relative;
+      z-index: 8;
+    }
+    body.election-hub .hero-bg-slides [data-focus="dome-clear"] { object-position: 64% 42%; }
+    body.election-hub .hero-bg-slides [data-focus="melorie-studio"] { object-position: 62% 48%; }
+    body.election-hub .hero-bg-slides [data-focus="empty-studio"] { object-position: 64% 47%; }
+    body.election-hub .hero-bg-slides [data-focus="meeting"] { object-position: 68% 48%; }
+    body.election-hub .hero-bg-slides [data-focus="jackson"] { object-position: 56% 46%; }
+    body.election-hub .team-flag-bg {
+      opacity: 0.052;
+      filter: saturate(0.78) contrast(0.94);
+    }
+
+    @media (min-width: 768px) {
+      body.election-hub .hero-section {
+        padding-bottom: 0.85rem;
+      }
+      body.election-hub .hero-bg-media {
+        width: min(62vw, 1080px);
+        height: clamp(300px, 31vw, 430px);
+      }
+      body.election-hub .hero-bg-media::after {
+        background:
+          linear-gradient(90deg, #f7f8fa 0%, rgba(247,248,250,0.84) 20%, rgba(247,248,250,0.22) 42%, transparent 64%),
+          linear-gradient(180deg, rgba(247,248,250,0.02) 0%, rgba(247,248,250,0.14) 100%);
+      }
+      body.election-hub .hero-bg-scrim {
+        background: linear-gradient(90deg, rgba(247,248,250,0.92) 0%, rgba(247,248,250,0.38) 34%, transparent 62%);
+      }
+      body.election-hub .hero-bg-vignette {
+        background: linear-gradient(to top, rgba(247,248,250,0.16) 0%, transparent 34%);
+      }
+      body.election-hub .hero-editorial-main--solo {
+        min-height: clamp(285px, 30vw, 410px);
+        padding-top: 1.2rem;
+        padding-bottom: 0.9rem;
+      }
+      body.election-hub .hero-copy {
+        max-width: 35rem;
+      }
+      body.election-hub .hero-lede {
+        font-size: clamp(2rem, 3.35vw, 3.55rem);
+        line-height: 0.98;
+      }
+      body.election-hub .hero-headlines-band {
+        margin-top: 0.35rem !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      body.election-hub .team-flag-bg {
+        display: block;
+        opacity: 0.035;
+      }
+      body.election-hub .team-flag-bg video {
+        display: none;
+      }
+    }
+
+    @media (max-width: 639px) {
+      body.election-hub .hero-section {
+        padding-bottom: 0.65rem;
+      }
+      body.election-hub .hero-editorial-main--solo {
+        padding: 0.8rem 0 0.15rem;
+      }
+      body.election-hub .hero-brand-inline {
+        padding-left: 0.35rem;
+      }
+      body.election-hub .hero-headlines-band {
+        margin-top: 0.45rem !important;
+        padding: 1rem 0.8rem 1.05rem;
+      }
+      body.election-hub .hero-headlines-kicker-row {
+        align-items: center;
+        gap: 0.75rem;
+      }
+      body.election-hub .hero-headlines-title {
+        font-size: 1.35rem;
+        line-height: 1.05;
+      }
+      body.election-hub .hero-headlines-more {
+        min-height: 44px;
+        padding: 0.65rem 0.9rem;
+      }
+      body.election-hub .live-ticker--embedded {
+        display: block;
+        padding: 0;
+        overflow: hidden;
+      }
+      body.election-hub .live-ticker--embedded .live-ticker-label {
+        display: flex;
+        min-height: 42px;
+        padding: 0.65rem 0.7rem;
+        border-bottom: 1px solid rgba(20,35,31,0.08);
+      }
+      body.election-hub .live-ticker--embedded .live-ticker-viewport {
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        padding: 0.72rem 0.7rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      body.election-hub .live-ticker--embedded .live-ticker-track {
+        width: max-content;
+        gap: 1.15rem;
+        animation: none !important;
+      }
+      body.election-hub .live-ticker--embedded .ticker-item {
+        display: inline-flex !important;
+        white-space: nowrap;
+        font-size: 0.79rem;
+        line-height: 1.1;
+      }
+      body.election-hub .live-ticker--embedded .ticker-item:nth-child(n) {
+        display: inline-flex !important;
+      }
+      body.election-hub .hero-stats-row--inline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem 1rem;
+      }
+      body.election-hub .hero-headlines-body {
+        gap: 0.9rem;
+      }
+      body.election-hub .hero-hl-title {
+        font-size: 1.16rem;
+        line-height: 1.18;
+      }
+      body.election-hub .hero-hl-media {
+        display: block;
+        min-height: 145px;
+        max-height: 190px;
+        margin-bottom: 0.85rem;
+        overflow: hidden;
+      }
+      body.election-hub .hero-hl-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 48%;
+      }
+      body.election-hub .mobile-hero-promise {
+        margin: 0.75rem 0.85rem 0.2rem;
+      }
+      body.election-hub .mobile-hero-promise a {
+        font-size: 1.8rem;
+        letter-spacing: 0;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1099px) {
+      body.election-hub .nav-scroll--desktop {
+        display: none !important;
+      }
+      body.election-hub .election-nav-toggle {
+        display: inline-flex !important;
+      }
+      body.election-hub .election-nav-inner {
+        justify-content: space-between;
+      }
+      body.election-hub .election-mobile-menu {
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        top: calc(100% + 0.35rem);
+        z-index: 100;
+      }
+    }
+
+    @media (min-width: 1100px) {
+      body.election-hub .nav-scroll--desktop {
+        display: block !important;
+      }
+      body.election-hub .election-nav-toggle,
+      body.election-hub .election-mobile-menu {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 
@@ -5617,14 +5813,14 @@
       <p class="election-nav-kicker">Election 2026</p>
       <div class="nav-scroll nav-scroll--desktop flex items-center">
         <a href="#latest" class="election-nav-link active">Latest</a>
-        <a href="#team" class="election-nav-link">Team</a>
+        <a href="#team" class="election-nav-link">Politics Team</a>
         <a href="#your-ballot" class="election-nav-link">Your Ballot</a>
         <a href="#key-dates" class="election-nav-link">Key Dates</a>
-        <a href="#interviews" class="election-nav-link">Interviews</a>
+        <a href="#interviews" class="election-nav-link">Candidate Interviews</a>
         <a href="#off-the-record" class="election-nav-link">Off The Record</a>
         <a href="#races" class="election-nav-link">Races</a>
-        <a href="#data-centers" class="election-nav-link">Data Centers</a>
-        <a href="https://www.wkar.org/election-2026/ask" class="election-nav-link" target="_blank" rel="noopener noreferrer">Ask WKAR</a>
+        <a href="#data-centers" class="election-nav-link">Data Centers &amp; Energy</a>
+        <a href="https://www.wkar.org/election-2026/ask" class="election-nav-link" target="_blank" rel="noopener noreferrer">Ask WKAR Politics</a>
       </div>
       <button type="button" class="election-nav-toggle" id="election-nav-toggle" aria-expanded="false" aria-controls="election-mobile-menu" aria-label="Open election menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -5632,14 +5828,14 @@
     </div>
     <div id="election-mobile-menu" class="election-mobile-menu" hidden>
       <a href="#latest" class="election-mobile-link active">Latest</a>
-      <a href="#team" class="election-mobile-link">Team</a>
+      <a href="#team" class="election-mobile-link">Politics Team</a>
       <a href="#your-ballot" class="election-mobile-link">Your Ballot</a>
       <a href="#key-dates" class="election-mobile-link">Key Dates</a>
-      <a href="#interviews" class="election-mobile-link">Interviews</a>
+      <a href="#interviews" class="election-mobile-link">Candidate Interviews</a>
       <a href="#off-the-record" class="election-mobile-link">Off The Record</a>
       <a href="#races" class="election-mobile-link">Races</a>
-      <a href="#data-centers" class="election-mobile-link">Data Centers</a>
-      <a href="https://www.wkar.org/election-2026/ask" class="election-mobile-link" target="_blank" rel="noopener noreferrer">Ask WKAR</a>
+      <a href="#data-centers" class="election-mobile-link">Data Centers &amp; Energy</a>
+      <a href="https://www.wkar.org/election-2026/ask" class="election-mobile-link" target="_blank" rel="noopener noreferrer">Ask WKAR Politics</a>
     </div>
   </div>
 </nav>
@@ -5650,12 +5846,11 @@
      ============================================================ -->
 <section class="hero-section" aria-labelledby="hero-heading">
   <div class="hero-bg-media" aria-hidden="true">
-    <div class="hero-bg-slides" id="hero-bg-slides" data-hero-loop-ms="70000">
+    <div class="hero-bg-slides" id="hero-bg-slides" data-hero-loop-ms="88000" data-hero-first-ms="4200">
       <img src="assets/images/capitol-michgov-vertical.jpg" alt="" class="is-active" data-focus="dome-clear" fetchpriority="high" loading="eager" decoding="async" />
       <img src="assets/images/hero-interviews.jpg" alt="" data-focus="melorie-studio" loading="lazy" decoding="async" />
       <img src="assets/images/hero-otr-studio.jpg" alt="" data-focus="empty-studio" loading="lazy" decoding="async" />
       <img src="assets/images/data-center-meeting-lansing.jpg" alt="" data-focus="meeting" loading="lazy" decoding="async" />
-      <img src="assets/images/hero-jackson.jpg" alt="" data-focus="jackson" loading="lazy" decoding="async" />
     </div>
     <span class="hero-bg-scrim"></span>
     <span class="hero-bg-vignette"></span>
@@ -5748,7 +5943,7 @@
       <div class="hero-headlines-kicker">
         <div class="hero-headlines-kicker-row">
           <div class="hero-headlines-brand">
-            <h2 id="latest-heading" class="hero-headlines-title">Your Political Headlines</h2>
+            <h2 id="latest-heading" class="hero-headlines-title">Latest from WKAR Politics</h2>
           </div>
           <a href="https://www.wkar.org/election-2026" class="hero-headlines-more">
             All stories
@@ -5879,7 +6074,7 @@
         <img src="assets/images/wkar-election-logo-transparent.png" alt="" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" aria-hidden="true" />
         <div class="section-brand-copy">
           <p class="section-eyebrow mb-0.5">Audio &amp; On-Demand</p>
-          <h2 id="interviews-heading" class="font-display font-bold text-wkar-black">In-Depth Conversations with Sophia and Melorie</h2>
+          <h2 id="interviews-heading" class="font-display font-bold text-wkar-black">WKAR News In-Depth Audio</h2>
         </div>
       </div>
       <a href="https://www.wkar.org/wkar-news-in-depth" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">In-Depth library →</a>
@@ -5892,69 +6087,133 @@
           <img src="assets/images/sophia-saliby.webp" alt="" width="28" height="28" loading="lazy" decoding="async" />
           <img src="assets/images/melorie-begay.webp" alt="" width="28" height="28" loading="lazy" decoding="async" />
         </div>
-        <span>Long-form interviews and features with <strong>Sophia Saliby</strong> &amp; <strong>Melorie Begay</strong></span>
+        <span>Long-form reporting from <strong>Sophia Saliby</strong>, <strong>Melorie Begay</strong>, Andrew Roth, and WKAR News contributors</span>
       </div>
     </div>
 
     <div class="interview-list-compact interview-list-compact--expanded">
-      <a href="https://www.wkar.org/michigans-data-center-divide/2026-06-09/gov-whitmer-faces-online-criticism-for-saline-data-center-event-with-openai-ceo-sam-altman" class="interview-row">
+      <a href="https://www.wkar.org/michigans-data-center-divide/2026-05-06/what-deep-greens-failed-lansing-proposal-says-about-the-changing-data-center-debate" class="interview-row">
         <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
         <div>
           <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Data Center Divide</p>
-          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Gov. Whitmer faces online criticism for Saline data center event with OpenAI CEO Sam Altman</p>
+          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">What Deep Green's failed Lansing proposal says about the changing data center debate</p>
         </div>
-        <time class="text-wkar-muted text-xs" datetime="2026-06-09">Jun 9</time>
+        <time class="text-wkar-muted text-xs" datetime="2026-05-06">May 6 · 4:51</time>
       </a>
-      <a href="https://www.wkar.org/wkar-news/2026-06-09/michigan-theatre-executive-director-returns-after-dismissal-with-sold-out-community-celebration" class="interview-row">
+      <a href="https://www.wkar.org/wkar-america-250/2026-04-24/michigan-to-host-rarely-seen-u-s-founding-documents-for-america-250" class="interview-row">
         <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
         <div>
-          <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Jackson</p>
-          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Michigan Theatre executive director returns after dismissal with sold out community celebration</p>
+          <p class="section-eyebrow interview-row-eyebrow">Andrew Roth · America 250</p>
+          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Michigan to host rarely seen U.S. founding documents for America 250</p>
         </div>
-        <time class="text-wkar-muted text-xs" datetime="2026-06-09">Jun 9</time>
+        <time class="text-wkar-muted text-xs" datetime="2026-04-24">Apr 24 · 5:13</time>
       </a>
-      <a href="https://www.wkar.org/wkar-news/2026-06-08/what-it-takes-to-report-on-an-alleged-sexual-assault-at-mis-largest-immigrant-detention-center" class="interview-row">
+      <a href="https://www.wkar.org/wkar-news/2026-04-07/proposed-consumers-energy-dams-sale-draws-concerns-from-neighbors-dnr" class="interview-row">
         <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
         <div>
-          <p class="section-eyebrow interview-row-eyebrow">WKAR News In-Depth · Reporting Process</p>
-          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">What it takes to report on an alleged sexual assault at MI's largest immigrant detention center</p>
+          <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Energy</p>
+          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Proposed Consumers Energy dams sale draws concerns from neighbors, DNR</p>
         </div>
-        <time class="text-wkar-muted text-xs" datetime="2026-06-08">Jun 8</time>
+        <time class="text-wkar-muted text-xs" datetime="2026-04-07">Apr 7 · 5:56</time>
       </a>
-      <a href="https://www.wkar.org/wkar-news/2026-05-26/wkar-tvs-impact-michigan-returns-with-episode-on-teen-mental-health-and-social-media" class="interview-row">
+      <a href="https://www.wkar.org/wkar-news/2026-03-27/mid-michigan-communities-grapple-with-long-late-public-meetings" class="interview-row">
         <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
         <div>
-          <p class="section-eyebrow interview-row-eyebrow">Impact: Michigan · Public Affairs</p>
-          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Impact: Michigan returns with episode on teen mental health and social media</p>
+          <p class="section-eyebrow interview-row-eyebrow">Andrew Roth · Local Government</p>
+          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Mid-Michigan communities grapple with long, late public meetings</p>
         </div>
-        <time class="text-wkar-muted text-xs" datetime="2026-05-26">May 26</time>
+        <time class="text-wkar-muted text-xs" datetime="2026-03-27">Mar 27 · 2:12</time>
       </a>
       <details class="interview-more">
         <summary>More in-depth stories</summary>
         <div class="interview-more-list">
-          <a href="https://www.wkar.org/wkar-america-250/2026-05-15/99-years-after-bath-school-disaster-community-works-to-make-freestanding-museum-a-reality" class="interview-row">
+          <a href="https://www.wkar.org/wkar-news/2026-03-20/which-countries-own-land-in-mid-michigan" class="interview-row">
             <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
             <div>
-              <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Bath</p>
-              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">99 years after Bath School Disaster, community works to make freestanding museum a reality</p>
+              <p class="section-eyebrow interview-row-eyebrow">Clara Lincolnhol · Land Ownership</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Which countries own land in Mid-Michigan?</p>
             </div>
-            <time class="text-wkar-muted text-xs" datetime="2026-05-15">May 15</time>
+            <time class="text-wkar-muted text-xs" datetime="2026-03-20">Mar 20</time>
           </a>
-          <a href="https://www.wkar.org/wkar-news/2026-05-13/east-lansing-art-festival-returns-to-downtown-for-63rd-year" class="interview-row">
+          <a href="https://www.wkar.org/wkar-news/2026-03-18/heres-what-some-of-the-911-calls-out-of-north-lake-immigration-detention-center-sound-like" class="interview-row">
             <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
             <div>
-              <p class="section-eyebrow interview-row-eyebrow">Melorie Begay · East Lansing</p>
-              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">East Lansing Art Festival returns to downtown for 63rd year</p>
+              <p class="section-eyebrow interview-row-eyebrow">Adam Yahya Rayes, Sophia Saliby, Lindsey Smith · Reporting Process</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Here's what some of the 911 calls out of North Lake immigration detention center sound like</p>
             </div>
-            <time class="text-wkar-muted text-xs" datetime="2026-05-13">May 13</time>
+            <time class="text-wkar-muted text-xs" datetime="2026-03-18">Mar 18 · 7:21</time>
           </a>
-          <a href="https://www.wkar.org/michigans-data-center-divide/2026-05-06/what-deep-greens-failed-lansing-proposal-says-about-the-changing-data-center-debate" class="interview-row">
+          <a href="https://www.wkar.org/wkar-news/2026-03-04/consolidation-of-voting-precincts-helps-michigan-communities-save-money-but-may-leave-some-voters-behind" class="interview-row">
             <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
             <div>
-              <p class="section-eyebrow interview-row-eyebrow">Data Center Divide · Lansing</p>
-              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">What Deep Green's failed Lansing proposal says about the changing data center debate</p>
+              <p class="section-eyebrow interview-row-eyebrow">Melorie Begay · Voting</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Consolidation of voting precincts helps Michigan communities save money, but may leave some voters behind</p>
             </div>
-            <time class="text-wkar-muted text-xs" datetime="2026-05-06">May 6</time>
+            <time class="text-wkar-muted text-xs" datetime="2026-03-04">Mar 4 · 5:39</time>
+          </a>
+          <a href="https://www.wkar.org/wkar-news/2026-02-28/michigan-property-tax-relief-debate-plays-out-in-communities-like-delta-township" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Andrew Roth · Property Taxes</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Michigan property tax relief debate plays out in communities like Delta Township</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-02-28">Feb 28 · 2:22</time>
+          </a>
+          <a href="https://www.wkar.org/wkar-news/2026-02-25/gov-whitmers-final-state-of-the-state-address-to-include-education-housing-priorities" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby, Rick Pluta · State of the State</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Gov. Whitmer's final State of the State address to include education, housing priorities</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-02-25">Feb 25 · 3:40</time>
+          </a>
+          <a href="https://www.wkar.org/wkar-news/2026-02-21/michigan-schools-struggling-to-recruit-experienced-superintendents" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Andrew Roth · Schools</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Michigan schools struggling to recruit experienced superintendents</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-02-21">Feb 21 · 2:06</time>
+          </a>
+          <a href="https://www.wkar.org/wkar-news/2026-02-21/we-deserve-clean-water-groundwater-concerns-linger-near-lansings-retired-erickson-plant" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Victoria Witke · Water</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">"We deserve clean water": Groundwater concerns linger near Lansing's retired Erickson plant</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-02-21">Feb 21 · 1:44</time>
+          </a>
+          <a href="https://www.wkar.org/wkar-news/2026-02-18/book-chronicles-supreme-court-case-limiting-school-integration-in-detroit-with-nationwide-impacts" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Civil Rights</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Book chronicles Supreme Court case limiting school integration in Detroit with nationwide impacts</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-02-18">Feb 18 · 5:03</time>
+          </a>
+          <a href="https://www.wkar.org/michigans-data-center-divide/2026-02-11/mason-mayor-blames-outsiders-to-city-for-pushback-on-data-center-regulations" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Data Center Divide</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Mason mayor blames outsiders to city for pushback on data center regulations</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-02-11">Feb 11 · 8:55</time>
+          </a>
+          <a href="https://www.wkar.org/wkar-news/2026-02-09/michigan-voters-will-decide-in-november-whether-to-convene-a-constitutional-convention" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Election 2026</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Michigan voters will decide in November whether to convene a constitutional convention</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-02-09">Feb 9 · 6:42</time>
+          </a>
+          <a href="https://www.wkar.org/michigans-data-center-divide/2026-02-06/data-centers-could-play-a-role-in-2026-midterm-election-campaigns" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Data Center Divide</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Data centers could play a role in 2026 midterm election campaigns</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-02-06">Feb 6 · 6:21</time>
           </a>
         </div>
       </details>
@@ -5975,15 +6234,15 @@
 
     <div class="team-flagship-grid">
       <div class="team-flagship-intro">
-        <p class="team-flagship-kicker">The People Asking The Questions</p>
-        <h2 id="team-stream-heading" class="team-flagship-title">Seven voices. One election that hits home.</h2>
+        <p class="team-flagship-kicker">The WKAR Politics Team</p>
+        <h2 id="team-stream-heading" class="team-flagship-title">The journalists covering Mid-Michigan's 2026 election.</h2>
         <p class="team-flagship-copy">
           WKAR's political team follows the candidates, presses for specifics, and connects statewide decisions to your schools, roads, utility bills, data centers, and local government.
         </p>
         <div class="team-flagship-stats" aria-label="Reporting network summary">
           <div class="team-flagship-stat"><strong>7</strong><span>WKAR politics voices</span></div>
           <div class="team-flagship-stat"><strong>8</strong><span>Mid-Michigan counties</span></div>
-          <div class="team-flagship-stat"><strong>9</strong><span>Public media stations</span></div>
+          <div class="team-flagship-stat"><strong>9</strong><span>statewide coverage partners</span></div>
         </div>
       </div>
 
@@ -6000,7 +6259,7 @@
             <div class="reporter-card-body">
               <p class="reporter-station">All Things Considered Host</p>
               <h3 class="reporter-name">Sophia Saliby</h3>
-              <p class="reporter-question">Long-form interviews and features that press candidates beyond campaign promises.</p>
+              <p class="reporter-question">Long-form candidate interviews that press for specifics on what changes for Mid-Michigan voters.</p>
             </div>
           </a>
           <a class="reporter-card reporter-card--melorie" href="https://www.wkar.org/people/melorie-begay" target="_blank" rel="noopener noreferrer">
@@ -6008,7 +6267,7 @@
             <div class="reporter-card-body">
               <p class="reporter-station">Morning Edition Host</p>
               <h3 class="reporter-name">Melorie Begay</h3>
-              <p class="reporter-question">Morning context and in-depth reporting that connects statewide politics to daily life.</p>
+              <p class="reporter-question">Morning context and in-depth reporting that brings Lansing decisions into daily focus.</p>
             </div>
           </a>
           <a class="reporter-card reporter-card--danielle" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
@@ -6024,7 +6283,7 @@
             <div class="reporter-card-body">
               <p class="reporter-station">Mid-Michigan Political Reporter</p>
               <h3 class="reporter-name">Andrew Roth</h3>
-              <p class="reporter-question">Political pulse from area sources, plus What Roth's Watching in The Signal.</p>
+              <p class="reporter-question">Local government, elections, and What Roth's Watching in The Signal.</p>
             </div>
           </a>
           </div>
@@ -6048,7 +6307,7 @@
             <div class="reporter-card-body">
               <p class="reporter-station">Capitol Correspondent</p>
               <h3 class="reporter-name">Colin Jackson</h3>
-              <p class="reporter-question">Campaigns, competitive districts, and what candidates say away from the podium.</p>
+              <p class="reporter-question">Competitive districts, campaigns, and what candidates say away from the podium.</p>
             </div>
           </a>
           <a class="reporter-card reporter-card--tim" href="https://www.wkar.org/people/tim-skubick" target="_blank" rel="noopener noreferrer">
@@ -6091,8 +6350,8 @@
           <p class="promise-item-copy">We go to the small towns and outlying counties where the stories are just as consequential, just as personal, and far less told.</p>
         </li>
         <li class="promise-item" style="--promise-color: var(--wkar-red)">
-          <h3 class="promise-item-title">Stories Nobody Else Is Chasing</h3>
-          <p class="promise-item-copy">We find the overlooked angles, the ignored communities, and the decisions that affect you whether you're paying attention or not.</p>
+          <h3 class="promise-item-title">Reporting Beyond The Obvious</h3>
+          <p class="promise-item-copy">We find the overlooked angles, the undercovered communities, and the decisions that shape your life close to home.</p>
         </li>
         <li class="promise-item" style="--promise-color: var(--wkar-green-light)">
           <h3 class="promise-item-title">Tools To Take Action</h3>
@@ -6122,7 +6381,7 @@
       <div class="section-brand-row section-brand-row--center">
         <img src="assets/images/wkar-election-logo-transparent.png" alt="" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" aria-hidden="true" />
         <div class="section-brand-copy">
-          <p class="section-eyebrow mb-0.5">Television &amp; YouTube</p>
+          <p class="section-eyebrow mb-0.5">WKAR-TV &amp; YouTube</p>
           <h2 id="otr-heading" class="font-display font-bold text-wkar-black">Off The Record</h2>
         </div>
       </div>
@@ -6136,33 +6395,33 @@
 
     <div class="otr-videos">
       <article class="otr-video-item">
-        <div class="otr-embed-wrap" data-yt-id="7MPTKO5dZpI">
+        <div class="otr-embed-wrap" data-yt-id="HJRvbUD6cYU">
           <img class="otr-embed-poster" alt="" loading="eager" />
-          <iframe src="https://www.youtube.com/embed/7MPTKO5dZpI" title="Can Garlin Gilchrist Fix Michigan? 2026 Governor's Race Interview | Off the Record" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
-          <a href="https://www.youtube.com/watch?v=7MPTKO5dZpI" class="otr-embed-fallback" target="_blank" rel="noopener noreferrer" aria-label="Watch Can Garlin Gilchrist Fix Michigan? on YouTube">
+          <iframe src="https://www.youtube.com/embed/HJRvbUD6cYU" title="Recent Off The Record episode from WKAR News" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+          <a href="https://www.youtube.com/watch?v=HJRvbUD6cYU" class="otr-embed-fallback" target="_blank" rel="noopener noreferrer" aria-label="Watch recent Off The Record episode on YouTube">
             <span class="otr-embed-fallback-scrim" aria-hidden="true"></span>
             <span class="otr-embed-fallback-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           </a>
         </div>
         <div class="otr-video-body">
           <p class="section-eyebrow otr-video-eyebrow">Governor's Race</p>
-          <h3 class="otr-video-title">Can Garlin Gilchrist Fix Michigan? 2026 Governor's Race Interview</h3>
-          <p class="otr-video-explainer">Lt. Gov. Garlin Gilchrist sits down with Tim Skubick on the open governor's race — Michigan's economy, schools, and what separates the Democratic primary field ahead of August.</p>
+          <h3 class="otr-video-title">Latest Off The Record</h3>
+          <p class="otr-video-explainer">Tim Skubick and the WKAR News team press candidates and Capitol insiders on the choices shaping Michigan's 2026 election.</p>
         </div>
       </article>
       <article class="otr-video-item">
-        <div class="otr-embed-wrap" data-yt-id="2JRAHeccWzE">
+        <div class="otr-embed-wrap" data-yt-id="QsA3uvCUQTg">
           <img class="otr-embed-poster" alt="" loading="lazy" />
-          <iframe src="https://www.youtube.com/embed/2JRAHeccWzE" title="January 17, 2025 Correspondents Edition | OFF THE RECORD" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
-          <a href="https://www.youtube.com/watch?v=2JRAHeccWzE" class="otr-embed-fallback" target="_blank" rel="noopener noreferrer" aria-label="Watch Correspondents Edition on YouTube">
+          <iframe src="https://www.youtube.com/embed/QsA3uvCUQTg" title="Recent WKAR News video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+          <a href="https://www.youtube.com/watch?v=QsA3uvCUQTg" class="otr-embed-fallback" target="_blank" rel="noopener noreferrer" aria-label="Watch recent WKAR News video on YouTube">
             <span class="otr-embed-fallback-scrim" aria-hidden="true"></span>
             <span class="otr-embed-fallback-play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           </a>
         </div>
         <div class="otr-video-body">
           <p class="section-eyebrow otr-video-eyebrow">Capitol Roundtable</p>
-          <h3 class="otr-video-title">Jan. 17, 2025 — Correspondents Edition</h3>
-          <p class="otr-video-explainer">Capitol reporters roundtable on the week's Lansing news — primary fields taking shape, legislative fights brewing, and the storylines driving Michigan's 2026 campaign.</p>
+          <h3 class="otr-video-title">Latest WKAR News video</h3>
+          <p class="otr-video-explainer">Current video coverage from WKAR News, with election context, candidate accountability, and Michigan political reporting.</p>
         </div>
       </article>
     </div>
@@ -6190,7 +6449,7 @@
       <span id="signal-wordmark-fallback"
             class="font-display font-bold text-wkar-black hidden"
             style="font-size:2.25rem; display:none; line-height:1;">The Signal</span>
-      <span class="signal-newsletter-tag">Coming Wednesdays This Summer</span>
+      <span class="signal-plus-badge">THE SIGNAL+ COMING WEDNESDAYS THIS SUMMER</span>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start">
@@ -6225,9 +6484,9 @@
 
         <p class="font-display font-normal text-wkar-black leading-snug mt-4 mb-2"
            style="font-size:clamp(1.125rem, 2.2vw, 1.5rem);">
-          Your week ahead in Mid-Michigan — filtered for impact.
+          A Sunday morning briefing on Michigan politics, elections, and the decisions shaping Mid-Michigan.
         </p>
-        <p class="signal-social-proof">1,500+ readers start the week here. Signal Plus is coming Wednesdays this summer.</p>
+        <p class="signal-social-proof">The Signal lands every Sunday morning. The Signal+ comes Wednesdays this summer.</p>
 
         <ul class="space-y-2 mt-4 mb-0">
           <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
@@ -6236,7 +6495,7 @@
           </li>
           <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d7a59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-            Signal Plus coming Wednesdays this summer
+            THE SIGNAL+ COMING WEDNESDAYS THIS SUMMER
           </li>
           <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d7a59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
@@ -6261,7 +6520,7 @@
                  width="380" height="116"
                  decoding="async" />
           </a>
-          <p class="text-wkar-muted text-sm mb-5">Get the Sunday Week Ahead now. Signal Plus is coming Wednesdays this summer. Free — no spam, unsubscribe anytime.</p>
+          <p class="text-wkar-muted text-sm mb-5">Get the Sunday Week Ahead now. The Signal+ is coming Wednesdays this summer.</p>
 
           <div class="flex flex-col gap-3">
             <div>
@@ -6383,26 +6642,26 @@
     <div class="resource-command" aria-label="Interactive voter resource command center">
       <div class="resource-command-main">
         <h3>Start with where you vote.</h3>
-        <p>Enter an address in the official Michigan voter portal to find registration status, precinct, polling place, sample ballot, absentee status, and local clerk contacts.</p>
+        <p>Visit the official Michigan Voter Information Center to find your registration, polling place, sample ballot, absentee status, and local clerk contacts.</p>
         <div class="resource-search">
           <input type="text" aria-label="Address lookup preview" placeholder="Street address, city, ZIP" />
           <a href="https://mvic.sos.state.mi.us/Voter/Index" target="_blank" rel="noopener noreferrer">Open precinct finder</a>
         </div>
       </div>
       <div class="resource-command-panel">
-        <h3>Embed/API-ready modules</h3>
+        <h3>Official voter tools</h3>
         <div class="resource-api-list">
           <div class="resource-api-item">
-            <strong>Interactive ballot lookup</strong>
-            <span>Embed MVIC sample ballot, BallotReady, or a custom race guide when an approved feed is available.</span>
+            <strong>Sample ballot</strong>
+            <span>Preview the races and proposals that will appear on your ballot before you vote.</span>
           </div>
           <div class="resource-api-item">
             <strong>Precinct finder</strong>
-            <span>Primary action routes to Michigan's official voter portal; future API can prefill location and return clerk/precinct data.</span>
+            <span>Confirm where you vote, when polls are open, and which clerk handles your election.</span>
           </div>
           <div class="resource-api-item">
-            <strong>Key dates engine</strong>
-            <span>Countdowns are live; dates can be sourced from SOS calendar data or a station-managed JSON file.</span>
+            <strong>Registration status</strong>
+            <span>Make sure your address is current before the deadline, or register in person through Election Day.</span>
           </div>
         </div>
       </div>
@@ -6507,12 +6766,30 @@
           <p>Tap a pin for local links, story context, and the resource path that gets you from a headline to action.</p>
         </div>
       </div>
-      <iframe
-        src="https://wkar-news.github.io/election-map-26/"
-        title="WKAR Interactive Election Map"
-        class="interactive-map-frame"
-        loading="lazy">
-      </iframe>
+      <div class="local-election-map" data-local-map>
+        <div class="map-filter-row" role="list" aria-label="Map filters">
+          <button type="button" class="map-filter-button is-active" data-map-filter="all">All</button>
+          <button type="button" class="map-filter-button" data-map-filter="story">Stories</button>
+          <button type="button" class="map-filter-button" data-map-filter="race">Races</button>
+          <button type="button" class="map-filter-button" data-map-filter="tool">Voter tools</button>
+        </div>
+        <div class="map-canvas" aria-label="Mid-Michigan election resource map">
+          <button type="button" class="map-pin is-active" style="--x:52%; --y:56%;" data-type="story tool" data-title="Ingham County" data-kicker="Latest story + voter tools" data-copy="Andrew Roth's Burchfield Park reporting, Lansing meetings, sample ballot links, and clerk resources." data-link="https://mvic.sos.state.mi.us/Voter/Index"><span>Ingham</span></button>
+          <button type="button" class="map-pin" style="--x:45%; --y:48%;" data-type="race tool" data-title="Eaton County" data-kicker="Local races" data-copy="Charlotte, Grand Ledge, Delta Township, polling places, ballot lookup, and district context." data-link="https://mvic.sos.state.mi.us/Voter/Index"><span>Eaton</span></button>
+          <button type="button" class="map-pin" style="--x:55%; --y:40%;" data-type="race tool" data-title="Clinton County" data-kicker="County guide" data-copy="St. Johns, DeWitt, rural turnout, clerk contacts, and competitive district context." data-link="https://mvic.sos.state.mi.us/Voter/Index"><span>Clinton</span></button>
+          <button type="button" class="map-pin" style="--x:60%; --y:68%;" data-type="story race" data-title="Jackson County" data-kicker="Stories + races" data-copy="Jackson politics, county government, in-depth interviews, and voter resource links." data-link="https://mvic.sos.state.mi.us/Voter/Index"><span>Jackson</span></button>
+          <button type="button" class="map-pin" style="--x:66%; --y:52%;" data-type="race tool" data-title="Livingston County" data-kicker="Battleground watch" data-copy="Growth, schools, suburban voters, sample ballots, and clerk resources." data-link="https://mvic.sos.state.mi.us/Voter/Index"><span>Livingston</span></button>
+          <button type="button" class="map-pin" style="--x:64%; --y:44%;" data-type="story race" data-title="Shiawassee County" data-kicker="Energy + local government" data-copy="Energy, roads, small-town government, and elections across Owosso, Perry, and Corunna." data-link="https://mvic.sos.state.mi.us/Voter/Index"><span>Shiawassee</span></button>
+          <button type="button" class="map-pin" style="--x:39%; --y:45%;" data-type="tool race" data-title="Ionia County" data-kicker="County resources" data-copy="Ionia, Portland, Lake Odessa, local services, school races, and official ballot tools." data-link="https://mvic.sos.state.mi.us/Voter/Index"><span>Ionia</span></button>
+          <button type="button" class="map-pin" style="--x:47%; --y:34%;" data-type="story tool" data-title="Gratiot County" data-kicker="Rural election watch" data-copy="Alma, Ithaca, rural economy, turnout, energy policy, and precinct lookup." data-link="https://mvic.sos.state.mi.us/Voter/Index"><span>Gratiot</span></button>
+        </div>
+        <aside class="map-detail-card" aria-live="polite">
+          <p class="map-detail-kicker" data-map-detail-kicker>Latest story + voter tools</p>
+          <h4 class="map-detail-title" data-map-detail-title>Ingham County</h4>
+          <p class="map-detail-copy" data-map-detail-copy>Andrew Roth's Burchfield Park reporting, Lansing meetings, sample ballot links, and clerk resources.</p>
+          <a class="map-detail-link" href="https://mvic.sos.state.mi.us/Voter/Index" target="_blank" rel="noopener noreferrer" data-map-detail-link>Open voter tools</a>
+        </aside>
+      </div>
     </div>
 
     <!-- Legacy county map retained as fallback while the interactive embed is refined. -->
@@ -6726,8 +7003,8 @@
       <img src="assets/images/wkar-election-logo-transparent.png" alt="" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" aria-hidden="true" />
       <div class="section-brand-copy">
         <p class="section-eyebrow mb-1.5">Race Resource Center</p>
-        <h2 id="races-heading" class="font-display font-bold text-wkar-black text-lg sm:text-xl">The Big Races, Explained</h2>
-        <p class="text-wkar-muted text-base mt-2 max-w-2xl">Candidate cards, interview questions, district stakes, and local impact. Built to become a live race guide as filings, debates, endorsements, and ballots update.</p>
+        <h2 id="races-heading" class="font-display font-bold text-wkar-black text-lg sm:text-xl">The 2026 Races, Explained</h2>
+        <p class="text-wkar-muted text-base mt-2 max-w-2xl">Candidate cards, interview questions, district context, and local stakes, updated through the primary and general election.</p>
       </div>
     </div>
 
@@ -6738,11 +7015,11 @@
           <h3>Who leads Michigan after Whitmer?</h3>
         </div>
         <div class="race-feature-body">
-          <p style="margin:0;color:rgba(255,255,255,0.76);font-size:0.9rem;line-height:1.5;">A living candidate guide for the open governor's race: biography, money, endorsements, interviews, policy answers, and the local impact question WKAR will press every candidate to answer.</p>
+          <p style="margin:0;color:rgba(255,255,255,0.76);font-size:0.9rem;line-height:1.5;">A living candidate guide for the open governor's race: biography, money, endorsements, interviews, policy answers, and the local stakes question WKAR will press every candidate to answer.</p>
           <div class="candidate-grid">
             <a class="candidate-card" href="https://www.wkar.org/wkar-news/2026-06-22/president-trump-endorses-rep-john-james-in-michigan-governors-race"><strong>John James</strong><span>Republican · Trump endorsement shifts the open governor's race</span></a>
             <a class="candidate-card" href="https://www.michiganpublic.org/politics-government/2026-06-22/fact-check-john-james-kill-switch-claims-rile-michigan-governors-race"><strong>Fact check file</strong><span>Claims, context, and what voters need to know before the interview</span></a>
-            <a class="candidate-card" href="https://www.youtube.com/watch?v=7MPTKO5dZpI"><strong>Garlin Gilchrist</strong><span>Democrat · Off The Record interview on economy, schools, cost of living</span></a>
+            <a class="candidate-card" href="https://www.youtube.com/watch?v=HJRvbUD6cYU"><strong>Latest OTR interview</strong><span>Candidate accountability on economy, schools, cost of living, and Michigan's future</span></a>
             <a class="candidate-card" href="mailto:news@wkar.org?subject=Election%202026%20governor%20candidate%20question"><strong>What we ask all of them</strong><span>What changes for your county if you win?</span></a>
           </div>
         </div>
@@ -6790,7 +7067,7 @@
       <a href="https://www.wkar.org/michigans-data-center-divide" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">All stories →</a>
     </div>
 
-    <p class="dc-lead">Zoning fights, transmission routes, rate cases, and grid strain&mdash;tracked county by county across the Michigan Public Media network ahead of the 2026 midterms.</p>
+    <p class="dc-lead">Zoning fights, transmission routes, rate cases, and grid strain, tracked county by county by WKAR News as local decisions shape Election 2026.</p>
 
     <div class="dc-county-grid" aria-label="Data center coverage by county">
 
@@ -6864,55 +7141,6 @@
 
     </div>
 
-    <p class="dc-sources" aria-label="Michigan public media sources">
-      Network:
-      <a href="https://www.wkar.org">WKAR</a>,
-      <a href="https://www.michiganpublic.org">Michigan Public</a>,
-      <a href="https://wdet.org">WDET</a>,
-      <a href="https://www.wcmu.org">WCMU</a>,
-      <a href="https://www.interlochen.org/radio">Interlochen</a>,
-      <a href="https://www.wgvu.org">WGVU</a>
-    </p>
-
-  </div>
-</section>
-
-<div class="section-rule"></div>
-
-<!-- ============================================================
-     FROM MICHIGAN PUBLIC MEDIA — Partner Network
-     ============================================================ -->
-<section class="py-10 sm:py-12" style="background:#f9fafb; border-top:1px solid #e5e7eb;" aria-labelledby="partners-heading">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
-
-    <!-- Compact horizontal layout: label + badges in one row on desktop -->
-    <div class="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
-
-      <!-- Left label -->
-      <div class="flex-shrink-0 section-brand-row">
-        <img src="assets/images/wkar-election-logo-transparent.png" alt="" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" aria-hidden="true" />
-        <div class="section-brand-copy">
-          <p class="section-eyebrow mb-1">Statewide</p>
-          <h2 id="partners-heading" class="font-display font-semibold text-wkar-black text-base">Michigan Public Media</h2>
-          <p class="text-wkar-subtle text-xs mt-0.5 max-w-[180px] leading-relaxed">Editorially independent statewide coverage</p>
-        </div>
-      </div>
-
-      <!-- Right: badge row -->
-      <div class="flex-1 flex flex-wrap gap-2.5">
-        <a href="https://www.wkar.org" class="partner-badge" aria-label="WKAR Public Media">WKAR</a>
-        <a href="https://www.michiganpublic.org" class="partner-badge" aria-label="Michigan Public">Michigan<br/>Public</a>
-        <a href="https://wdet.org" class="partner-badge" aria-label="WDET Detroit">WDET</a>
-        <a href="https://www.wcmu.org" class="partner-badge" aria-label="WCMU Public Media">WCMU</a>
-        <a href="https://www.interlochen.org/radio" class="partner-badge" aria-label="Interlochen Public Radio">Interlochen<br/>Public</a>
-        <a href="https://www.wgvu.org" class="partner-badge" aria-label="WGVU Public Media">WGVU</a>
-        <a href="https://www.wmuk.org" class="partner-badge" aria-label="WMUK Public Radio">WMUK</a>
-        <a href="https://www.wnmufm.org" class="partner-badge" aria-label="WNMU Public Radio">WNMU</a>
-        <a href="https://www.wemu.org" class="partner-badge" aria-label="WEMU Public Radio">WEMU</a>
-      </div>
-
-    </div>
-
   </div>
 </section>
 
@@ -6936,23 +7164,23 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
 
       <!-- House Tracker -->
-      <div class="bg-white border border-gray-200 rounded-sm p-5 border-l-[3px] border-l-election-blue">
+      <div class="bg-white border border-gray-200 rounded-sm p-5 border-l-[3px] border-l-election-red">
         <p class="font-mono text-xs text-wkar-muted font-medium tracking-widest uppercase mb-3">Michigan House</p>
         <div class="flex items-end gap-3 mb-3">
           <div class="text-center">
-            <p class="font-mono font-bold text-2xl text-wkar-slate">56</p>
-            <p class="text-xs text-wkar-muted mt-0.5">Dem</p>
-          </div>
-          <div class="flex-1 flex h-4 rounded-full overflow-hidden">
-            <div class="bg-wkar-slate" style="width:51%;"></div>
-            <div class="bg-wkar-red" style="width:49%;"></div>
-          </div>
-          <div class="text-center">
-            <p class="font-mono font-bold text-2xl text-wkar-red">54</p>
+            <p class="font-mono font-bold text-2xl text-wkar-red">58</p>
             <p class="text-xs text-wkar-muted mt-0.5">Rep</p>
           </div>
+          <div class="flex-1 flex h-4 rounded-full overflow-hidden">
+            <div class="bg-wkar-red" style="width:52.7%;"></div>
+            <div class="bg-wkar-slate" style="width:47.3%;"></div>
+          </div>
+          <div class="text-center">
+            <p class="font-mono font-bold text-2xl text-wkar-slate">52</p>
+            <p class="text-xs text-wkar-muted mt-0.5">Dem</p>
+          </div>
         </div>
-        <p class="text-wkar-muted text-xs leading-relaxed">Democrats hold a razor-thin 56–54 advantage. Republicans targeting 7 flip-seats in the August primary.</p>
+        <p class="text-wkar-muted text-xs leading-relaxed">Republicans hold a narrow 58–52 majority. Democrats are targeting competitive seats in the August primary.</p>
       </div>
 
       <!-- Senate Tracker -->
@@ -6972,7 +7200,7 @@
             <p class="text-xs text-wkar-muted mt-0.5">Rep</p>
           </div>
         </div>
-        <p class="text-wkar-muted text-xs leading-relaxed">Senate Dems defend a 20–18 majority. At least 4 Democratic incumbents face competitive primaries.</p>
+        <p class="text-wkar-muted text-xs leading-relaxed">Democrats hold a 20–18 majority. Competitive primaries and open-seat pressure could shape control heading into November.</p>
       </div>
 
       <!-- Bills to watch -->
@@ -6981,24 +7209,24 @@
         <div class="space-y-3">
           <div class="pb-3 border-b border-gray-200">
             <div class="flex justify-between items-start gap-2">
-              <p class="font-semibold text-xs text-wkar-black">HB 4512 — Data Center Energy Tax</p>
-              <span class="bg-amber-100 text-amber-700 font-mono text-xs px-1.5 py-0.5 rounded-sm flex-shrink-0">Committee</span>
+              <p class="font-semibold text-xs text-wkar-black">HB 5594 — Data Center Moratorium</p>
+              <span class="bg-amber-100 text-amber-700 font-mono text-xs px-1.5 py-0.5 rounded-sm flex-shrink-0">Watch</span>
             </div>
-            <p class="text-wkar-muted text-xs mt-1">Would limit tax incentives for data centers that exceed grid impact thresholds.</p>
+            <p class="text-wkar-muted text-xs mt-1">Would pause approvals for new data centers while lawmakers debate energy, water, and local impact rules.</p>
           </div>
           <div class="pb-3 border-b border-gray-200">
             <div class="flex justify-between items-start gap-2">
-              <p class="font-semibold text-xs text-wkar-black">SB 221 — Clean Energy Standards</p>
-              <span class="bg-blue-100 text-blue-700 font-mono text-xs px-1.5 py-0.5 rounded-sm flex-shrink-0">Floor vote</span>
+              <p class="font-semibold text-xs text-wkar-black">HB 4765 — Voter Registration Rules</p>
+              <span class="bg-blue-100 text-blue-700 font-mono text-xs px-1.5 py-0.5 rounded-sm flex-shrink-0">Senate watch</span>
             </div>
-            <p class="text-wkar-muted text-xs mt-1">Accelerates renewable portfolio standard to 60% by 2035.</p>
+            <p class="text-wkar-muted text-xs mt-1">House-passed proof-of-citizenship legislation could become a 2026 voting-rights flashpoint.</p>
           </div>
           <div>
             <div class="flex justify-between items-start gap-2">
-              <p class="font-semibold text-xs text-wkar-black">HB 4198 — Voter ID Expansion</p>
-              <span class="bg-gray-100 text-gray-600 font-mono text-xs px-1.5 py-0.5 rounded-sm flex-shrink-0">Introduced</span>
+              <p class="font-semibold text-xs text-wkar-black">State Budget &amp; Tax Package</p>
+              <span class="bg-gray-100 text-gray-600 font-mono text-xs px-1.5 py-0.5 rounded-sm flex-shrink-0">July deadline</span>
             </div>
-            <p class="text-wkar-muted text-xs mt-1">Stricter photo ID requirements — faces constitutional challenge.</p>
+            <p class="text-wkar-muted text-xs mt-1">School aid, roads, local services, and tax debates will shape the election-year argument.</p>
           </div>
         </div>
       </div>
@@ -7089,7 +7317,7 @@
           <li><a href="https://mvic.sos.state.mi.us/Voter/Index">Find Polling Place</a></li>
           <li><a href="https://mvic.sos.state.mi.us/AbsenteeVoter">Absentee Ballot</a></li>
           <li><a href="https://mvic.sos.state.mi.us/SampleBallot">Sample Ballot</a></li>
-          <li><a href="https://www.wkar.org/election-2026/ask">Ask WKAR</a></li>
+          <li><a href="https://www.wkar.org/election-2026/ask">Ask WKAR Politics</a></li>
         </ul>
       </div>
 
@@ -7359,6 +7587,72 @@
   })();
 
 
+  // ── Local story/resource map ─────────────────────────────
+  (function() {
+    var maps = Array.prototype.slice.call(document.querySelectorAll('[data-local-map]'));
+    if (!maps.length) return;
+
+    maps.forEach(function(map) {
+      var filters = Array.prototype.slice.call(map.querySelectorAll('[data-map-filter]'));
+      var pins = Array.prototype.slice.call(map.querySelectorAll('.map-pin'));
+      var kicker = map.querySelector('[data-map-detail-kicker]');
+      var title = map.querySelector('[data-map-detail-title]');
+      var copy = map.querySelector('[data-map-detail-copy]');
+      var link = map.querySelector('[data-map-detail-link]');
+
+      function selectPin(pin) {
+        if (!pin || pin.classList.contains('is-muted')) return;
+        pins.forEach(function(item) { item.classList.remove('is-active'); });
+        pin.classList.add('is-active');
+        if (kicker) kicker.textContent = pin.getAttribute('data-kicker') || '';
+        if (title) title.textContent = pin.getAttribute('data-title') || '';
+        if (copy) copy.textContent = pin.getAttribute('data-copy') || '';
+        if (link) {
+          link.href = pin.getAttribute('data-link') || 'https://mvic.sos.state.mi.us/Voter/Index';
+          link.textContent = 'Open resources';
+        }
+      }
+
+      function applyFilter(filter) {
+        pins.forEach(function(pin) {
+          var types = (pin.getAttribute('data-type') || '').split(/\s+/);
+          var visible = filter === 'all' || types.indexOf(filter) !== -1;
+          pin.classList.toggle('is-muted', !visible);
+        });
+        var current = pins.find(function(pin) {
+          return pin.classList.contains('is-active') && !pin.classList.contains('is-muted');
+        });
+        if (!current) {
+          selectPin(pins.find(function(pin) { return !pin.classList.contains('is-muted'); }));
+        }
+      }
+
+      pins.forEach(function(pin) {
+        pin.addEventListener('click', function() { selectPin(pin); });
+      });
+
+      filters.forEach(function(button) {
+        button.addEventListener('click', function() {
+          filters.forEach(function(item) { item.classList.remove('is-active'); });
+          button.classList.add('is-active');
+          applyFilter(button.getAttribute('data-map-filter') || 'all');
+        });
+      });
+
+      selectPin(pins[0]);
+    });
+  })();
+
+
+  // ── Subtle team-section flag motion ──────────────────────────
+  (function() {
+    var videos = Array.prototype.slice.call(document.querySelectorAll('.team-flag-bg video'));
+    if (!videos.length) return;
+    videos.forEach(function(video) {
+      video.playbackRate = 0.32;
+    });
+  })();
+
 
   // ── Subtle Mid-Michigan town drift ───────────────────────
   (function() {
@@ -7400,8 +7694,11 @@
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var loopMs = parseInt(root.getAttribute('data-hero-loop-ms'), 10) || 45000;
     var intervalMs = Math.round(loopMs / slides.length);
+    var firstMs = parseInt(root.getAttribute('data-hero-first-ms'), 10) || Math.min(5200, intervalMs);
     var idx = 0;
     var timer = null;
+    var firstTimer = null;
+    var hasStarted = false;
 
     function preloadNext(nextIdx) {
       var next = slides[nextIdx];
@@ -7421,15 +7718,33 @@
       showSlide((idx + 1) % slides.length);
     }
 
+    function runLoop() {
+      if (!timer) timer = setInterval(advance, intervalMs);
+    }
+
     function start() {
-      if (timer || reduceMotion) return;
-      timer = setInterval(advance, intervalMs);
+      if (timer || firstTimer || reduceMotion) return;
+      if (!hasStarted) {
+        hasStarted = true;
+        firstTimer = setTimeout(function() {
+          firstTimer = null;
+          advance();
+          runLoop();
+        }, firstMs);
+        return;
+      }
+      runLoop();
     }
 
     function stop() {
-      if (!timer) return;
-      clearInterval(timer);
-      timer = null;
+      if (firstTimer) {
+        clearTimeout(firstTimer);
+        firstTimer = null;
+      }
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
     }
 
     preloadNext(1);
