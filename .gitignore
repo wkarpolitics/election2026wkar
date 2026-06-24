@@ -1,0 +1,9 @@
+.DS_Store
+archive/
+backup grok build/
+
+# Unused large videos (not referenced in index.html; hero-capitol exceeds GitHub 100MB limit)
+assets/video/hero-capitol.mp4
+assets/video/dc-header.mp4
+assets/video/hero-michigan.mp4
+assets/video/capitol-flyover.mp4

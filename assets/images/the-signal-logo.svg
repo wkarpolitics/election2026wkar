@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 300" role="img" aria-labelledby="title desc">
+  <title id="title">The Signal Week Ahead by WKAR News</title>
+  <desc id="desc">Prototype vector version of The Signal newsletter logo based on the supplied reference image.</desc>
+  <rect width="980" height="300" fill="none"/>
+  <g transform="translate(28 20)">
+    <path d="M82 222C40 172 38 95 83 38" fill="none" stroke="#7bd7ad" stroke-width="32"/>
+    <path d="M312 38c45 57 43 134 1 184" fill="none" stroke="#7bd7ad" stroke-width="32"/>
+    <path d="M134 169c-17-26-14-70 11-96" fill="none" stroke="#7bd7ad" stroke-width="32"/>
+    <path d="M262 73c25 26 28 70 11 96" fill="none" stroke="#7bd7ad" stroke-width="32"/>
+    <circle cx="198" cy="120" r="45" fill="#7bd7ad"/>
+    <circle cx="198" cy="153" r="18" fill="#324b31" stroke="#fffefa" stroke-width="5"/>
+    <text x="62" y="103" fill="#324b31" font-family="Arial Black, Arial, sans-serif" font-size="47" font-weight="900">THE</text>
+    <text x="0" y="220" fill="#324b31" stroke="#fffefa" stroke-width="7" paint-order="stroke" font-family="Arial Black, Arial, sans-serif" font-style="italic" font-size="142" font-weight="900">Signal</text>
+    <text x="358" y="268" fill="#717d71" font-family="Arial Black, Arial, sans-serif" font-size="56" font-weight="900">Week Ahead.</text>
+    <text x="602" y="202" fill="#324b31" font-family="Arial, sans-serif" font-size="34" font-weight="700">by</text>
+    <text x="652" y="202" fill="#324b31" font-family="Arial Black, Arial, sans-serif" font-size="43" font-weight="900">WKAR</text>
+    <text x="780" y="202" fill="#113731" font-family="Arial, sans-serif" font-size="43" font-weight="400">News</text>
+  </g>
+</svg>

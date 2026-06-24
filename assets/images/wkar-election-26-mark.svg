@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 185 98" role="img" aria-labelledby="title">
+  <title id="title">Election 2026</title>
+  <text x="2" y="88"
+        font-family="'Inter', system-ui, sans-serif"
+        font-weight="900" font-size="96" fill="#274c98"
+        letter-spacing="-4">2</text>
+  <polygon points="48,14 52.5,28 66,28 55.5,36 59,50 48,42 37,50 40.5,36 30,28 43.5,28"
+           fill="#ffffff"/>
+  <text x="98" y="88"
+        font-family="'Inter', system-ui, sans-serif"
+        font-weight="900" font-size="96" fill="#c52e26"
+        letter-spacing="-4">6</text>
+</svg>
