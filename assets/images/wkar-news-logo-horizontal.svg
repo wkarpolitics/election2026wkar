@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 72" role="img" aria-labelledby="wkar-news-h-title">
+  <title id="wkar-news-h-title">WKAR News</title>
+  <defs>
+    <linearGradient id="wkar-tricolor-h" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#274c98"/>
+      <stop offset="50%" stop-color="#1a3a2a"/>
+      <stop offset="100%" stop-color="#c52e26"/>
+    </linearGradient>
+  </defs>
+
+  <rect y="68" width="420" height="3" rx="1.5" fill="url(#wkar-tricolor-h)"/>
+
+  <text x="0" y="50"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+        font-weight="800" font-size="46" fill="#1a3a2a"
+        letter-spacing="-1.5">WKAR</text>
+
+  <rect x="154" y="12" width="2" height="44" rx="1" fill="rgba(26,58,42,0.18)"/>
+
+  <text x="170" y="50"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+        font-weight="600" font-size="38" fill="#25453d"
+        letter-spacing="7">NEWS</text>
+</svg>

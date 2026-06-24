@@ -167,8 +167,8 @@
       --wkar-red: #c52e26;
       --wkar-red-soft: #faeae8;
       --wkar-tricolor: linear-gradient(90deg, var(--wkar-blue) 0%, var(--wkar-green-deep) 50%, var(--wkar-red) 100%);
-      --lux-bg: #faf7f3;
-      --lux-champagne: #f3ede4;
+      --lux-bg: #f7f8fa;
+      --lux-champagne: #eef1f4;
       --lux-line: rgba(37, 69, 61, 0.09);
       --apple-bg: var(--lux-bg);
       --apple-surface: #ffffff;
@@ -624,16 +624,27 @@
       z-index: 1;
       isolation: isolate;
       overflow: clip;
-      background: #f5f5f7;
+      background:
+        linear-gradient(180deg, rgba(247,248,250,0.96), rgba(247,248,250,0.99)),
+        #f5f5f7;
       box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-      padding-bottom: 1.25rem;
+      padding-bottom: 0.55rem;
     }
     .hero-bg-media {
       position: absolute;
-      inset: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(66vw, 980px);
       z-index: 0;
       overflow: hidden;
-      clip-path: inset(0);
+      clip-path: none;
+      border-radius: 0;
+      box-shadow: none;
+      background: #101a18;
+      opacity: 0.98;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.28) 13%, rgba(0,0,0,0.82) 34%, #000 54%);
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.28) 13%, rgba(0,0,0,0.82) 34%, #000 54%);
     }
     .hero-bg-slides {
       position: absolute;
@@ -641,7 +652,8 @@
       overflow: hidden;
       clip-path: inset(0);
     }
-    .hero-bg-slides img {
+    .hero-bg-slides img,
+    .hero-bg-slides video {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -651,31 +663,57 @@
       object-fit: cover;
       object-position: center center;
       opacity: 0;
-      transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 2.8s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: opacity;
+      filter: brightness(0.9) saturate(0.96) contrast(1.04);
     }
-    .hero-bg-slides img.is-active {
+    .hero-bg-slides img.is-active,
+    .hero-bg-slides video.is-active {
       opacity: 1;
     }
-    .hero-bg-slides img[data-focus="meeting"] {
-      object-position: 76% 64%;
-      transform: scale(1.14);
-      transform-origin: 76% 64%;
+    .hero-bg-slides [data-focus="meeting"] {
+      object-position: 54% 50%;
+      transform: none;
+      transform-origin: center;
     }
-    .hero-bg-slides img[data-focus="studio"] { object-position: 80% center; }
-    .hero-bg-slides img[data-focus="radio-studio"] { object-position: 72% 42%; }
-    .hero-bg-slides img[data-focus="interview"] {
-      object-position: 55% 74%;
-      transform: scale(1.2);
-      transform-origin: 55% 74%;
+    .hero-bg-slides [data-focus="studio"] { object-position: 80% center; }
+    .hero-bg-slides [data-focus="radio-studio"] { object-position: 72% 42%; }
+    .hero-bg-slides [data-focus="interview"] {
+      object-position: 52% 50%;
+      transform: none;
+      transform-origin: center;
     }
-    .hero-bg-slides img[data-focus="otr"] { object-position: 78% 46%; }
-    .hero-bg-slides img[data-focus="landscape"] { object-position: 72% center; }
-    .hero-bg-slides img[data-focus="lansing-skyline"] { object-position: 58% 38%; }
-    .hero-bg-slides img[data-focus="dome-clear"] {
-      object-position: 70% 32%;
-      transform: scale(1.04);
-      transform-origin: 70% 32%;
+    .hero-bg-slides [data-focus="otr"] { object-position: 78% 46%; }
+    .hero-bg-slides [data-focus="landscape"] { object-position: 72% center; }
+    .hero-bg-slides [data-focus="lansing-skyline"] { object-position: 58% 38%; }
+    .hero-bg-slides [data-focus="entry-capitol"] {
+      object-position: 42% 42%;
+      transform: none;
+    }
+    .hero-bg-slides [data-focus="dome-clear"] {
+      object-position: 58% 34%;
+      transform: none;
+      transform-origin: center;
+    }
+    .hero-bg-slides [data-focus="melorie-studio"] {
+      object-position: 66% 48%;
+      transform: none;
+    }
+    .hero-bg-slides [data-focus="empty-studio"] {
+      object-position: 61% 50%;
+      transform: none;
+    }
+    .hero-bg-slides [data-focus="jackson"] {
+      object-position: 64% 46%;
+      transform: none;
+    }
+    .hero-bg-slides [data-focus="night-dome"] {
+      object-position: 40% 52%;
+      transform: none;
+    }
+    .hero-bg-slides [data-focus="park"] {
+      object-position: 48% 50%;
+      transform: none;
     }
     .hero-bg-scrim {
       position: absolute;
@@ -683,16 +721,32 @@
       z-index: 2;
       pointer-events: none;
       background:
-        linear-gradient(to bottom,
-          rgba(255,255,255,0.62) 0%,
-          rgba(255,255,255,0.24) 8%,
-          transparent 16%),
-        linear-gradient(106deg,
-          rgba(255,255,255,0.98) 0%,
-          rgba(255,255,255,0.86) 26%,
-          rgba(255,255,255,0.48) 40%,
-          rgba(255,255,255,0.1) 54%,
-          transparent 64%);
+        linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.84) 24%, rgba(255,255,255,0.38) 43%, rgba(255,255,255,0.08) 60%, transparent 76%),
+        linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.1) 100%);
+    }
+    .hero-bg-label {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 0.95rem;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 14px rgba(0,0,0,0.45);
+    }
+    .hero-bg-label::before {
+      content: '';
+      width: 2.4rem;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--wkar-tricolor);
     }
     .hero-bg-vignette {
       position: absolute;
@@ -700,13 +754,80 @@
       z-index: 3;
       pointer-events: none;
       background:
-        linear-gradient(to top, rgba(245,245,247,0.62) 0%, rgba(245,245,247,0.16) 14%, transparent 32%);
+        linear-gradient(to top, rgba(16, 46, 33, 0.18) 0%, transparent 34%);
+    }
+    .town-drift {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 1;
+      mix-blend-mode: multiply;
+    }
+    .town-drift-row {
+      position: absolute;
+      left: 0;
+      display: flex;
+      align-items: center;
+      width: max-content;
+      gap: clamp(1.35rem, 3vw, 3rem);
+      color: rgba(37, 69, 61, 0.075);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(0.92rem, 1.55vw, 1.45rem);
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+      text-transform: none;
+      filter: blur(0.18px);
+      animation: townDriftLeft var(--town-duration, 260s) linear infinite;
+    }
+    .town-drift-row:nth-child(1) { top: 12%; }
+    .town-drift-row:nth-child(2) {
+      top: 31%;
+      color: rgba(39, 76, 152, 0.06);
+      font-size: clamp(0.86rem, 1.35vw, 1.25rem);
+      animation-name: townDriftRight;
+      animation-duration: var(--town-duration-alt, 340s);
+    }
+    .town-drift-row:nth-child(3) {
+      top: 54%;
+      color: rgba(197, 46, 38, 0.055);
+      font-size: clamp(0.84rem, 1.2vw, 1.14rem);
+      animation-duration: var(--town-duration-slow, 420s);
+    }
+    .town-drift-row:nth-child(4) {
+      top: 73%;
+      color: rgba(37, 69, 61, 0.055);
+      font-size: clamp(0.82rem, 1.1vw, 1.05rem);
+      animation-name: townDriftRight;
+      animation-duration: 500s;
+    }
+    .town-drift-row:nth-child(5) {
+      top: 88%;
+      color: rgba(39, 76, 152, 0.05);
+      font-size: clamp(0.78rem, 1vw, 1rem);
+      animation-duration: 560s;
+    }
+    .town-drift-row span {
+      display: inline-block;
+    }
+    .town-drift-row span:nth-child(3n) { transform: translateY(-0.45rem); opacity: 0.72; }
+    .town-drift-row span:nth-child(4n) { transform: translateY(0.55rem); opacity: 0.62; }
+    .town-drift-row span:nth-child(7n) { transform: translateY(-0.25rem); opacity: 0.48; }
+    @keyframes townDriftLeft {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(-50%, 0, 0); }
+    }
+    @keyframes townDriftRight {
+      from { transform: translate3d(-50%, 0, 0); }
+      to { transform: translate3d(0, 0, 0); }
     }
     .hero-content { position: relative; z-index: 2; }
     .hero-editorial { align-items: stretch; }
     .hero-editorial-main { padding-top: 0; }
     .hero-copy {
-      max-width: 34rem;
+      max-width: 29rem;
       position: relative;
     }
     .hero-copy::before {
@@ -725,7 +846,7 @@
       pointer-events: none;
     }
     .hero-brand-inline {
-      margin-bottom: 1.15rem;
+      margin-bottom: 0.65rem;
       line-height: 0;
     }
     #hero-logo-wrap {
@@ -734,27 +855,27 @@
     }
     #hero-logo-wrap img,
     #hero-logo-wrap svg {
-      height: clamp(104px, 16vw, 168px) !important;
+      height: clamp(68px, 9vw, 100px) !important;
       width: auto !important;
       display: block;
     }
     .hero-lede {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1.5rem, 3.2vw, 2.125rem);
+      font-size: clamp(1.28rem, 2.2vw, 1.64rem);
       font-weight: 600;
       line-height: 1.14;
       letter-spacing: -0.032em;
       color: #1d1d1f;
-      margin: 0 0 0.85rem;
-      max-width: 32rem;
+      margin: 0 0 0.55rem;
+      max-width: 28rem;
     }
     .hero-deck {
-      font-size: 0.9375rem;
+      font-size: 0.88rem;
       font-weight: 400;
       color: #6e6e73;
       line-height: 1.55;
       max-width: 30rem;
-      margin: 0 0 1.1rem;
+      margin: 0 0 0.58rem;
     }
     .hero-cta-row { margin-bottom: 1.5rem; }
     .hero-cta-links {
@@ -869,34 +990,6 @@
         0 24px 48px rgba(28,63,110,0.05);
       overflow: hidden;
     }
-    .hero-headlines-flag {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      border-radius: inherit;
-      overflow: hidden;
-    }
-    .hero-headlines-flag-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      opacity: 0.55;
-      filter: saturate(0.88) contrast(0.9) blur(0.4px);
-      transform: scale(1.08);
-    }
-    .hero-headlines-flag-wash {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(250,247,243,0.76) 100%),
-        radial-gradient(ellipse 75% 60% at 92% 88%, rgba(39,76,152,0.06) 0%, transparent 58%),
-        radial-gradient(ellipse 55% 45% at 8% 92%, rgba(197,46,38,0.05) 0%, transparent 52%),
-        radial-gradient(ellipse 40% 35% at 78% 12%, rgba(37,69,61,0.04) 0%, transparent 48%);
-    }
     .hero-headlines-kicker,
     .hero-headlines-body {
       position: relative;
@@ -960,6 +1053,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      min-width: 0;
     }
     .hero-hl-item + .hero-hl-item {
       border-top: 1px solid rgba(0,0,0,0.05);
@@ -992,12 +1086,16 @@
     }
     .hero-hl-title {
       font-family: 'Inter', system-ui, sans-serif;
+      display: block;
+      max-width: 100%;
       font-size: 0.8125rem;
       font-weight: 500;
       line-height: 1.45;
       color: #1d1d1f;
       letter-spacing: -0.015em;
       min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
     .hero-hl-tag {
       display: inline-flex;
@@ -1025,15 +1123,35 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 0.55rem;
+      width: 100%;
+      max-width: 100%;
       padding: 0.25rem 0 0.35rem;
       margin: 0;
       border-radius: 0;
       background: none;
       border-bottom: none;
+      overflow: hidden;
+    }
+    .hero-hl-media {
+      width: 100%;
+      margin: 0 0 0.1rem;
+      overflow: hidden;
+      border-radius: 2px;
+      background: #eef1ef;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(20,35,31,0.06);
+    }
+    .hero-hl-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 48%;
     }
     .hero-hl-item--lead .hero-hl-title-row {
       flex: none;
       width: 100%;
+      max-width: 100%;
       flex-direction: column;
       align-items: flex-start;
       gap: 0.45rem;
@@ -1063,6 +1181,8 @@
     }
     .hero-hl-item--lead .hero-hl-title {
       font-family: 'Source Serif 4', Georgia, serif;
+      width: 100%;
+      max-width: 100%;
       font-size: clamp(1.375rem, 3.2vw, 1.875rem);
       font-weight: 700;
       line-height: 1.18;
@@ -1082,6 +1202,9 @@
       font-size: 0.625rem;
       padding: 0.18rem 0.45rem;
     }
+    .hero-hl-mobile-line {
+      display: inline;
+    }
     .hero-hl-meta {
       font-size: 0.6875rem;
       font-weight: 400;
@@ -1092,18 +1215,49 @@
     }
 
     .hero-editorial-main--solo {
-      padding-bottom: 1.5rem;
+      padding-bottom: 0.65rem;
     }
     @media (min-width: 640px) {
-      .hero-editorial-main--solo { padding-bottom: 2rem; }
+      .hero-editorial-main--solo { padding-top: 1rem; padding-bottom: 0.85rem; }
     }
     .hero-brand-row { margin-bottom: 0.85rem; }
+    .hero-brand-inline {
+      display: flex;
+      align-items: flex-end;
+      gap: clamp(0.95rem, 2.4vw, 1.65rem);
+    }
+    .hero-promise-link {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+      color: #102e21;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.55rem, 3.5vw, 2.7rem);
+      font-weight: 600;
+      letter-spacing: -0.055em;
+      line-height: 0.95;
+      text-decoration: none;
+    }
+    .hero-promise-link::after {
+      content: 'Commitment';
+      color: #3d7a59;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.56rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .hero-promise-link:hover,
+    .hero-promise-link:focus-visible {
+      color: #274c98;
+    }
     @media (max-width: 767px) {
       .hero-bg-scrim {
         background:
           linear-gradient(180deg,
-            rgba(255,255,255,0.5) 0%,
-            rgba(255,255,255,0.18) 50%,
+            rgba(255,255,255,0.7) 0%,
+            rgba(255,255,255,0.32) 50%,
             transparent 82%);
       }
       .hero-bg-vignette {
@@ -1116,7 +1270,7 @@
         background: rgba(255,255,255,0.92);
         -webkit-backdrop-filter: blur(14px) saturate(1.08);
         backdrop-filter: blur(14px) saturate(1.08);
-        border-radius: 14px;
+        border-radius: 2px;
         padding: 0.75rem 0.85rem 0.7rem !important;
         padding-bottom: 0.7rem !important;
         margin-top: 0.2rem;
@@ -1140,6 +1294,10 @@
       .hero-bg-slides img[data-focus="otr"] { object-position: 74% 44%; }
       .hero-bg-slides img[data-focus="landscape"] { object-position: 68% center; }
       .hero-bg-slides img[data-focus="lansing-skyline"] { object-position: 54% 36%; }
+      .hero-bg-slides img[data-focus="entry-capitol"] {
+        object-position: 56% 42%;
+        transform: none;
+      }
       .hero-bg-slides img[data-focus="dome-clear"] {
         object-position: 62% 30%;
         transform: scale(1.02);
@@ -1148,9 +1306,18 @@
       .hero-copy { max-width: none; }
       #hero-logo-wrap img,
       #hero-logo-wrap svg {
-        height: clamp(52px, 13vw, 68px) !important;
+        height: clamp(44px, 11vw, 56px) !important;
       }
-      .hero-brand-inline { margin-bottom: 0.45rem; }
+      .hero-brand-inline {
+        align-items: flex-end;
+        gap: 0.85rem;
+        margin-bottom: 0.45rem;
+      }
+      .hero-promise-link {
+        margin-bottom: 0.15rem;
+        font-size: clamp(1.25rem, 7vw, 1.75rem);
+      }
+      .hero-promise-link::after { display: none; }
       .hero-slogan {
         font-size: 0.5625rem;
         margin-bottom: 0.35rem;
@@ -1158,7 +1325,7 @@
       }
       .hero-slogan::before { width: 18px; }
       .hero-lede {
-        font-size: 1.0625rem;
+        font-size: 1rem;
         line-height: 1.24;
         margin-bottom: 0.45rem;
       }
@@ -1168,11 +1335,7 @@
         margin-bottom: 0.65rem;
       }
       .hero-signal-block {
-        margin: 0.25rem 0 0;
-        width: 100%;
-        max-width: none;
-        gap: 0.35rem;
-        padding: 0;
+        display: none;
       }
       .hero-signal-brand .signal-logo--hero {
         height: clamp(2.65rem, 13vw, 3.35rem);
@@ -1240,10 +1403,44 @@
         padding: 0.4rem 0.75rem;
         font-size: 0.6875rem;
       }
+      .hero-headlines-more {
+        display: none;
+      }
       .live-ticker--embedded .live-ticker-brand { display: none; }
       .live-ticker--embedded .live-ticker-label {
         padding: 0 0.5rem;
         font-size: 0.5rem;
+      }
+      .live-ticker--embedded {
+        min-height: 38px;
+        overflow: hidden;
+      }
+      .live-ticker--embedded .live-ticker-viewport {
+        overflow: hidden;
+      }
+      .live-ticker--embedded .live-ticker-track {
+        gap: 0.75rem;
+        padding-left: 0.55rem;
+        width: auto;
+        min-width: 0;
+        transform: none !important;
+        animation: none !important;
+      }
+      .live-ticker--embedded .ticker-item {
+        display: none;
+        white-space: nowrap;
+        font-size: 0.66rem;
+        gap: 0.35rem;
+      }
+      .live-ticker--embedded .ticker-item:nth-child(-n+2) {
+        display: inline-flex;
+      }
+      .live-ticker--embedded .ticker-item:nth-child(n+2) {
+        display: none;
+      }
+      .live-ticker--embedded .ticker-item .ticker-dot,
+      .live-ticker--embedded .live-ticker-viewport::after {
+        display: none;
       }
       .hero-hl-item:not(.hero-hl-item--lead) .hero-hl-link {
         display: grid;
@@ -1263,12 +1460,6 @@
         align-self: start;
         white-space: nowrap;
         font-size: 0.625rem;
-      }
-      .hero-headlines-flag-video {
-        opacity: 0.48;
-      }
-      .hero-headlines-flag-wash {
-        background: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.8) 100%);
       }
       .hero-headlines-band::before {
         left: 0.9rem;
@@ -1294,13 +1485,21 @@
         font-size: 0.6875rem;
       }
       .hero-hl-item--lead .hero-hl-title {
-        font-size: 1.125rem;
+        max-width: calc(100vw - 3.6rem);
+        font-size: 1.06rem;
         line-height: 1.24;
+      }
+      .hero-hl-mobile-line {
+        display: block;
       }
       .hero-hl-title { font-size: 0.75rem; }
       .hero-hl-link {
         gap: 0.45rem;
         padding: 0.45rem 0;
+      }
+      .hero-hl-media {
+        aspect-ratio: 4 / 3;
+        margin-bottom: 0.15rem;
       }
       .hero-section { padding-bottom: 0.35rem; }
     }
@@ -1660,6 +1859,87 @@
       color: #1a3a2a;
       font-size: 1rem;
       flex-shrink: 0;
+    }
+    .interactive-map-embed {
+      margin: 1.2rem 0 1rem;
+      background: rgba(255,255,255,0.94);
+      border-top: 1px solid rgba(39,76,152,0.22);
+      border-bottom: 1px solid rgba(219,45,36,0.18);
+      box-shadow: 0 18px 50px rgba(20,35,31,0.08);
+      overflow: hidden;
+    }
+    .interactive-map-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.25rem 0.85rem;
+      border-bottom: 1px solid rgba(20,35,31,0.08);
+      background:
+        linear-gradient(90deg, rgba(39,76,152,0.07), transparent 36%),
+        linear-gradient(270deg, rgba(219,45,36,0.06), transparent 34%),
+        #fff;
+    }
+    .interactive-map-head h3 {
+      margin: 0;
+      max-width: 42rem;
+      color: var(--wkar-black);
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.4vw, 2.1rem);
+      font-weight: 650;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+    .interactive-map-head p {
+      margin: 0.35rem 0 0;
+      max-width: 40rem;
+      color: var(--wkar-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .interactive-map-tag {
+      flex: 0 0 auto;
+      color: var(--wkar-green);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .interactive-map-frame {
+      display: block;
+      width: 100%;
+      height: clamp(500px, 68vh, 740px);
+      min-height: 500px;
+      border: 0;
+      background: #f6f8f7;
+    }
+    .legacy-county-map {
+      display: none;
+    }
+    @media (max-width: 639px) {
+      .interactive-map-embed {
+        margin: 1rem -1rem 0.85rem;
+        box-shadow: none;
+      }
+      .interactive-map-head {
+        display: block;
+        padding: 0.95rem 1rem 0.85rem;
+      }
+      .interactive-map-head h3 {
+        font-size: 1.35rem;
+      }
+      .interactive-map-head p {
+        font-size: 0.88rem;
+      }
+      .interactive-map-tag {
+        display: block;
+        margin-bottom: 0.45rem;
+      }
+      .interactive-map-frame {
+        height: max(450px, 72vh);
+        min-height: 450px;
+      }
     }
 
     /* ── County map — boutique / full Michigan ────────────── */
@@ -2478,7 +2758,7 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: min(54%, 320px);
+      width: min(50%, 300px);
       margin: 0;
       border-radius: 10px;
       overflow: hidden;
@@ -2503,6 +2783,12 @@
       object-position: center top;
       background: #fff;
     }
+    .signal-promo-card--wide img {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      object-position: center center;
+      padding: 0.35rem;
+    }
     .signal-promo-card[data-pos="left"] {
       z-index: 1;
       opacity: 0.94;
@@ -2511,7 +2797,7 @@
     }
     .signal-promo-card[data-pos="center"] {
       z-index: 3;
-      width: min(58%, 340px);
+      width: min(54%, 320px);
       opacity: 1;
       transform: translate(-50%, -50%) rotate(0deg);
       box-shadow:
@@ -2523,6 +2809,9 @@
       opacity: 0.94;
       transform: translate(-50%, -50%) rotate(8deg) translateX(30%) translateY(5%);
       box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+    }
+    .signal-promo-card--doc[data-pos="center"] {
+      width: min(50%, 300px);
     }
     .signal-promo-card[data-pos="hidden"] {
       z-index: 0;
@@ -2768,14 +3057,9 @@
       .ballot-urgent-pulse,
       .audio-pulse { animation: none; }
       .hero-bg-slides img { transition: none; }
-      .hero-headlines-flag-video { display: none; }
-      .hero-headlines-flag-wash {
-        background:
-          radial-gradient(ellipse 75% 60% at 92% 88%, rgba(39,76,152,0.07) 0%, transparent 58%),
-          radial-gradient(ellipse 55% 45% at 8% 92%, rgba(197,46,38,0.06) 0%, transparent 52%),
-          radial-gradient(ellipse 40% 35% at 78% 12%, rgba(37,69,61,0.05) 0%, transparent 48%),
-          linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.94) 100%);
-      }
+      .hero-bg-slides video { transition: none; }
+      .town-drift-row { animation: none !important; transform: none !important; }
+      .interview-more-list { animation: none !important; }
     }
 
     /* ── v8: Text-only headlines ──────────────────────────── */
@@ -2841,7 +3125,7 @@
     }
     .team-beat-row {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 0.85rem 0.65rem;
       border-top: 1px solid rgba(0,0,0,0.06);
       padding-top: 0.85rem;
@@ -3005,6 +3289,52 @@
 
     /* ── v9: Compact interviews ────────────────────────────── */
     .interview-list-compact { display: flex; flex-direction: column; gap: 0.5rem; }
+    .interview-list-compact--expanded {
+      gap: 0.42rem;
+    }
+    .interview-more {
+      display: contents;
+    }
+    .interview-more-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+      overflow: hidden;
+      animation: interviewReveal 0.28s ease;
+    }
+    .interview-more summary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      width: fit-content;
+      min-height: 42px;
+      margin: 0.18rem auto 0;
+      padding: 0.55rem 0;
+      color: #1a3a2a;
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      list-style: none;
+      border-bottom: 2px solid rgba(61,122,89,0.26);
+    }
+    .interview-more summary::-webkit-details-marker { display: none; }
+    .interview-more summary::after {
+      content: '+';
+      color: var(--wkar-blue);
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .interview-more[open] summary::after {
+      content: '−';
+      color: var(--wkar-red);
+    }
+    @keyframes interviewReveal {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .interview-row {
       display: grid;
       grid-template-columns: 2.5rem 1fr auto;
@@ -3587,9 +3917,15 @@
       border-radius: 980px;
     }
     body.election-hub .hero-headlines-band {
-      border-radius: var(--apple-radius-lg);
-      background: rgba(255,255,255,0.92);
+      border-radius: 2px;
+      background: rgba(255,255,255,0.94);
       box-shadow: var(--apple-shadow);
+      -webkit-backdrop-filter: blur(8px) saturate(1.03);
+      backdrop-filter: blur(8px) saturate(1.03);
+    }
+    body.election-hub .hero-headlines-band::after {
+      content: none;
+      display: none;
     }
     body.election-hub .headline-row {
       padding: 0.55rem 0;
@@ -3599,6 +3935,17 @@
       border-radius: 0;
       letter-spacing: -0.01em;
     }
+    body.election-hub .live-ticker-track {
+      animation: none !important;
+      transform: none !important;
+      gap: 1.35rem;
+    }
+    body.election-hub .ticker-item {
+      flex: 0 0 auto;
+    }
+    body.election-hub .live-ticker-pulse {
+      animation: none !important;
+    }
     body.election-hub .live-ticker--embedded {
       background: rgba(255,255,255,0.88) !important;
       border-radius: 10px;
@@ -3606,6 +3953,100 @@
     }
     body.election-hub .live-ticker--embedded .live-ticker-viewport::after {
       background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 28%, rgba(250,247,243,0.94) 100%);
+    }
+    .mobile-hero-promise {
+      display: none;
+    }
+    @media (max-width: 639px) {
+      body.election-hub .hero-section {
+        display: flex;
+        flex-direction: column;
+      }
+      body.election-hub .hero-content {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      body.election-hub .hero-editorial-main--solo {
+        min-height: 0;
+        padding: 0.7rem 0 0.35rem;
+      }
+      body.election-hub .hero-brand-inline {
+        justify-content: flex-start;
+        margin-bottom: 0;
+      }
+      body.election-hub #hero-logo-wrap img,
+      body.election-hub #hero-logo-wrap svg {
+        height: 68px !important;
+      }
+      body.election-hub .hero-promise-link,
+      body.election-hub .hero-slogan,
+      body.election-hub .hero-lede,
+      body.election-hub .hero-deck,
+      body.election-hub .hero-proof-row {
+        display: none !important;
+      }
+      body.election-hub .hero-headlines-band {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        width: calc(100vw - 1.7rem);
+        max-width: calc(100vw - 1.7rem);
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      body.election-hub .hero-headlines-kicker {
+        display: contents;
+      }
+      body.election-hub .hero-headlines-kicker-row {
+        order: 1;
+        margin-bottom: 0.75rem;
+      }
+      body.election-hub .live-ticker--embedded {
+        order: 2;
+        margin-bottom: 0.85rem;
+      }
+      body.election-hub .hero-headlines-body {
+        order: 3;
+      }
+      body.election-hub .hero-stats-row--inline {
+        order: 4;
+        margin-top: 0.85rem;
+        padding-top: 0.85rem;
+        border-top: 1px solid rgba(20,35,31,0.08);
+      }
+      body.election-hub .mobile-hero-promise {
+        order: 3;
+        display: block;
+        margin: 0.75rem 0.95rem 0.45rem;
+        padding: 0.95rem 1rem 1rem;
+        background: rgba(255,255,255,0.95);
+        border-top: 1px solid rgba(39,76,152,0.2);
+        border-bottom: 1px solid rgba(219,45,36,0.15);
+        box-shadow: 0 14px 34px rgba(20,35,31,0.07);
+      }
+      body.election-hub .mobile-hero-promise a {
+        display: inline-block;
+        color: var(--wkar-green-deep);
+        font-family: 'Source Serif 4', Georgia, serif;
+        font-size: 2rem;
+        font-weight: 650;
+        line-height: 0.95;
+        letter-spacing: -0.045em;
+        text-decoration: none;
+      }
+      body.election-hub .mobile-hero-promise p {
+        margin: 0.45rem 0 0;
+        max-width: 31rem;
+        color: #58615d;
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
     }
     body.election-hub .interview-card {
       border-radius: var(--apple-radius-lg);
@@ -3651,6 +4092,1500 @@
       fill: #234d38;
     }
 
+    /* ── Codex flagship layer: reporters + resources + races ───────── */
+    body.election-hub .election-chrome-nav {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(255,255,255,0.94);
+      -webkit-backdrop-filter: blur(14px) saturate(1.05);
+      backdrop-filter: blur(14px) saturate(1.05);
+    }
+    body.election-hub {
+      overflow-x: hidden;
+    }
+    body.election-hub * {
+      min-width: 0;
+    }
+    .hero-proof-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 0.85rem 0 1rem;
+    }
+    .hero-proof-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0.38rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(26,58,42,0.14);
+      color: #1a3a2a;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 18px rgba(26,58,42,0.06);
+    }
+    .team-flagship {
+      background: linear-gradient(180deg, #fffaf2 0%, #f8f5ef 58%, #f4f8f5 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .team-flagship::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: var(--wkar-tricolor);
+      opacity: 0.8;
+    }
+    .team-flagship-grid {
+      display: grid;
+      gap: 1rem;
+      align-items: stretch;
+    }
+    .team-flagship-grid > * {
+      min-width: 0;
+    }
+    @media (min-width: 960px) {
+      .team-flagship-grid {
+        grid-template-columns: minmax(280px, 0.76fr) minmax(0, 1.24fr);
+        gap: 1.4rem;
+      }
+    }
+    .team-flagship-intro {
+      border-radius: 18px;
+      padding: 1.25rem;
+      background: #10271d;
+      color: #fff;
+      min-height: 100%;
+      box-shadow: 0 16px 48px rgba(16,39,29,0.16);
+      position: relative;
+      overflow: hidden;
+    }
+    .team-flagship-kicker {
+      margin: 0 0 0.7rem;
+      color: #a7d8bb;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .team-flagship-title {
+      margin: 0;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.9rem, 4vw, 3.3rem);
+      font-weight: 700;
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      max-width: 11ch;
+    }
+    .team-flagship-copy {
+      margin: 1rem 0 0;
+      color: rgba(255,255,255,0.76);
+      line-height: 1.55;
+      font-size: 0.95rem;
+      max-width: 28rem;
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+    .team-flagship-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 1.15rem;
+    }
+    .team-flagship-stat {
+      border-radius: 13px;
+      padding: 0.8rem 0.75rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .team-flagship-stat strong {
+      display: block;
+      font-size: 1.35rem;
+      line-height: 1;
+      color: #fff;
+    }
+    .team-flagship-stat span {
+      display: block;
+      margin-top: 0.28rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      line-height: 1.25;
+    }
+    .team-reporter-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(170px, 1fr));
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding: 0.1rem 0 0.65rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .team-reporter-grid::-webkit-scrollbar { display: none; }
+    .team-talent-groups {
+      display: grid;
+      gap: 0.9rem;
+    }
+    .team-mobile-promise {
+      display: none;
+    }
+    .talent-group {
+      min-width: 0;
+      --talent-accent: var(--wkar-green-mid);
+      --talent-accent-2: var(--wkar-blue);
+      padding: 0.9rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(26,58,42,0.08);
+      box-shadow: 0 1px 2px rgba(26,58,42,0.03), 0 12px 34px rgba(26,58,42,0.05);
+    }
+    .talent-group--state {
+      --talent-accent: var(--wkar-blue);
+      --talent-accent-2: var(--wkar-red);
+    }
+    .talent-group-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      margin: 0 0 0.7rem;
+      padding-top: 0.62rem;
+      position: relative;
+    }
+    .talent-group-head::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--talent-accent), var(--talent-accent-2));
+    }
+    .talent-group-title {
+      margin: 0;
+      color: var(--talent-accent);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .talent-group-note {
+      margin: 0;
+      color: #738078;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+    .reporter-card {
+      min-width: 170px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(26,58,42,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(26,58,42,0.08);
+    }
+    .reporter-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center top;
+      background: #dbe8df;
+    }
+    .reporter-card--sophia img { object-position: center center; }
+    .reporter-card--melorie img { object-position: center center; }
+    .reporter-card--andrew img { object-position: center center; }
+    .reporter-card--andrew img {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    .reporter-card--danielle img { object-position: center 30%; }
+    .reporter-card--rick img { object-position: center center; }
+    .reporter-card--colin img { object-position: center center; }
+    .reporter-card--tim img { object-position: center 18%; }
+    .reporter-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      padding: 0.85rem;
+      flex: 1;
+    }
+    .reporter-station {
+      margin: 0;
+      color: var(--wkar-green-mid);
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .reporter-name {
+      margin: 0;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .reporter-question {
+      margin: 0;
+      color: #4d5651;
+      font-size: 0.75rem;
+      line-height: 1.4;
+      display: none;
+    }
+    .reporter-beat {
+      margin-top: auto;
+      display: inline-flex;
+      width: fit-content;
+      min-height: 28px;
+      align-items: center;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      background: #edf5ef;
+      color: #1a3a2a;
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    @media (min-width: 900px) {
+      .team-reporter-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        overflow: visible;
+      }
+      .reporter-card {
+        min-width: 0;
+      }
+    }
+    .promise-section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.96) 0%, rgba(247,250,248,0.94) 52%, rgba(244,248,252,0.96) 100%),
+        #f7f8fa;
+    }
+    .promise-section::before {
+      content: 'We promise';
+      position: absolute;
+      right: -0.08em;
+      bottom: -0.18em;
+      z-index: 0;
+      color: rgba(16,46,33,0.055);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(5.5rem, 18vw, 16rem);
+      font-weight: 600;
+      letter-spacing: -0.07em;
+      line-height: 0.8;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .promise-section::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 0;
+      height: 2px;
+      background: var(--wkar-tricolor);
+      opacity: 0.28;
+    }
+    .promise-wrap {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: clamp(1.6rem, 4vw, 3.5rem);
+      padding: clamp(2.4rem, 5vw, 4.25rem) 0;
+      border-top: 0;
+      border-bottom: 1px solid rgba(20, 35, 31, 0.08);
+    }
+    @media (min-width: 900px) {
+      .promise-wrap {
+        grid-template-columns: minmax(220px, 0.52fr) minmax(0, 1fr);
+        align-items: start;
+      }
+    }
+    .promise-kicker {
+      margin: 0 0 0.55rem;
+      color: #3d7a59;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .promise-title {
+      margin: 0;
+      max-width: 8.5em;
+      color: #102e21;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(2.6rem, 7vw, 5.7rem);
+      font-weight: 600;
+      line-height: 0.92;
+      letter-spacing: -0.045em;
+    }
+    .promise-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .promise-item {
+      display: grid;
+      gap: 0.35rem 1rem;
+      padding: 0.95rem 0;
+      border-top: 1px solid rgba(20, 35, 31, 0.09);
+    }
+    .promise-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+    @media (min-width: 720px) {
+      .promise-item {
+        grid-template-columns: minmax(10rem, 0.34fr) minmax(0, 1fr);
+        padding: 1.05rem 0;
+      }
+    }
+    .promise-item-title {
+      margin: 0;
+      color: var(--promise-color, #25453d);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .promise-item-copy {
+      margin: 0;
+      color: #4b5650;
+      font-size: clamp(0.92rem, 1.7vw, 1.05rem);
+      line-height: 1.48;
+    }
+    .resource-command {
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: 1fr;
+      margin-bottom: 1rem;
+    }
+    @media (min-width: 860px) {
+      .resource-command {
+        grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+        align-items: stretch;
+      }
+    }
+    .resource-command-main,
+    .resource-command-panel {
+      border-radius: 18px;
+      border: 1px solid rgba(26,58,42,0.08);
+      box-shadow: 0 12px 36px rgba(26,58,42,0.07);
+      overflow: hidden;
+    }
+    .resource-command-main {
+      padding: 1.15rem;
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(26,58,42,0.96), rgba(39,76,152,0.9)),
+        url('assets/images/capitol-dome.jpg') center 24% / cover;
+      background-blend-mode: multiply;
+    }
+    .resource-command-main h3 {
+      margin: 0;
+      max-width: 12ch;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+    .resource-command-main p {
+      margin: 0.75rem 0 0;
+      max-width: 34rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+    .resource-search {
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: 1fr;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) {
+      .resource-search { grid-template-columns: minmax(0, 1fr) auto; }
+    }
+    .resource-search input {
+      min-height: 48px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.94);
+      padding: 0 1rem;
+      color: #0f1613;
+      font-weight: 700;
+      outline: none;
+    }
+    .resource-search a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border-radius: 999px;
+      padding: 0 1.15rem;
+      background: #fff;
+      color: #1a3a2a;
+      font-weight: 900;
+      font-size: 0.82rem;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .resource-command-panel {
+      padding: 1rem;
+      background: #fff;
+    }
+    .resource-command-panel h3 {
+      margin: 0 0 0.7rem;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .resource-api-list {
+      display: grid;
+      gap: 0.55rem;
+    }
+    .resource-api-item {
+      border-radius: 13px;
+      padding: 0.75rem;
+      background: #f6f8f6;
+      border: 1px solid rgba(26,58,42,0.08);
+    }
+    .resource-api-item strong {
+      display: block;
+      color: #17231d;
+      font-size: 0.82rem;
+    }
+    .resource-api-item span {
+      display: block;
+      margin-top: 0.18rem;
+      color: #6b7280;
+      font-size: 0.72rem;
+      line-height: 1.35;
+    }
+    .county-resource-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .county-resource-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      min-height: 46px;
+      padding: 0.7rem 0.85rem;
+      border-radius: 13px;
+      background: #f6f8f6;
+      border: 1px solid rgba(26,58,42,0.08);
+      color: #13231b;
+      font-weight: 900;
+      font-size: 0.78rem;
+      text-decoration: none;
+    }
+    .county-resource-action:hover {
+      background: #eef6f0;
+      color: #13231b;
+    }
+    .county-resource-action span {
+      color: #4a8f6a;
+      font-size: 0.95rem;
+    }
+    .county-map-canvas {
+      align-items: stretch;
+    }
+    .county-map-svg {
+      position: absolute;
+      width: 1px !important;
+      height: 1px !important;
+      min-height: 1px !important;
+      opacity: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .resource-map-board {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+    }
+    @media (min-width: 640px) {
+      .resource-map-board { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    .county-map-card {
+      min-height: 122px;
+      border-radius: 15px;
+      padding: 0.8rem;
+      text-align: left;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(26,58,42,0.12);
+      color: #13231b;
+      box-shadow: 0 5px 18px rgba(26,58,42,0.07);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .county-map-card:hover,
+    .county-map-card.is-active {
+      background: #10271d;
+      color: #fff;
+      border-color: #10271d;
+      transform: translateY(-1px);
+    }
+    .county-map-card strong {
+      display: block;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .county-map-card small {
+      display: block;
+      margin-top: 0.25rem;
+      color: #5c6a63;
+      font-size: 0.68rem;
+      line-height: 1.3;
+    }
+    .county-map-card:hover small,
+    .county-map-card.is-active small {
+      color: rgba(255,255,255,0.7);
+    }
+    .county-map-card span {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 0.55rem;
+      border-radius: 999px;
+      padding: 0.26rem 0.5rem;
+      background: #edf5ef;
+      color: #1a3a2a;
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .county-map-card:hover span,
+    .county-map-card.is-active span {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+    .ask-newsroom-card {
+      margin-top: 0.75rem;
+      border-radius: 18px;
+      padding: 1rem;
+      background: #fff;
+      border: 1px solid rgba(197,46,38,0.14);
+      box-shadow: 0 10px 28px rgba(197,46,38,0.06);
+    }
+    .ask-newsroom-card h3 {
+      margin: 0;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .ask-newsroom-card p {
+      margin: 0.45rem 0 0.8rem;
+      color: #68726d;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+    .ask-newsroom-card a {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0 1rem;
+      background: var(--wkar-red);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .county-race-context {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+      margin: 0.75rem 0 0;
+    }
+    .county-race-pill {
+      border-radius: 12px;
+      padding: 0.65rem;
+      background: #fff;
+      border: 1px solid rgba(39,76,152,0.12);
+    }
+    .county-race-pill strong {
+      display: block;
+      color: #274c98;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .county-race-pill span {
+      display: block;
+      margin-top: 0.2rem;
+      color: #1d1d1f;
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .race-command-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+    @media (min-width: 820px) {
+      .race-command-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+    .race-feature-card {
+      border-radius: 20px;
+      overflow: hidden;
+      background: #10271d;
+      color: #fff;
+      box-shadow: 0 18px 56px rgba(16,39,29,0.17);
+    }
+    .race-feature-media {
+      min-height: 220px;
+      background:
+        linear-gradient(90deg, rgba(16,39,29,0.86), rgba(16,39,29,0.2)),
+        url('assets/images/capitol-dome.jpg') center 30% / cover;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .race-feature-media h3 {
+      max-width: 13ch;
+      margin: 0;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+    .race-feature-body {
+      padding: 1rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .candidate-grid {
+      display: grid;
+      gap: 0.55rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 560px) {
+      .candidate-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .candidate-card {
+      border-radius: 15px;
+      padding: 0.8rem;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .candidate-card strong {
+      display: block;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+    .candidate-card span {
+      display: block;
+      margin-top: 0.2rem;
+      color: rgba(255,255,255,0.68);
+      font-size: 0.72rem;
+    }
+    .race-side-stack {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .race-mini-card {
+      border-radius: 18px;
+      padding: 1rem;
+      background: #fff;
+      border: 1px solid rgba(26,58,42,0.08);
+      box-shadow: 0 10px 28px rgba(26,58,42,0.07);
+    }
+    .race-mini-card h3 {
+      margin: 0.25rem 0 0.35rem;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.25rem;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+    .race-mini-card p {
+      margin: 0;
+      color: #68726d;
+      font-size: 0.78rem;
+      line-height: 1.42;
+    }
+    .race-mini-label {
+      color: var(--wkar-red);
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 767px) {
+      .hero-proof-row { margin-top: 0.55rem; gap: 0.35rem; }
+      .hero-proof-pill {
+        min-height: 28px;
+        padding: 0.32rem 0.55rem;
+        font-size: 0.62rem;
+      }
+      .team-flagship { padding-top: 1rem !important; }
+      .team-flagship-intro { padding: 1rem; border-radius: 16px; }
+      .team-flagship-title { max-width: 13ch; }
+      .team-flagship-stats { gap: 0.45rem; }
+      .team-flagship-stat { padding: 0.65rem 0.55rem; }
+      .team-flagship-stat span {
+        font-size: 0.54rem;
+        letter-spacing: 0.06em;
+      }
+      .team-reporter-grid {
+        grid-template-columns: repeat(7, minmax(76vw, 1fr));
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .reporter-card { min-width: 76vw; }
+      .resource-command-main { padding: 1rem; }
+      .county-map-svg { min-height: 210px; }
+      .county-map-panel-inner { padding: 0.95rem; }
+      .county-race-context { grid-template-columns: 1fr; }
+      .race-feature-media { min-height: 250px; }
+    }
+
+    /* ── Refinement pass: quieter, smaller, Apple-like modules ─────── */
+    .hero-proof-row {
+      gap: 0;
+      margin: 0.7rem 0 0.85rem;
+    }
+    .hero-proof-pill {
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      color: #3d7a59;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+    .hero-proof-pill + .hero-proof-pill::before {
+      content: '/';
+      color: #a6aaa7;
+      margin: 0 0.55rem;
+      font-weight: 400;
+    }
+    .team-flagship {
+      background: linear-gradient(180deg, #ffffff 0%, #f6f7f9 100%);
+    }
+    .team-flagship > .max-w-screen-xl {
+      position: relative;
+      z-index: 1;
+    }
+    .team-flagship::before {
+      height: 1px;
+      opacity: 0.5;
+      z-index: 2;
+    }
+    .team-flagship-grid {
+      gap: 1.1rem;
+      grid-template-columns: 1fr;
+    }
+    .team-flagship-intro {
+      background: transparent;
+      color: #10271d;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 0.25rem 0 0;
+      overflow: visible;
+    }
+    .team-flagship-kicker {
+      color: #3d7a59;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+    }
+    .team-flagship-title {
+      color: #10271d;
+      max-width: 16ch;
+      font-size: clamp(1.75rem, 3.2vw, 2.7rem);
+      line-height: 1.02;
+    }
+    .team-flagship-copy {
+      color: #4b5650;
+      max-width: 42rem;
+      font-size: 0.92rem;
+      line-height: 1.52;
+    }
+    .team-flagship-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.25rem;
+      margin-top: 0.95rem;
+    }
+    .team-flagship-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.38rem;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+    .team-flagship-stat strong {
+      color: #10271d;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+    .team-flagship-stat span {
+      color: #66706b;
+      margin-top: 0;
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+    }
+    @media (min-width: 900px) {
+      .team-flagship-grid {
+        grid-template-columns: 1fr;
+      }
+      .team-talent-groups {
+        grid-template-columns: minmax(0, 4fr) minmax(0, 3fr);
+        align-items: start;
+      }
+      .team-reporter-grid {
+        grid-template-columns: repeat(var(--team-cols, 4), minmax(0, 1fr));
+        gap: 0.62rem;
+      }
+      .team-reporter-grid--wkar { --team-cols: 4; }
+      .team-reporter-grid--state { --team-cols: 3; }
+    }
+    .reporter-card {
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(26,58,42,0.04), 0 8px 22px rgba(26,58,42,0.05);
+      border-color: rgba(26,58,42,0.07);
+    }
+    .reporter-card img {
+      aspect-ratio: 1 / 1;
+    }
+    .reporter-card-body {
+      padding: 0.72rem;
+      gap: 0.36rem;
+    }
+    .reporter-station {
+      color: #4b8162;
+      font-size: 0.52rem;
+      letter-spacing: 0.11em;
+    }
+    .reporter-name {
+      font-size: 0.95rem;
+    }
+    .reporter-question {
+      font-size: 0.68rem;
+      line-height: 1.38;
+    }
+    .reporter-beat {
+      display: block;
+      min-height: 0;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: #6d766f;
+      font-size: 0.54rem;
+      letter-spacing: 0.06em;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+    }
+    a.reporter-beat:hover {
+      color: #1a3a2a;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.16em;
+    }
+    a.reporter-beat {
+      display: flex;
+      align-items: center;
+      min-height: 32px;
+    }
+    .network-badge {
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      color: #66706b;
+      font-size: 0.72rem;
+    }
+    .network-badge + .network-badge::before {
+      content: '/';
+      color: #b1b6b2;
+      margin-right: 0.4rem;
+      font-weight: 400;
+    }
+    .network-footnote {
+      grid-column: 1 / -1;
+      margin: -0.2rem 0 0;
+      color: #7a817d;
+      font-size: 0.64rem;
+      line-height: 1.45;
+    }
+    .resource-command-main,
+    .resource-command-panel,
+    .county-map-module,
+    .ask-newsroom-card,
+    .race-feature-card,
+    .race-mini-card {
+      border-radius: 12px;
+    }
+    .resource-search input,
+    .resource-search a,
+    .county-map-detail-link,
+    .ask-newsroom-card a {
+      border-radius: 10px;
+    }
+    .county-map-chip,
+    .county-map-verified,
+    .county-map-coverage-badge {
+      border-radius: 9px;
+    }
+    .county-map-chip {
+      min-height: 40px;
+      padding: 0.55rem 0.78rem;
+      font-size: 0.74rem;
+      box-shadow: none;
+    }
+    .county-map-chips {
+      gap: 0.35rem;
+      padding-bottom: 0.9rem;
+    }
+    .county-map-chips-label {
+      padding-top: 0.75rem;
+    }
+    .county-map-header {
+      padding: 1rem 1rem 0.85rem;
+    }
+    .county-map-header h3 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.45rem, 2.8vw, 2rem);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+    }
+    .county-map-field-note {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+    }
+    .county-map-detail-link {
+      width: 100%;
+      min-height: 42px;
+    }
+    .county-resource-action,
+    .county-race-pill,
+    .resource-api-item,
+    .candidate-card {
+      border-radius: 10px;
+    }
+    .county-map-card {
+      min-height: 92px;
+      border-radius: 10px;
+      padding: 0.65rem;
+      box-shadow: 0 1px 2px rgba(26,58,42,0.04), 0 6px 16px rgba(26,58,42,0.04);
+    }
+    .county-map-card strong {
+      font-size: 0.95rem;
+    }
+    .county-map-card small {
+      font-size: 0.62rem;
+    }
+    .county-map-card span {
+      margin-top: 0.45rem;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: #4b8162;
+      font-size: 0.5rem;
+    }
+    .county-race-pill {
+      padding: 0.55rem;
+      background: #fafafa;
+    }
+    .county-resource-action {
+      min-height: 42px;
+      padding: 0.62rem 0.72rem;
+      font-weight: 800;
+      background: #fbfbfb;
+    }
+    .dc-county-card--ingham {
+      --dc-img: url('assets/images/burchfield-park-transmission-line.webp');
+    }
+    .dc-county-card {
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(26,58,42,0.03), 0 8px 24px rgba(26,58,42,0.05);
+    }
+    .dc-county-card::before {
+      opacity: 0.17;
+      filter: saturate(0.5) grayscale(0.1);
+    }
+    .dc-county-inner {
+      padding: 0.8rem 0.9rem;
+    }
+    .dc-county-name {
+      font-size: 1.08rem;
+    }
+    .dc-county-story-title {
+      font-size: 0.86rem;
+    }
+    .candidate-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+    .candidate-card:hover strong {
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.34);
+    }
+
+    @media (max-width: 767px) {
+      .team-talent-groups {
+        gap: 1rem;
+      }
+      .talent-group-head {
+        margin-bottom: 0.5rem;
+      }
+      .talent-group {
+        padding: 0.75rem;
+        border-radius: 2px;
+      }
+      .talent-group-note {
+        font-size: 0.62rem;
+      }
+      .team-mobile-promise {
+        display: block;
+        padding: 1rem 1rem 0.95rem;
+        color: inherit;
+        text-decoration: none;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.97), rgba(248,250,249,0.93)),
+          #fff;
+        border-top: 1px solid rgba(39,76,152,0.22);
+        border-bottom: 1px solid rgba(219,45,36,0.18);
+        box-shadow: 0 10px 28px rgba(20,35,31,0.06);
+      }
+      .team-mobile-promise span {
+        display: block;
+        color: var(--wkar-green-mid);
+        font-size: 0.64rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+      .team-mobile-promise strong {
+        display: block;
+        margin-top: 0.28rem;
+        color: var(--wkar-green-deep);
+        font-family: 'Source Serif 4', Georgia, serif;
+        font-size: 1.8rem;
+        font-weight: 650;
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+      .team-mobile-promise p {
+        margin: 0.55rem 0 0;
+        color: #58615d;
+        font-size: 0.86rem;
+        line-height: 1.45;
+      }
+      .team-reporter-grid {
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+        overflow: visible;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        scroll-snap-type: none;
+      }
+      .reporter-card {
+        min-width: 0;
+        min-height: 0;
+        display: grid;
+        grid-template-columns: 84px minmax(0, 1fr);
+        border-radius: 2px;
+        align-items: stretch;
+      }
+      .reporter-card img {
+        width: 84px;
+        height: 104px;
+        min-height: 0;
+        aspect-ratio: auto;
+      }
+      .reporter-card-body {
+        justify-content: center;
+        padding: 0.62rem 0.82rem;
+        gap: 0.22rem;
+      }
+      .reporter-station {
+        font-size: 0.5rem;
+        letter-spacing: 0.1em;
+      }
+      .reporter-name {
+        font-size: 1.02rem;
+      }
+      .reporter-question {
+        font-size: 0.72rem;
+        line-height: 1.32;
+      }
+      .reporter-beat {
+        min-height: 0;
+        margin-top: 0.24rem;
+        padding: 0;
+        background: transparent;
+        color: #3d7a59;
+      }
+      .team-flagship-intro {
+        padding: 0.2rem 0 0;
+      }
+      .team-flagship-title {
+        font-size: clamp(2.35rem, 12vw, 3.05rem);
+        max-width: 12ch;
+      }
+      .team-flagship-copy {
+        font-size: 0.98rem;
+        line-height: 1.5;
+      }
+      .team-flagship-stats {
+        gap: 0.55rem 0.95rem;
+      }
+      .team-flagship-stat span {
+        font-size: 0.55rem;
+      }
+      .hero-proof-pill {
+        font-size: 0.66rem;
+        line-height: 1.3;
+      }
+      .hero-proof-pill + .hero-proof-pill::before {
+        margin: 0 0.35rem;
+      }
+      .resource-map-board {
+        gap: 0.45rem;
+      }
+      .county-map-card {
+        min-height: 86px;
+      }
+      .county-map-chip {
+        min-height: 42px;
+      }
+      .county-map-chips {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      .county-map-header {
+        padding: 0.95rem 1rem 0.75rem;
+      }
+    }
+    body.election-hub .talent-group,
+    body.election-hub .reporter-card,
+    body.election-hub .interview-row,
+    body.election-hub .signal-form-card,
+    body.election-hub .signal-promo-stage,
+    body.election-hub .county-map-module,
+    body.election-hub .ballot-card,
+    body.election-hub .coverage-card,
+    body.election-hub .dates-aside-photo,
+    body.election-hub .otr-panel-card {
+      border-radius: 2px !important;
+    }
+    body.election-hub .reporter-card img,
+    body.election-hub .talent-group {
+      border-radius: 0 !important;
+    }
+    /* ── Final polish pass: keep photos visible, reduce repeated marks ── */
+    body.election-hub main .section-brand-row > .brand-logo--sm {
+      display: none;
+    }
+    body.election-hub .section-brand-row {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    body.election-hub .team-flagship {
+      position: relative;
+      overflow: hidden;
+      background: #f7f8fa !important;
+    }
+    body.election-hub .team-flag-bg {
+      position: absolute;
+      inset: -8% -4%;
+      z-index: 0;
+      opacity: 0.035;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      filter: saturate(0.65) contrast(0.9);
+    }
+    body.election-hub .team-flag-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    body.election-hub .team-flagship > .max-w-screen-xl {
+      position: relative;
+      z-index: 1;
+    }
+    body.election-hub .team-mobile-promise {
+      display: none !important;
+    }
+
+    @media (min-width: 768px) {
+      body.election-hub .hero-section {
+        background: #f7f8fa;
+        padding-bottom: 1.1rem;
+      }
+      body.election-hub .hero-bg-media {
+        top: 0;
+        right: 0;
+        bottom: auto;
+        width: 54vw;
+        max-width: 980px;
+        height: clamp(355px, 37vw, 520px);
+        opacity: 1;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+      body.election-hub .hero-bg-media::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        pointer-events: none;
+        background:
+          linear-gradient(90deg, #f7f8fa 0%, rgba(247,248,250,0.92) 15%, rgba(247,248,250,0.35) 31%, transparent 50%),
+          linear-gradient(180deg, rgba(247,248,250,0.05) 0%, rgba(247,248,250,0.28) 100%);
+      }
+      body.election-hub .hero-bg-scrim {
+        background: linear-gradient(90deg, rgba(247,248,250,0.95) 0%, rgba(247,248,250,0.52) 32%, transparent 58%);
+      }
+      body.election-hub .hero-bg-vignette {
+        background: linear-gradient(to top, rgba(247,248,250,0.28) 0%, transparent 38%);
+      }
+      body.election-hub .hero-bg-label {
+        display: none;
+      }
+      body.election-hub .hero-editorial-main--solo {
+        min-height: clamp(330px, 35vw, 500px);
+        display: flex;
+        align-items: center;
+      }
+      body.election-hub .hero-copy {
+        max-width: 34rem;
+      }
+      body.election-hub .hero-headlines-band {
+        margin-top: 0.75rem !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      body.election-hub .hero-bg-media {
+        display: none;
+      }
+      body.election-hub .team-flag-bg {
+        display: none;
+      }
+    }
+
+    .local-election-map {
+      position: relative;
+      min-height: 520px;
+      background:
+        radial-gradient(circle at 68% 22%, rgba(39,76,152,0.1), transparent 28%),
+        radial-gradient(circle at 28% 72%, rgba(61,122,89,0.12), transparent 32%),
+        linear-gradient(135deg, #f8faf9 0%, #edf3ef 100%);
+      border-top: 1px solid rgba(20,35,31,0.08);
+      overflow: hidden;
+    }
+    .local-election-map::before {
+      content: '';
+      position: absolute;
+      inset: 2rem;
+      background:
+        linear-gradient(105deg, transparent 0 44%, rgba(26,58,42,0.08) 44.3% 44.8%, transparent 45.1%),
+        linear-gradient(16deg, transparent 0 54%, rgba(39,76,152,0.07) 54.3% 54.8%, transparent 55.1%);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+    .map-filter-row {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      padding: 1rem;
+    }
+    .map-filter-button {
+      min-height: 40px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid rgba(20,35,31,0.14);
+      background: rgba(255,255,255,0.72);
+      color: #25453d;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .map-filter-button.is-active {
+      background: #123326;
+      color: #fff;
+      border-color: #123326;
+    }
+    .map-canvas {
+      position: absolute;
+      inset: 4.8rem 1rem 1rem;
+      z-index: 1;
+    }
+    .map-pin {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      width: 2.35rem;
+      height: 2.35rem;
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 50%;
+      background: #123326;
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(20,35,31,0.18);
+      cursor: pointer;
+      transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+    }
+    .map-pin[data-type~="story"] { background: #274c98; }
+    .map-pin[data-type~="meeting"] { background: #c52e26; }
+    .map-pin:hover,
+    .map-pin.is-active {
+      transform: translate(-50%, -50%) scale(1.12);
+      z-index: 3;
+    }
+    .map-pin.is-muted {
+      opacity: 0.22;
+      pointer-events: none;
+    }
+    .map-pin span {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 0.35rem);
+      transform: translateX(-50%);
+      color: rgba(20,35,31,0.72);
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    }
+    .map-detail-card {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 4;
+      width: min(24rem, calc(100% - 2rem));
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(20,35,31,0.1);
+      box-shadow: 0 20px 54px rgba(20,35,31,0.13);
+      padding: 1rem;
+      -webkit-backdrop-filter: blur(14px) saturate(1.05);
+      backdrop-filter: blur(14px) saturate(1.05);
+    }
+    .map-detail-card p {
+      margin: 0;
+    }
+    .map-detail-kicker {
+      color: #3d7a59;
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .map-detail-title {
+      margin-top: 0.35rem !important;
+      color: #111827;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+    .map-detail-copy {
+      margin-top: 0.45rem !important;
+      color: #58615d;
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+    .map-detail-link {
+      display: inline-flex;
+      margin-top: 0.8rem;
+      color: #25453d;
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    @media (max-width: 639px) {
+      .local-election-map {
+        min-height: 560px;
+      }
+      .map-filter-row {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding: 0.85rem;
+      }
+      .map-filter-button {
+        flex: 0 0 auto;
+      }
+      .map-canvas {
+        inset: 4.4rem 0.5rem 9.5rem;
+      }
+      .map-pin {
+        width: 2.7rem;
+        height: 2.7rem;
+      }
+      .map-pin span {
+        font-size: 0.68rem;
+      }
+      .map-detail-card {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+        padding: 1rem 1rem 1.25rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.election-hub .team-flag-bg video {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -3715,22 +5650,18 @@
      ============================================================ -->
 <section class="hero-section" aria-labelledby="hero-heading">
   <div class="hero-bg-media" aria-hidden="true">
-    <div class="hero-bg-slides" id="hero-bg-slides" data-hero-loop-ms="45000">
-      <!-- 10 slides × 4.5s = 45s loop. One shot per lane — no category dominates. -->
-      <img src="assets/images/capitol-dome.jpg" alt="" class="is-active" data-focus="dome-clear" fetchpriority="high" loading="eager" decoding="async" />
-      <img src="assets/images/hero-lansing-original.jpg" alt="" data-focus="lansing-skyline" fetchpriority="high" loading="eager" decoding="async" />
-      <img src="assets/images/hero-interviews.jpg" alt="" data-focus="interview" loading="eager" decoding="async" />
-      <img src="assets/images/hero-meeting-03.jpg" alt="" data-focus="meeting" loading="lazy" decoding="async" />
-      <img src="assets/images/hero-otr-studio.jpg" alt="" data-focus="otr" loading="lazy" decoding="async" />
-      <img src="assets/images/capitol-dusk.jpg" alt="" data-focus="dome-clear" loading="lazy" decoding="async" />
-      <img src="assets/images/lansing-aerial-dusk.jpg" alt="" data-focus="lansing-skyline" loading="lazy" decoding="async" />
-      <img src="assets/images/hero-jackson.jpg" alt="" data-focus="landscape" loading="lazy" decoding="async" />
-      <img src="assets/images/hero-otr-rewind.jpg" alt="" data-focus="otr" loading="lazy" decoding="async" />
-      <img src="assets/images/hero-countryside.jpg" alt="" data-focus="landscape" loading="lazy" decoding="async" />
+    <div class="hero-bg-slides" id="hero-bg-slides" data-hero-loop-ms="70000">
+      <img src="assets/images/capitol-michgov-vertical.jpg" alt="" class="is-active" data-focus="dome-clear" fetchpriority="high" loading="eager" decoding="async" />
+      <img src="assets/images/hero-interviews.jpg" alt="" data-focus="melorie-studio" loading="lazy" decoding="async" />
+      <img src="assets/images/hero-otr-studio.jpg" alt="" data-focus="empty-studio" loading="lazy" decoding="async" />
+      <img src="assets/images/data-center-meeting-lansing.jpg" alt="" data-focus="meeting" loading="lazy" decoding="async" />
+      <img src="assets/images/hero-jackson.jpg" alt="" data-focus="jackson" loading="lazy" decoding="async" />
     </div>
     <span class="hero-bg-scrim"></span>
     <span class="hero-bg-vignette"></span>
+    <span class="hero-bg-label">Capitol decisions, local impact</span>
   </div>
+  <div class="town-drift" data-town-drift aria-hidden="true"></div>
 
   <div class="hero-content max-w-screen-xl mx-auto px-4 sm:px-6">
 
@@ -3788,31 +5719,25 @@
               img.src = 'assets/images/wkar-election-logo-transparent.png';
             })();
           </script>
+          <a class="hero-promise-link" href="#promise" aria-label="Jump to WKAR News promise">We promise</a>
         </div>
 
-        <p class="hero-slogan">Mid-Michigan's Voice</p>
+        <p class="hero-slogan">From WKAR News</p>
 
         <p class="hero-lede">
-          Michigan's most consequential midterm in a decade — governor, legislature, Congress, and the proposals that will reshape the state.
+          Seven WKAR political voices. Local questions, statewide stakes. The answers that matter before you vote.
         </p>
         <p class="hero-deck">
-          WKAR's nonpartisan team covers every race and every vote — from the Capitol to Mid-Michigan.
+          Candidate interviews, race explainers, ballot tools, precinct lookup, key dates, and local reporting on how 2026 will affect your life.
         </p>
 
-        </div><!-- /.hero-copy -->
-
-        <div class="hero-signal-block">
-          <p class="sr-only">The Signal — Week Ahead by WKAR News</p>
-          <div class="hero-signal-brand" aria-hidden="true">
-            <img src="assets/images/the-signal-logo.svg"
-                 alt=""
-                 class="signal-logo signal-logo--hero"
-                 width="480" height="148"
-                 decoding="async" />
-          </div>
-          <p class="hero-signal-deck">Your week ahead in Mid-Michigan politics — free in your inbox every Sunday.</p>
-          <a href="#signal-email-top" class="hero-cta-primary hero-signal-cta">Subscribe free</a>
+        <div class="hero-proof-row" aria-label="Election 2026 coverage promise">
+          <span class="hero-proof-pill">In-depth interviews</span>
+          <span class="hero-proof-pill">Interactive ballot tools</span>
+          <span class="hero-proof-pill">County-by-county resources</span>
         </div>
+
+        </div><!-- /.hero-copy -->
 
       </div>
 
@@ -3820,12 +5745,6 @@
 
     <!-- Political headlines — editorial panel at base of hero -->
     <nav id="latest" class="hero-headlines-band" aria-labelledby="latest-heading">
-      <div class="hero-headlines-flag" aria-hidden="true">
-        <video class="hero-headlines-flag-video" autoplay muted loop playsinline preload="metadata" onerror="this.style.display='none'">
-          <source src="assets/video/waving-flag.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-headlines-flag-wash"></div>
-      </div>
       <div class="hero-headlines-kicker">
         <div class="hero-headlines-kicker-row">
           <div class="hero-headlines-brand">
@@ -3851,15 +5770,6 @@
               <span class="ticker-item"><strong>Michigan Primary</strong> August 4 <span class="ticker-dot"></span></span>
               <span class="ticker-item"><strong>General Election</strong> November 3 <span class="ticker-dot"></span></span>
               <span class="ticker-item"><strong>MI-07</strong> among the Midwest's most competitive House races <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><strong>Governor's race</strong> open seat — filing closed May 13 <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><span class="ticker-countdown" id="ticker-days-dup">—</span> <strong>days until Primary</strong> <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><strong>Absentee ballots available</strong> June 25 <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><strong>Early voting starts</strong> July 25 <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><strong>Online registration deadline</strong> July 20 <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><strong>Michigan Primary</strong> August 4 <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><strong>General Election</strong> November 3 <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><strong>MI-07</strong> among the Midwest's most competitive House races <span class="ticker-dot"></span></span>
-              <span class="ticker-item"><strong>Governor's race</strong> open seat — filing closed May 13 <span class="ticker-dot"></span></span>
             </div>
           </div>
         </div>
@@ -3885,56 +5795,72 @@
       <div class="hero-headlines-body">
         <ul class="hero-headlines-list">
           <li class="hero-hl-item hero-hl-item--lead">
-            <a href="https://www.wkar.org/wkar-news/2026-06-16/east-lansing-city-manager-robert-belleman-resigns-after-being-placed-on-leave" class="hero-hl-link">
-              <span class="hero-hl-lead-kicker">Top Story</span>
+            <a href="https://www.wkar.org/wkar-news/2026-06-23/ingham-county-board-opposes-transmission-line-route-through-park" class="hero-hl-link">
+              <figure class="hero-hl-media" aria-hidden="true">
+                <img src="assets/images/burchfield-park-transmission-line.webp" alt="" width="1600" height="900" loading="eager" decoding="async" />
+              </figure>
+              <span class="hero-hl-lead-kicker">Latest from WKAR</span>
               <span class="hero-hl-title-row">
-                <span class="hero-hl-title">East Lansing city manager resigns after being placed on leave</span>
+                <span class="hero-hl-title">Ingham County board opposes <span class="hero-hl-mobile-line">transmission line route through park</span></span>
                 <span class="hero-hl-tag">Ingham</span>
               </span>
-              <span class="hero-hl-meta">Jun 16</span>
+              <span class="hero-hl-meta">WKAR · Andrew Roth · Jun 23</span>
             </a>
           </li>
         </ul>
         <ul class="hero-headlines-list hero-headlines-secondary">
           <li class="hero-hl-item">
-            <a href="https://www.wkar.org/wkar-news/2026-03-24/lansings-elected-officials-are-getting-a-pay-raise" class="hero-hl-link">
+            <a href="https://www.wkar.org/michigans-data-center-divide/2026-06-23/capitol-rally-to-call-for-statewide-data-center-moratorium-regulation" class="hero-hl-link">
               <span class="hero-hl-title-row">
-                <span class="hero-hl-title">Lansing's elected officials are getting a pay raise</span>
-                <span class="hero-hl-tag">Ingham</span>
-              </span>
-              <span class="hero-hl-meta">Mar 24</span>
-            </a>
-          </li>
-          <li class="hero-hl-item">
-            <a href="https://www.wkar.org/wkar-news/2026-03-19/in-2026-state-of-the-city-schor-says-best-is-yet-to-come-for-lansing" class="hero-hl-link">
-              <span class="hero-hl-title-row">
-                <span class="hero-hl-title">In State of the City, Schor says best is yet to come for Lansing</span>
-                <span class="hero-hl-tag">Ingham</span>
-              </span>
-              <span class="hero-hl-meta">Mar 19</span>
-            </a>
-          </li>
-          <li class="hero-hl-item">
-            <a href="https://www.wkar.org/wkar-news/2026-06-17/senate-candidate-el-sayed-launches-tv-ad-campaign-joins-the-tv-airwaves" class="hero-hl-link">
-              <span class="hero-hl-title-row">
-                <span class="hero-hl-title">Senate candidate El-Sayed launches TV ad campaign</span>
+                <span class="hero-hl-title">Capitol rally to call for statewide data center moratorium, regulation</span>
                 <span class="hero-hl-tag hero-hl-tag--state">Michigan</span>
               </span>
-              <span class="hero-hl-meta">Jun 17</span>
+              <span class="hero-hl-meta">WKAR · Jun 23</span>
             </a>
           </li>
           <li class="hero-hl-item">
-            <a href="https://www.wkar.org/wkar-news/2026-05-28/gov-gretchen-whitmer-of-michigan-says-she-wont-run-for-president-in-2028" class="hero-hl-link">
+            <a href="https://www.wkar.org/wkar-news/2026-06-23/michigan-budget-deal-reached-as-whitmer-lawmakers-move-toward-july-1-deadline" class="hero-hl-link">
               <span class="hero-hl-title-row">
-                <span class="hero-hl-title">Whitmer says she won't run for president in 2028</span>
+                <span class="hero-hl-title">Michigan budget deal reached as Whitmer, lawmakers move toward July 1 deadline</span>
                 <span class="hero-hl-tag hero-hl-tag--state">Michigan</span>
               </span>
-              <span class="hero-hl-meta">AP · May 28</span>
+              <span class="hero-hl-meta">WKAR · Jun 23</span>
+            </a>
+          </li>
+          <li class="hero-hl-item">
+            <a href="https://www.michiganpublic.org/politics-government/2026-06-22/president-trump-endorses-rep-john-james-in-michigan-governors-race" class="hero-hl-link">
+              <span class="hero-hl-title-row">
+                <span class="hero-hl-title">President Trump endorses Rep. John James in Michigan governor's race</span>
+                <span class="hero-hl-tag hero-hl-tag--state">Michigan</span>
+              </span>
+              <span class="hero-hl-meta">Michigan Public · Jun 22</span>
+            </a>
+          </li>
+          <li class="hero-hl-item">
+            <a href="https://www.michiganpublic.org/politics-government/2026-06-22/fact-check-john-james-kill-switch-claims-rile-michigan-governors-race" class="hero-hl-link">
+              <span class="hero-hl-title-row">
+                <span class="hero-hl-title">Fact check: John James 'kill switch' claims rile Michigan governor's race</span>
+                <span class="hero-hl-tag hero-hl-tag--state">Michigan</span>
+              </span>
+              <span class="hero-hl-meta">Michigan Public · Jun 22</span>
+            </a>
+          </li>
+          <li class="hero-hl-item">
+            <a href="https://www.wkar.org/wkar-news/2026-06-23/how-trumps-complete-and-total-endorsement-has-reshaped-the-republican-party" class="hero-hl-link">
+              <span class="hero-hl-title-row">
+                <span class="hero-hl-title">How Trump's 'Complete and Total Endorsement' has reshaped the Republican party</span>
+                <span class="hero-hl-tag hero-hl-tag--state">Michigan</span>
+              </span>
+              <span class="hero-hl-meta">WKAR · Jun 23</span>
             </a>
           </li>
         </ul>
       </div>
     </nav>
+    <div class="mobile-hero-promise" aria-label="WKAR News promise">
+      <a href="#promise">We promise</a>
+      <p>Hard questions, local reporting, and voter tools that help you act before Election Day.</p>
+    </div>
   </div>
 </section>
 
@@ -3944,96 +5870,9 @@
 <main id="main-content">
 
 <!-- ============================================================
-     MEET THE TEAM — Full beat row
-     ============================================================ -->
-<section id="team" class="py-3 sm:py-4 section-compact section-compact-sm" aria-labelledby="team-stream-heading">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
-
-    <div class="section-header-bar section-header-bar--text-only">
-      <div class="section-brand-copy">
-        <p class="section-eyebrow election mb-0.5">The People Behind the Coverage</p>
-        <h2 id="team-stream-heading" class="font-display font-bold text-wkar-black">Your WKAR News Political Beat</h2>
-      </div>
-    </div>
-
-    <ul class="team-beat-row" aria-label="Meet the team">
-      <li class="team-beat-card">
-        <figure class="team-beat-photo-wrap">
-          <img class="team-beat-photo" src="assets/images/sophia-saliby.webp" alt="Sophia Saliby" width="400" height="400" loading="eager" decoding="async" />
-        </figure>
-        <div class="team-beat-copy">
-          <p class="team-spotlight-eyebrow">WKAR News</p>
-          <h3 class="team-beat-name"><a href="https://www.wkar.org/people/sophia-saliby">Sophia Saliby</a></h3>
-          <p class="team-beat-role">All Things Considered Host</p>
-          <a href="mailto:sophia@wkar.org?subject=Question%20for%20Sophia%20Saliby" class="team-spotlight-cta">Contact</a>
-        </div>
-      </li>
-      <li class="team-beat-card">
-        <figure class="team-beat-photo-wrap">
-          <img class="team-beat-photo" src="assets/images/melorie-begay.webp" alt="Melorie Begay" width="400" height="400" loading="lazy" decoding="async" />
-        </figure>
-        <div class="team-beat-copy">
-          <p class="team-spotlight-eyebrow">WKAR News</p>
-          <h3 class="team-beat-name"><a href="https://www.wkar.org/people/melorie-begay">Melorie Begay</a></h3>
-          <p class="team-beat-role">Morning Edition Host</p>
-          <a href="mailto:melorie@wkar.org?subject=Question%20for%20Melorie%20Begay" class="team-spotlight-cta">Contact</a>
-        </div>
-      </li>
-      <li class="team-beat-card">
-        <figure class="team-beat-photo-wrap team-beat-photo-wrap--danielle">
-          <img class="team-beat-photo team-beat-photo--danielle" src="assets/images/danielle-prieur-studio.jpg" alt="Danielle Prieur" width="400" height="400" loading="lazy" decoding="async" />
-        </figure>
-        <div class="team-beat-copy">
-          <p class="team-spotlight-eyebrow">WKAR News</p>
-          <h3 class="team-beat-name"><a href="#latest">Danielle Prieur</a></h3>
-          <p class="team-beat-role">Mid-Michigan Political Reporter</p>
-          <a href="https://www.wkar.org" class="team-spotlight-cta" target="_blank" rel="noopener noreferrer">WKAR.org</a>
-        </div>
-      </li>
-      <li class="team-beat-card">
-        <figure class="team-beat-photo-wrap">
-          <img class="team-beat-photo team-beat-photo--rick" src="assets/images/rick-pluta-studio.jpg" alt="Rick Pluta" width="400" height="400" loading="lazy" decoding="async" />
-        </figure>
-        <div class="team-beat-copy">
-          <p class="team-spotlight-eyebrow">Michigan Public</p>
-          <h3 class="team-beat-name"><a href="https://www.michiganpublic.org/people/rick-pluta" target="_blank" rel="noopener noreferrer">Rick Pluta</a></h3>
-          <p class="team-beat-role">Senior Capitol Correspondent</p>
-          <a href="mailto:rpluta@wkar.org?subject=Question%20for%20Rick%20Pluta" class="team-spotlight-cta">Contact</a>
-        </div>
-      </li>
-      <li class="team-beat-card">
-        <figure class="team-beat-photo-wrap">
-          <img class="team-beat-photo" src="assets/images/colin-jackson.webp" alt="Colin Jackson" width="400" height="400" loading="lazy" decoding="async" />
-        </figure>
-        <div class="team-beat-copy">
-          <p class="team-spotlight-eyebrow">Michigan Public</p>
-          <h3 class="team-beat-name"><a href="https://www.michiganpublic.org/people/colin-jackson" target="_blank" rel="noopener noreferrer">Colin Jackson</a></h3>
-          <p class="team-beat-role">Capitol Correspondent</p>
-          <a href="mailto:colin@wkar.org?subject=Question%20for%20Colin%20Jackson" class="team-spotlight-cta">Contact</a>
-        </div>
-      </li>
-      <li class="team-beat-card">
-        <figure class="team-beat-photo-wrap">
-          <img class="team-beat-photo team-beat-photo--tim" src="assets/images/tim-skubick-studio.png" alt="Tim Skubick" width="400" height="400" loading="lazy" decoding="async" />
-        </figure>
-        <div class="team-beat-copy">
-          <p class="team-spotlight-eyebrow">WKAR-TV</p>
-          <h3 class="team-beat-name"><a href="#off-the-record">Tim Skubick</a></h3>
-          <p class="team-beat-role">Off The Record Host</p>
-          <a href="mailto:tskubick@wkar.org?subject=Question%20for%20Tim%20Skubick" class="team-spotlight-cta">Contact</a>
-        </div>
-      </li>
-    </ul>
-
-  </div>
-</section>
-
-<div class="section-rule"></div>
-
-<!-- ============================================================
      POLITICAL INTERVIEWS — Sophia Saliby & Melorie Begay
      ============================================================ -->
-<section id="interviews" class="py-4 sm:py-5 bg-gray-50 section-compact section-compact-sm" aria-labelledby="interviews-heading">
+<section id="interviews" class="interviews-section py-4 sm:py-5 section-compact section-compact-sm" aria-labelledby="interviews-heading">
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
     <div class="section-header-bar">
       <div class="section-brand-row section-brand-row--center">
@@ -4043,57 +5882,231 @@
           <h2 id="interviews-heading" class="font-display font-bold text-wkar-black">In-Depth Conversations with Sophia and Melorie</h2>
         </div>
       </div>
-      <a href="https://www.wkar.org/politics-government" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">All →</a>
+      <a href="https://www.wkar.org/wkar-news-in-depth" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">In-Depth library →</a>
     </div>
 
     <div class="interview-show-intro">
-      <p class="interview-show-kicker">Michigan Politics</p>
+      <p class="interview-show-kicker">WKAR News In-Depth</p>
       <div class="interview-host-chip">
         <div class="interview-host-avatars" aria-hidden="true">
           <img src="assets/images/sophia-saliby.webp" alt="" width="28" height="28" loading="lazy" decoding="async" />
           <img src="assets/images/melorie-begay.webp" alt="" width="28" height="28" loading="lazy" decoding="async" />
         </div>
-        <span>With <strong>Sophia Saliby</strong> &amp; <strong>Melorie Begay</strong></span>
+        <span>Long-form interviews and features with <strong>Sophia Saliby</strong> &amp; <strong>Melorie Begay</strong></span>
       </div>
     </div>
 
-    <div class="interview-list-compact">
-      <a href="https://www.wkar.org/wkar-news/2026-02-06/data-centers-could-play-a-role-in-2026-midterm-election-campaigns" class="interview-row">
+    <div class="interview-list-compact interview-list-compact--expanded">
+      <a href="https://www.wkar.org/michigans-data-center-divide/2026-06-09/gov-whitmer-faces-online-criticism-for-saline-data-center-event-with-openai-ceo-sam-altman" class="interview-row">
         <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
         <div>
-          <p class="section-eyebrow interview-row-eyebrow">Data Centers</p>
-          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Data centers could play a role in 2026 midterm campaigns</p>
+          <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Data Center Divide</p>
+          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Gov. Whitmer faces online criticism for Saline data center event with OpenAI CEO Sam Altman</p>
         </div>
-        <time class="text-wkar-muted text-xs" datetime="2026-02-06">Feb 6</time>
+        <time class="text-wkar-muted text-xs" datetime="2026-06-09">Jun 9</time>
       </a>
-      <a href="#" class="interview-row">
+      <a href="https://www.wkar.org/wkar-news/2026-06-09/michigan-theatre-executive-director-returns-after-dismissal-with-sold-out-community-celebration" class="interview-row">
         <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
         <div>
-          <p class="section-eyebrow interview-row-eyebrow">Governor's Race</p>
-          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Democratic frontrunner on economic policy and Whitmer's legacy</p>
+          <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Jackson</p>
+          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Michigan Theatre executive director returns after dismissal with sold out community celebration</p>
         </div>
-        <time class="text-wkar-muted text-xs">Jun 15</time>
+        <time class="text-wkar-muted text-xs" datetime="2026-06-09">Jun 9</time>
       </a>
-      <a href="#" class="interview-row">
+      <a href="https://www.wkar.org/wkar-news/2026-06-08/what-it-takes-to-report-on-an-alleged-sexual-assault-at-mis-largest-immigrant-detention-center" class="interview-row">
         <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
         <div>
-          <p class="section-eyebrow interview-row-eyebrow">Legislature</p>
-          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Senate Majority Leader on defending Democrats' slim 20–18 edge</p>
+          <p class="section-eyebrow interview-row-eyebrow">WKAR News In-Depth · Reporting Process</p>
+          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">What it takes to report on an alleged sexual assault at MI's largest immigrant detention center</p>
         </div>
-        <time class="text-wkar-muted text-xs">Jun 10</time>
+        <time class="text-wkar-muted text-xs" datetime="2026-06-08">Jun 8</time>
       </a>
+      <a href="https://www.wkar.org/wkar-news/2026-05-26/wkar-tvs-impact-michigan-returns-with-episode-on-teen-mental-health-and-social-media" class="interview-row">
+        <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div>
+          <p class="section-eyebrow interview-row-eyebrow">Impact: Michigan · Public Affairs</p>
+          <p class="font-display font-semibold text-sm leading-snug text-wkar-black">Impact: Michigan returns with episode on teen mental health and social media</p>
+        </div>
+        <time class="text-wkar-muted text-xs" datetime="2026-05-26">May 26</time>
+      </a>
+      <details class="interview-more">
+        <summary>More in-depth stories</summary>
+        <div class="interview-more-list">
+          <a href="https://www.wkar.org/wkar-america-250/2026-05-15/99-years-after-bath-school-disaster-community-works-to-make-freestanding-museum-a-reality" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Sophia Saliby · Bath</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">99 years after Bath School Disaster, community works to make freestanding museum a reality</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-05-15">May 15</time>
+          </a>
+          <a href="https://www.wkar.org/wkar-news/2026-05-13/east-lansing-art-festival-returns-to-downtown-for-63rd-year" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Melorie Begay · East Lansing</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">East Lansing Art Festival returns to downtown for 63rd year</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-05-13">May 13</time>
+          </a>
+          <a href="https://www.wkar.org/michigans-data-center-divide/2026-05-06/what-deep-greens-failed-lansing-proposal-says-about-the-changing-data-center-debate" class="interview-row">
+            <div class="interview-play-sm" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <div>
+              <p class="section-eyebrow interview-row-eyebrow">Data Center Divide · Lansing</p>
+              <p class="font-display font-semibold text-sm leading-snug text-wkar-black">What Deep Green's failed Lansing proposal says about the changing data center debate</p>
+            </div>
+            <time class="text-wkar-muted text-xs" datetime="2026-05-06">May 6</time>
+          </a>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+<!-- ============================================================
+     MEET THE TEAM — Full beat row
+     ============================================================ -->
+<section id="team" class="team-flagship py-5 sm:py-7 section-compact section-compact-sm" aria-labelledby="team-stream-heading">
+  <div class="team-flag-bg" aria-hidden="true">
+    <video src="assets/video/waving-flag.mp4" muted loop playsinline preload="metadata"></video>
+  </div>
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+
+    <div class="team-flagship-grid">
+      <div class="team-flagship-intro">
+        <p class="team-flagship-kicker">The People Asking The Questions</p>
+        <h2 id="team-stream-heading" class="team-flagship-title">Seven voices. One election that hits home.</h2>
+        <p class="team-flagship-copy">
+          WKAR's political team follows the candidates, presses for specifics, and connects statewide decisions to your schools, roads, utility bills, data centers, and local government.
+        </p>
+        <div class="team-flagship-stats" aria-label="Reporting network summary">
+          <div class="team-flagship-stat"><strong>7</strong><span>WKAR politics voices</span></div>
+          <div class="team-flagship-stat"><strong>8</strong><span>Mid-Michigan counties</span></div>
+          <div class="team-flagship-stat"><strong>9</strong><span>Public media stations</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="team-talent-groups" aria-label="Election 2026 reporter team">
+        <section class="talent-group talent-group--wkar" aria-labelledby="talent-wkar-heading">
+          <div class="talent-group-head">
+            <h3 id="talent-wkar-heading" class="talent-group-title">The WKAR News Local Team</h3>
+            <p class="talent-group-note">Hosts + Mid-Michigan reporters</p>
+          </div>
+          <div class="team-reporter-grid team-reporter-grid--wkar">
+          <a class="reporter-card reporter-card--sophia" href="https://www.wkar.org/people/sophia-saliby" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/sophia-saliby.webp" alt="Sophia Saliby" width="400" height="400" loading="eager" decoding="async" />
+            <div class="reporter-card-body">
+              <p class="reporter-station">All Things Considered Host</p>
+              <h3 class="reporter-name">Sophia Saliby</h3>
+              <p class="reporter-question">Long-form interviews and features that press candidates beyond campaign promises.</p>
+            </div>
+          </a>
+          <a class="reporter-card reporter-card--melorie" href="https://www.wkar.org/people/melorie-begay" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/melorie-begay.webp" alt="Melorie Begay" width="400" height="400" loading="lazy" decoding="async" />
+            <div class="reporter-card-body">
+              <p class="reporter-station">Morning Edition Host</p>
+              <h3 class="reporter-name">Melorie Begay</h3>
+              <p class="reporter-question">Morning context and in-depth reporting that connects statewide politics to daily life.</p>
+            </div>
+          </a>
+          <a class="reporter-card reporter-card--danielle" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/danielle-prieur-studio.jpg" alt="Danielle Prieur" width="400" height="400" loading="lazy" decoding="async" />
+            <div class="reporter-card-body">
+              <p class="reporter-station">Lead Mid-Michigan Political Reporter</p>
+              <h3 class="reporter-name">Danielle Prieur</h3>
+              <p class="reporter-question">Small-town politics beyond Lansing and East Lansing, with impact across the region.</p>
+            </div>
+          </a>
+          <a class="reporter-card reporter-card--andrew" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/andrew-roth-reporter-wkar-flat.jpg" alt="Andrew Roth" width="400" height="400" loading="eager" decoding="async" />
+            <div class="reporter-card-body">
+              <p class="reporter-station">Mid-Michigan Political Reporter</p>
+              <h3 class="reporter-name">Andrew Roth</h3>
+              <p class="reporter-question">Political pulse from area sources, plus What Roth's Watching in The Signal.</p>
+            </div>
+          </a>
+          </div>
+        </section>
+        <section class="talent-group talent-group--state" aria-labelledby="talent-state-heading">
+          <div class="talent-group-head">
+            <h3 id="talent-state-heading" class="talent-group-title">The WKAR News State Team</h3>
+            <p class="talent-group-note">Capitol + statewide politics</p>
+          </div>
+          <div class="team-reporter-grid team-reporter-grid--state">
+          <a class="reporter-card reporter-card--rick" href="https://www.michiganpublic.org/people/rick-pluta" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/rick-pluta-updated.jpg" alt="Rick Pluta" width="400" height="400" loading="lazy" decoding="async" />
+            <div class="reporter-card-body">
+              <p class="reporter-station">Senior Capitol Correspondent</p>
+              <h3 class="reporter-name">Rick Pluta</h3>
+              <p class="reporter-question">Covering Michigan's Capitol, government, and politics since 1987 for stations statewide and NPR.</p>
+            </div>
+          </a>
+          <a class="reporter-card reporter-card--colin" href="https://www.michiganpublic.org/people/colin-jackson" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/colin-jackson.webp" alt="Colin Jackson" width="400" height="400" loading="lazy" decoding="async" />
+            <div class="reporter-card-body">
+              <p class="reporter-station">Capitol Correspondent</p>
+              <h3 class="reporter-name">Colin Jackson</h3>
+              <p class="reporter-question">Campaigns, competitive districts, and what candidates say away from the podium.</p>
+            </div>
+          </a>
+          <a class="reporter-card reporter-card--tim" href="https://www.wkar.org/people/tim-skubick" target="_blank" rel="noopener noreferrer">
+            <img src="assets/images/tim-skubick-recent.jpg" alt="Tim Skubick" width="400" height="400" loading="lazy" decoding="async" />
+            <div class="reporter-card-body">
+              <p class="reporter-station">Host of Off The Record</p>
+              <h3 class="reporter-name">Tim Skubick</h3>
+              <p class="reporter-question">A Capitol region veteran pressing candidates past the talking point on Off The Record.</p>
+            </div>
+          </a>
+          </div>
+        </section>
+        </div>
+
+      </div>
     </div>
 
-    <div class="signal-cross-promo">
-      <a href="#signal" class="signal-logo-link" aria-label="Subscribe to The Signal newsletter">
-        <img src="assets/images/the-signal-logo.svg"
-             alt="The Signal — subscribe free"
-             class="signal-logo signal-logo--inline"
-             width="420" height="128"
-             loading="lazy"
-             decoding="async" />
-      </a>
-      <p class="signal-cross-promo-copy">Get the Week Ahead every Sunday — Lansing, data centers, and what matters in Mid-Michigan.</p>
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+<!-- ============================================================
+     OUR PROMISE
+     ============================================================ -->
+<section id="promise" class="promise-section" aria-labelledby="promise-heading">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+    <div class="promise-wrap">
+      <div>
+        <p class="promise-kicker">Our Promise</p>
+        <h2 id="promise-heading" class="promise-title">What voters get from us.</h2>
+      </div>
+      <ul class="promise-list">
+        <li class="promise-item" style="--promise-color: var(--wkar-green-light)">
+          <h3 class="promise-item-title">In-Depth Reporting</h3>
+          <p class="promise-item-copy">No 10-second soundbites. Our hosts ask the hard questions that matter to daily life and give candidates and officials the time to answer.</p>
+        </li>
+        <li class="promise-item" style="--promise-color: var(--wkar-blue)">
+          <h3 class="promise-item-title">Beyond The Capitol</h3>
+          <p class="promise-item-copy">We go to the small towns and outlying counties where the stories are just as consequential, just as personal, and far less told.</p>
+        </li>
+        <li class="promise-item" style="--promise-color: var(--wkar-red)">
+          <h3 class="promise-item-title">Stories Nobody Else Is Chasing</h3>
+          <p class="promise-item-copy">We find the overlooked angles, the ignored communities, and the decisions that affect you whether you're paying attention or not.</p>
+        </li>
+        <li class="promise-item" style="--promise-color: var(--wkar-green-light)">
+          <h3 class="promise-item-title">Tools To Take Action</h3>
+          <p class="promise-item-copy">Coverage is paired with resources to understand your ballot, contact representatives, and make your voice heard locally and statewide.</p>
+        </li>
+        <li class="promise-item" style="--promise-color: var(--wkar-blue)">
+          <h3 class="promise-item-title">Where You Are</h3>
+          <p class="promise-item-copy">A new video podcast studio will bring more of our team to the platforms where you already spend time: more voices, more formats, more access.</p>
+        </li>
+        <li class="promise-item" style="--promise-color: var(--wkar-red)">
+          <h3 class="promise-item-title">Independent. Always.</h3>
+          <p class="promise-item-copy">WKAR is public media: no advertisers, no corporate owners, no political agenda. Independent journalists work for you, and only you.</p>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -4113,12 +6126,12 @@
           <h2 id="otr-heading" class="font-display font-bold text-wkar-black">Off The Record</h2>
         </div>
       </div>
-      <a href="https://www.youtube.com/playlist?list=PLfDXNSU34H9gW4mPZBi-KBfCMsRRUn5Rp" target="_blank" rel="noopener noreferrer" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">Full playlist →</a>
+      <a href="https://www.youtube.com/@wkarnews" target="_blank" rel="noopener noreferrer" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">WKAR News YouTube →</a>
     </div>
 
     <div class="otr-host-chip">
-      <img src="assets/images/tim-skubick-studio.png" alt="" loading="lazy" />
-      <span>Hosted by <strong>Tim Skubick</strong> · New episodes on WKAR-TV &amp; <a href="https://www.youtube.com/@WKARNews" target="_blank" rel="noopener">YouTube</a></span>
+      <img src="assets/images/tim-skubick-recent.jpg" alt="" loading="lazy" />
+      <span>Hosted by <strong>Tim Skubick</strong> · Episodes, interviews, and reels on WKAR-TV and <a href="https://www.youtube.com/@wkarnews" target="_blank" rel="noopener">WKAR News YouTube</a></span>
     </div>
 
     <div class="otr-videos">
@@ -4177,7 +6190,7 @@
       <span id="signal-wordmark-fallback"
             class="font-display font-bold text-wkar-black hidden"
             style="font-size:2.25rem; display:none; line-height:1;">The Signal</span>
-      <span class="signal-newsletter-tag">Free Newsletter</span>
+      <span class="signal-newsletter-tag">Coming Wednesdays This Summer</span>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start">
@@ -4189,17 +6202,14 @@
         <div class="signal-promo-wrap" id="signal-promo">
           <div class="signal-promo-stage" aria-live="polite">
             <div class="signal-promo-stack" id="signal-promo-stack" aria-hidden="true">
-              <figure class="signal-promo-card" data-label="Data Center Tracker">
-                <img src="assets/images/signal/data-center-tracker.jpg" alt="Data Center Tracker — votes, rules, and what's next in Michigan" loading="eager" decoding="async" />
-              </figure>
               <figure class="signal-promo-card" data-label="Inside this week's Signal">
                 <img src="assets/images/signal/promo-collage.jpg" alt="Preview of The Signal newsletter — Week Ahead, Data Center Tracker, Off The Record, and more" loading="eager" decoding="async" />
               </figure>
-              <figure class="signal-promo-card" data-label="Week Ahead — every Sunday">
-                <img src="assets/images/signal/week-ahead.jpg" alt="The Signal Week Ahead — Sunday briefing for Mid-Michigan" loading="eager" decoding="async" />
-              </figure>
-              <figure class="signal-promo-card" data-label="What Roth's Watching">
+              <figure class="signal-promo-card signal-promo-card--doc" data-label="What Roth's Watching">
                 <img src="assets/images/signal/roth-watching.jpg" alt="What Roth's Watching — Lansing and civic affairs coverage" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="signal-promo-card" data-label="Data Center Tracker">
+                <img src="assets/images/signal/data-center-tracker.jpg" alt="Data Center Tracker — votes, rules, and what's next in Michigan" loading="lazy" decoding="async" />
               </figure>
               <figure class="signal-promo-card" data-label="The Signal Ahead">
                 <img src="assets/images/signal/st-johns.jpg" alt="The Signal Ahead — St. Johns and Mid-Michigan communities" loading="lazy" decoding="async" />
@@ -4217,7 +6227,7 @@
            style="font-size:clamp(1.125rem, 2.2vw, 1.5rem);">
           Your week ahead in Mid-Michigan — filtered for impact.
         </p>
-        <p class="signal-social-proof">1,500+ readers now start their week here.</p>
+        <p class="signal-social-proof">1,500+ readers start the week here. Signal Plus is coming Wednesdays this summer.</p>
 
         <ul class="space-y-2 mt-4 mb-0">
           <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
@@ -4226,11 +6236,11 @@
           </li>
           <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d7a59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-            Data centers, Lansing, and local government deep dives
+            Signal Plus coming Wednesdays this summer
           </li>
           <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d7a59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-            Free, nonpartisan, from WKAR's politics team
+            Endorsements, campaign stops, hearings, and ballot developments
           </li>
         </ul>
       </div>
@@ -4251,7 +6261,7 @@
                  width="380" height="116"
                  decoding="async" />
           </a>
-          <p class="text-wkar-muted text-sm mb-5">Get the Week Ahead in your inbox. Free — no spam, unsubscribe anytime.</p>
+          <p class="text-wkar-muted text-sm mb-5">Get the Sunday Week Ahead now. Signal Plus is coming Wednesdays this summer. Free — no spam, unsubscribe anytime.</p>
 
           <div class="flex flex-col gap-3">
             <div>
@@ -4269,7 +6279,7 @@
             <button type="button"
                     class="signal-subscribe-btn w-full bg-wkar-green hover:bg-wkar-green-mid text-white font-semibold text-sm py-3 rounded-sm transition-colors mt-1"
                     onclick="document.getElementById('signal-thanks-top').style.display='block'; this.style.display='none';">
-              Subscribe — It's Free
+              Subscribe free
             </button>
             <p id="signal-thanks-top" class="text-wkar-green-light text-sm text-center font-medium hidden" aria-live="polite">
               ✓ You're subscribed. Welcome to The Signal.
@@ -4364,8 +6374,36 @@
       <div class="section-brand-row section-brand-row--center">
         <img src="assets/images/wkar-election-logo-transparent.png" alt="" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" aria-hidden="true" />
         <div class="section-brand-copy">
-          <p class="section-eyebrow mb-0.5">Voter Tools</p>
-          <h2 id="ballot-heading" class="font-display font-bold text-wkar-black">Your Ballot</h2>
+          <p class="section-eyebrow mb-0.5">Voter Resource Center</p>
+          <h2 id="ballot-heading" class="font-display font-bold text-wkar-black">Your Ballot, Precinct &amp; Deadlines</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="resource-command" aria-label="Interactive voter resource command center">
+      <div class="resource-command-main">
+        <h3>Start with where you vote.</h3>
+        <p>Enter an address in the official Michigan voter portal to find registration status, precinct, polling place, sample ballot, absentee status, and local clerk contacts.</p>
+        <div class="resource-search">
+          <input type="text" aria-label="Address lookup preview" placeholder="Street address, city, ZIP" />
+          <a href="https://mvic.sos.state.mi.us/Voter/Index" target="_blank" rel="noopener noreferrer">Open precinct finder</a>
+        </div>
+      </div>
+      <div class="resource-command-panel">
+        <h3>Embed/API-ready modules</h3>
+        <div class="resource-api-list">
+          <div class="resource-api-item">
+            <strong>Interactive ballot lookup</strong>
+            <span>Embed MVIC sample ballot, BallotReady, or a custom race guide when an approved feed is available.</span>
+          </div>
+          <div class="resource-api-item">
+            <strong>Precinct finder</strong>
+            <span>Primary action routes to Michigan's official voter portal; future API can prefill location and return clerk/precinct data.</span>
+          </div>
+          <div class="resource-api-item">
+            <strong>Key dates engine</strong>
+            <span>Countdowns are live; dates can be sourced from SOS calendar data or a station-managed JSON file.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -4460,17 +6498,44 @@
 
     </div>
 
-    <!-- Interactive Mid-Michigan county map -->
-    <div class="county-map-module mt-2" id="county-map" aria-labelledby="county-map-heading">
+    <!-- CMS note: keep the iframe at least 450px tall on mobile so the map bottom sheet has room. -->
+    <div class="interactive-map-embed" id="interactive-map" aria-labelledby="interactive-map-heading">
+      <div class="interactive-map-head">
+        <div>
+          <span class="interactive-map-tag">Interactive map</span>
+          <h3 id="interactive-map-heading">Track towns, meetings, races, and voter resources across Mid-Michigan.</h3>
+          <p>Tap a pin for local links, story context, and the resource path that gets you from a headline to action.</p>
+        </div>
+      </div>
+      <iframe
+        src="https://wkar-news.github.io/election-map-26/"
+        title="WKAR Interactive Election Map"
+        class="interactive-map-frame"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <!-- Legacy county map retained as fallback while the interactive embed is refined. -->
+    <div class="county-map-module legacy-county-map mt-2" id="county-map" aria-labelledby="county-map-heading">
       <div class="county-map-header">
-        <p class="section-eyebrow mb-1">Election 2026 Voter Resource</p>
-        <h3 id="county-map-heading" class="font-display font-semibold text-base sm:text-lg">Local County Clerks Guide</h3>
-        <p class="text-xs mt-1 leading-relaxed">Select your Mid-Michigan county on the map or use the quick links below to reach your clerk&rsquo;s office, ballot tools, and precinct info.</p>
+        <p class="section-eyebrow mb-1">Interactive Michigan Resource Map</p>
+        <h3 id="county-map-heading" class="font-display font-semibold text-base sm:text-lg">Find your county, your clerk, your ballot, your races.</h3>
+        <p class="text-xs mt-1 leading-relaxed">Choose a county to load official voter links, precinct lookup, sample ballot, key dates, and the race context WKAR is tracking for your area.</p>
       </div>
 
       <div class="county-map-grid">
         <div class="county-map-wrap">
           <div class="county-map-canvas">
+            <div class="resource-map-board" aria-label="Mid-Michigan county resource cards">
+              <button type="button" class="county-map-chip county-map-card" data-county="ingham"><strong>Ingham</strong><small>Lansing, East Lansing, MSU, state government</small><span>Open resources</span></button>
+              <button type="button" class="county-map-chip county-map-card" data-county="eaton"><strong>Eaton</strong><small>Charlotte, Grand Ledge, Delta Township</small><span>Open resources</span></button>
+              <button type="button" class="county-map-chip county-map-card" data-county="clinton"><strong>Clinton</strong><small>St. Johns, townships, rural turnout</small><span>Open resources</span></button>
+              <button type="button" class="county-map-chip county-map-card" data-county="jackson"><strong>Jackson</strong><small>County government, courts, working families</small><span>Open resources</span></button>
+              <button type="button" class="county-map-chip county-map-card" data-county="livingston"><strong>Livingston</strong><small>Suburban growth and competitive districts</small><span>Open resources</span></button>
+              <button type="button" class="county-map-chip county-map-card" data-county="shiawassee"><strong>Shiawassee</strong><small>Energy, roads, agriculture, small cities</small><span>Open resources</span></button>
+              <button type="button" class="county-map-chip county-map-card" data-county="ionia"><strong>Ionia</strong><small>Schools, courthouse races, local services</small><span>Open resources</span></button>
+              <button type="button" class="county-map-chip county-map-card" data-county="gratiot"><strong>Gratiot</strong><small>Rural economy, turnout, energy policy</small><span>Open resources</span></button>
+            </div>
             <svg id="wkar-mi-map" class="county-map-svg" viewBox="0 0 480 620" role="img" aria-label="Interactive map of Michigan with WKAR Mid-Michigan counties highlighted">
             <title>Michigan county map — WKAR coverage area</title>
             <path class="county-path-other" d="M 417.97,317.86 L 417.96,318.35 L 417.96,318.37 L 417.97,318.39 L 418.12,318.78 L 418.35,319.36 L 418.36,319.37 L 418.44,319.48 L 418.44,319.49 L 418.46,319.52 L 418.69,319.85 L 418.79,319.99 L 419.14,320.5 L 419.2,321.1 L 419.26,321.84 L 419.44,323.86 L 419.44,323.87 L 419.43,324.16 L 419.43,324.27 L 419.4,325.22 L 419.35,327.09 L 419.35,327.09 L 419.29,327.36 L 419.28,327.43 L 419.28,327.47 L 419.31,327.83 L 419.32,328.05 L 419.33,328.14 L 419.34,328.24 L 419.4,328.48 L 419.7,329.73 L 419.72,329.79 L 419.86,330.05 L 420.06,330.42 L 420.09,330.49 L 420.15,330.56 L 420.49,330.95 L 420.63,331.12 L 420.67,331.17 L 420.71,331.21 L 420.64,332.06 L 420.61,332.32 L 420.6,332.46 L 420.6,332.48 L 420.59,332.6 L 420.59,332.63 L 420.58,332.67 L 420.55,333.02 L 420.51,333.48 L 420.48,333.65 L 420.38,334.09 L 420.37,334.13 L 419.99,335.92 L 419.93,336.16 L 419.92,336.25 L 419.89,336.35 L 419.88,336.4 L 419.79,336.84 L 419.45,337.55 L 418.77,338.94 L 418.75,338.98 L 418.65,339.46 L 418.62,339.62 L 418.61,339.64 L 418.35,340.91 L 418.35,340.93 L 418.34,340.95 L 418.32,341.53 L 418.32,341.54 L 418.3,341.81 L 418.29,341.99 L 418.28,342.19 L 418.29,342.33 L 418.37,344.32 L 418.37,344.36 L 418.37,344.48 L 418.38,344.61 L 418.38,344.66 L 418.39,344.77 L 418.39,344.8 L 418.39,344.87 L 418.4,345.01 L 418.4,345.02 L 418.65,346.41 L 418.66,346.44 L 418.67,346.51 L 418.67,346.53 L 418.69,347.29 L 418.64,347.51 L 418.59,347.7 L 418.58,347.74 L 418.53,347.95 L 418.52,348.02 L 418.14,349.6 L 418.13,349.64 L 418.13,349.65 L 418.13,349.89 L 385.46,350.14 L 385.35,318.04 L 417.97,317.86 Z" aria-hidden="true"/>
@@ -4589,8 +6654,8 @@
             <div class="county-map-panel-default" id="county-map-default" hidden>
               <svg class="county-map-panel-default-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
               <p class="county-map-panel-default-title">Select a Mid-Michigan County</p>
-              <p class="county-map-panel-default-hint">Click any green region on the map or use the directory pills below to load clerk resources.</p>
-              <span class="county-map-coverage-badge">8 WKAR Counties</span>
+      <p class="county-map-panel-default-hint">Use the county list to open official voting resources and WKAR race context.</p>
+              <span class="county-map-coverage-badge">8-county resource hub</span>
             </div>
             <div class="county-map-panel-detail" id="county-map-detail">
               <div>
@@ -4603,17 +6668,32 @@
                 <span class="county-map-field-label">County Seat</span>
                 <p class="county-map-field-value" id="county-detail-seat">Lansing &amp; East Lansing</p>
                 <p class="county-map-field-note" id="county-detail-note">Coordinates voter registration, absentee ballots, and election certification for Lansing, East Lansing, and surrounding townships.</p>
+                <div class="county-race-context" aria-label="County election context">
+                  <div class="county-race-pill">
+                    <strong>Congress</strong>
+                    <span id="county-detail-congress">MI-07 / MI-08 watch</span>
+                  </div>
+                  <div class="county-race-pill">
+                    <strong>Local focus</strong>
+                    <span id="county-detail-focus">Data centers, city halls, schools</span>
+                  </div>
+                </div>
               </div>
               <div class="county-map-detail-actions">
                 <a href="https://www.ingham.org/departments/clerk/" class="county-map-detail-link" id="county-detail-link" target="_blank" rel="noopener noreferrer">Open Ingham clerk&rsquo;s office →</a>
-                <a href="https://mvic.sos.state.mi.us/SampleBallot" class="county-map-detail-secondary" target="_blank" rel="noopener noreferrer">Check your sample ballot on MVIC →</a>
+                <div class="county-resource-actions">
+                  <a href="https://mvic.sos.state.mi.us/SampleBallot" class="county-resource-action" target="_blank" rel="noopener noreferrer">Sample ballot <span>→</span></a>
+                  <a href="https://mvic.sos.state.mi.us/Voter/Index" class="county-resource-action" target="_blank" rel="noopener noreferrer">Precinct finder <span>→</span></a>
+                  <a href="#key-dates" class="county-resource-action">Key dates <span>↓</span></a>
+                  <a href="#races" class="county-resource-action">Race guide <span>↓</span></a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <p class="county-map-chips-label">Quick Directory Access</p>
+      <p class="county-map-chips-label">County quick select</p>
       <div class="county-map-chips" role="toolbar" aria-label="WKAR coverage counties quick select">
         <button type="button" class="county-map-chip" data-county="clinton">Clinton</button>
         <button type="button" class="county-map-chip" data-county="eaton">Eaton</button>
@@ -4623,6 +6703,11 @@
         <button type="button" class="county-map-chip" data-county="jackson">Jackson</button>
         <button type="button" class="county-map-chip" data-county="livingston">Livingston</button>
         <button type="button" class="county-map-chip" data-county="shiawassee">Shiawassee</button>
+      </div>
+      <div class="ask-newsroom-card">
+        <h3>What should WKAR ask the candidates?</h3>
+        <p>Send the question you want answered. WKAR can use listener questions to shape interviews, publish answers, and credit the community members who asked.</p>
+        <a href="mailto:news@wkar.org?subject=Election%202026%20candidate%20question">Email the newsroom</a>
       </div>
     </div>
 
@@ -4640,80 +6725,51 @@
     <div class="section-brand-row mb-5 pb-3 border-b border-gray-200">
       <img src="assets/images/wkar-election-logo-transparent.png" alt="" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" aria-hidden="true" />
       <div class="section-brand-copy">
-        <p class="section-eyebrow mb-1.5">2026 Coverage</p>
-        <h2 id="races-heading" class="font-display font-bold text-wkar-black text-lg sm:text-xl">What WKAR Will Track</h2>
-        <p class="text-wkar-muted text-base mt-2 max-w-2xl">Six coverage lanes — from the Governor's race to local data center fights — that will define Michigan politics in 2026.</p>
+        <p class="section-eyebrow mb-1.5">Race Resource Center</p>
+        <h2 id="races-heading" class="font-display font-bold text-wkar-black text-lg sm:text-xl">The Big Races, Explained</h2>
+        <p class="text-wkar-muted text-base mt-2 max-w-2xl">Candidate cards, interview questions, district stakes, and local impact. Built to become a live race guide as filings, debates, endorsements, and ballots update.</p>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+    <div class="race-command-grid">
+      <article class="race-feature-card" aria-label="Governor race candidate guide">
+        <div class="race-feature-media">
+          <p class="race-mini-label">Governor's Race</p>
+          <h3>Who leads Michigan after Whitmer?</h3>
+        </div>
+        <div class="race-feature-body">
+          <p style="margin:0;color:rgba(255,255,255,0.76);font-size:0.9rem;line-height:1.5;">A living candidate guide for the open governor's race: biography, money, endorsements, interviews, policy answers, and the local impact question WKAR will press every candidate to answer.</p>
+          <div class="candidate-grid">
+            <a class="candidate-card" href="https://www.wkar.org/wkar-news/2026-06-22/president-trump-endorses-rep-john-james-in-michigan-governors-race"><strong>John James</strong><span>Republican · Trump endorsement shifts the open governor's race</span></a>
+            <a class="candidate-card" href="https://www.michiganpublic.org/politics-government/2026-06-22/fact-check-john-james-kill-switch-claims-rile-michigan-governors-race"><strong>Fact check file</strong><span>Claims, context, and what voters need to know before the interview</span></a>
+            <a class="candidate-card" href="https://www.youtube.com/watch?v=7MPTKO5dZpI"><strong>Garlin Gilchrist</strong><span>Democrat · Off The Record interview on economy, schools, cost of living</span></a>
+            <a class="candidate-card" href="mailto:news@wkar.org?subject=Election%202026%20governor%20candidate%20question"><strong>What we ask all of them</strong><span>What changes for your county if you win?</span></a>
+          </div>
+        </div>
+      </article>
 
-      <a href="#" class="coverage-card" aria-label="Governor's Race coverage">
-        <div class="coverage-card-media">
-          <img src="assets/images/capitol-dome.jpg" alt="" loading="lazy" decoding="async" style="object-position:center 28%;" />
-        </div>
-        <div class="coverage-card-body">
-          <p class="coverage-card-eyebrow">Governor's Race</p>
-          <h3 class="coverage-card-title">Who Will Lead Michigan After Whitmer?</h3>
-          <p class="coverage-card-desc">Full field coverage — primaries, debates, endorsements, and Election Night.</p>
-        </div>
-      </a>
-
-      <a href="#" class="coverage-card" aria-label="Congressional races coverage">
-        <div class="coverage-card-media">
-          <img src="assets/images/lansing-skyline-day.jpg" alt="" loading="lazy" decoding="async" style="object-position:center 35%;" />
-        </div>
-        <div class="coverage-card-body">
-          <p class="coverage-card-eyebrow">Congressional Races</p>
-          <h3 class="coverage-card-title">Michigan's U.S. House Seats in Play</h3>
-          <p class="coverage-card-desc">MI-07 and competitive districts across the state. Who flips, who holds?</p>
-        </div>
-      </a>
-
-      <a href="#" class="coverage-card" aria-label="Michigan Legislature coverage">
-        <div class="coverage-card-media">
-          <img src="assets/images/capitol-night.jpg" alt="" loading="lazy" decoding="async" style="object-position:center 30%;" />
-        </div>
-        <div class="coverage-card-body">
-          <p class="coverage-card-eyebrow">Michigan Legislature</p>
-          <h3 class="coverage-card-title">Control of the House and Senate</h3>
-          <p class="coverage-card-desc">Democrats defend their thin Senate majority. Republicans eye the House. All 148 seats tracked.</p>
-        </div>
-      </a>
-
-      <a href="#" class="coverage-card" aria-label="Local politics coverage">
-        <div class="coverage-card-media">
-          <img src="assets/images/downtown-main-street.jpg" alt="" loading="lazy" decoding="async" style="object-position:center 45%;" />
-        </div>
-        <div class="coverage-card-body">
-          <p class="coverage-card-eyebrow">Local Politics</p>
-          <h3 class="coverage-card-title">Mid-Michigan Races That Matter</h3>
-          <p class="coverage-card-desc">County commissions, school boards, prosecutors — the local contests that shape daily life.</p>
-        </div>
-      </a>
-
-      <a href="#data-centers" class="coverage-card" aria-label="Data Centers and Energy coverage">
-        <div class="coverage-card-media">
-          <img src="assets/images/data-center-mason.jpg" alt="" loading="lazy" decoding="async" style="object-position:center 42%;" />
-        </div>
-        <div class="coverage-card-body">
-          <p class="coverage-card-eyebrow">Data Centers &amp; Energy</p>
-          <h3 class="coverage-card-title">Michigan's New Political Battleground</h3>
-          <p class="coverage-card-desc">$4B+ in investments. Grid strain. Local opposition. How Big Tech is rewriting Michigan politics.</p>
-        </div>
-      </a>
-
-      <a href="#" class="coverage-card" aria-label="Ballot proposals coverage">
-        <div class="coverage-card-media">
-          <img src="assets/images/hero-meeting-05.jpg" alt="" loading="lazy" decoding="async" style="object-position:72% 42%;" />
-        </div>
-        <div class="coverage-card-body">
-          <p class="coverage-card-eyebrow">Ballot Proposals</p>
-          <h3 class="coverage-card-title">What Michigan Voters Will Decide Directly</h3>
-          <p class="coverage-card-desc">Constitutional amendments, referenda, and citizen-initiated laws headed to the November ballot.</p>
-        </div>
-      </a>
-
+      <div class="race-side-stack">
+        <article class="race-mini-card">
+          <span class="race-mini-label">Congress</span>
+          <h3>U.S. House districts in play</h3>
+          <p>Track MI-07, MI-08, and competitive Michigan seats with district explainers, candidate pages, fundraising, and reporter interview clips.</p>
+        </article>
+        <article class="race-mini-card">
+          <span class="race-mini-label">Mid-Michigan Districts</span>
+          <h3>The races that decide daily life</h3>
+          <p>County commissions, prosecutors, school boards, township offices, and judicial contests linked back to the county resource board.</p>
+        </article>
+        <article class="race-mini-card">
+          <span class="race-mini-label">Ballot &amp; Proposals</span>
+          <h3>What voters decide directly</h3>
+          <p>Plain-English proposal cards, fiscal impact, supporters/opponents, and who is funding each campaign.</p>
+        </article>
+        <article class="race-mini-card">
+          <span class="race-mini-label">Data Centers</span>
+          <h3>Michigan's new political battleground</h3>
+          <p>Connect zoning fights, energy demand, tax deals, jobs claims, and local opposition into one explainer trail.</p>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -4731,10 +6787,10 @@
         <p class="section-eyebrow mb-0.5">2026 Coverage</p>
         <h2 id="dc-heading" class="font-display font-bold text-wkar-black">Data Centers&nbsp;&amp;&nbsp;Energy</h2>
       </div>
-      <a href="https://www.wkar.org/wkar-news/2026-02-06/data-centers-could-play-a-role-in-2026-midterm-election-campaigns" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">All stories →</a>
+      <a href="https://www.wkar.org/michigans-data-center-divide" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">All stories →</a>
     </div>
 
-    <p class="dc-lead">Zoning fights, rate cases, and grid strain&mdash;tracked county by county across the Michigan Public Media network ahead of the 2026 midterms.</p>
+    <p class="dc-lead">Zoning fights, transmission routes, rate cases, and grid strain&mdash;tracked county by county across the Michigan Public Media network ahead of the 2026 midterms.</p>
 
     <div class="dc-county-grid" aria-label="Data center coverage by county">
 
@@ -4742,16 +6798,16 @@
         <div class="dc-county-inner">
           <div class="dc-county-head">
             <h3 class="dc-county-name">Ingham County</h3>
-            <span class="dc-county-tag">Local</span>
+            <span class="dc-county-tag">Board action</span>
           </div>
           <div class="dc-county-stories">
-            <a href="https://www.wkar.org/wkar-news" class="dc-county-story">
-              <p class="dc-county-story-title">Williamston Twp. approves data center despite opposition</p>
-              <span class="dc-county-story-meta">WKAR &middot; Jun 14</span>
+            <a href="https://www.wkar.org/wkar-news/2026-06-23/ingham-county-board-opposes-transmission-line-route-through-park" class="dc-county-story">
+              <p class="dc-county-story-title">Ingham County board opposes transmission line route through park</p>
+              <span class="dc-county-story-meta">WKAR · Andrew Roth · Jun 23</span>
             </a>
-            <a href="https://www.wkar.org/wkar-news/2026-02-06/data-centers-could-play-a-role-in-2026-midterm-election-campaigns" class="dc-county-story">
-              <p class="dc-county-story-title">Data centers could play a role in 2026 midterm campaigns</p>
-              <span class="dc-county-story-meta">WKAR &middot; Feb 6</span>
+            <a href="https://www.wkar.org/michigans-data-center-divide/2026-06-23/capitol-rally-to-call-for-statewide-data-center-moratorium-regulation" class="dc-county-story">
+              <p class="dc-county-story-title">Capitol rally to call for statewide data center moratorium, regulation</p>
+              <span class="dc-county-story-meta">WKAR &middot; Jun 23</span>
             </a>
           </div>
         </div>
@@ -4760,13 +6816,17 @@
       <article class="dc-county-card">
         <div class="dc-county-inner">
           <div class="dc-county-head">
-            <h3 class="dc-county-name">Wayne County</h3>
-            <span class="dc-county-tag">Rates</span>
+            <h3 class="dc-county-name">Statewide Politics</h3>
+            <span class="dc-county-tag">Policy</span>
           </div>
           <div class="dc-county-stories">
-            <a href="https://wdet.org/topics/energy-environment/" class="dc-county-story">
-              <p class="dc-county-story-title">Consumers Energy rate case cites data center demand spike</p>
-              <span class="dc-county-story-meta">WDET &middot; Jun 9</span>
+            <a href="https://www.wkar.org/wkar-news/2026-06-23/michigan-lawmakers-continue-call-for-data-center-moratorium" class="dc-county-story">
+              <p class="dc-county-story-title">Michigan lawmakers continue call for data center moratorium</p>
+              <span class="dc-county-story-meta">WKAR &middot; Jun 23</span>
+            </a>
+            <a href="https://www.michiganpublic.org/politics-government/2026-06-23/michigan-lawmakers-continue-call-for-data-center-moratorium" class="dc-county-story">
+              <p class="dc-county-story-title">Michigan lawmakers continue call for data center moratorium</p>
+              <span class="dc-county-story-meta">Michigan Public &middot; Jun 23</span>
             </a>
           </div>
         </div>
@@ -4775,13 +6835,13 @@
       <article class="dc-county-card dc-county-card--isabella">
         <div class="dc-county-inner">
           <div class="dc-county-head">
-            <h3 class="dc-county-name">Isabella County</h3>
-            <span class="dc-county-tag">Grid</span>
+            <h3 class="dc-county-name">Environment + Economy</h3>
+            <span class="dc-county-tag">Impact</span>
           </div>
           <div class="dc-county-stories">
-            <a href="https://www.wcmu.org/news" class="dc-county-story">
-              <p class="dc-county-story-title">Rural co-ops alarmed over transmission upgrades for data centers</p>
-              <span class="dc-county-story-meta">WCMU &middot; Jun 11</span>
+            <a href="https://www.michiganpublic.org/environment-climate-change/2026-06-10/as-data-centers-expand-in-michigan-so-do-environmental-and-economic-concerns" class="dc-county-story">
+              <p class="dc-county-story-title">As data centers expand in Michigan, so do environmental and economic concerns</p>
+              <span class="dc-county-story-meta">Michigan Public &middot; Jun 10</span>
             </a>
           </div>
         </div>
@@ -4790,28 +6850,13 @@
       <article class="dc-county-card">
         <div class="dc-county-inner">
           <div class="dc-county-head">
-            <h3 class="dc-county-name">Grand Traverse County</h3>
-            <span class="dc-county-tag">Zoning</span>
+            <h3 class="dc-county-name">Ongoing Coverage</h3>
+            <span class="dc-county-tag">Hub</span>
           </div>
           <div class="dc-county-stories">
-            <a href="https://www.interlochen.org/radio/news" class="dc-county-story">
-              <p class="dc-county-story-title">Northern Mich. officials draft zoning rules as interest spreads</p>
-              <span class="dc-county-story-meta">IPR &middot; Jun 7</span>
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <article class="dc-county-card">
-        <div class="dc-county-inner">
-          <div class="dc-county-head">
-            <h3 class="dc-county-name">Statewide</h3>
-            <span class="dc-county-tag dc-county-tag--state">Policy</span>
-          </div>
-          <div class="dc-county-stories">
-            <a href="https://www.michiganpublic.org/tags/energy" class="dc-county-story">
-              <p class="dc-county-story-title">MPSC weighs new generation as data center grid load climbs</p>
-              <span class="dc-county-story-meta">Michigan Public &middot; May 28</span>
+            <a href="https://www.wkar.org/michigans-data-center-divide" class="dc-county-story">
+              <p class="dc-county-story-title">Michigan's Data Center Divide</p>
+              <span class="dc-county-story-meta">WKAR &middot; Coverage hub</span>
             </a>
           </div>
         </div>
@@ -4861,6 +6906,9 @@
         <a href="https://www.wcmu.org" class="partner-badge" aria-label="WCMU Public Media">WCMU</a>
         <a href="https://www.interlochen.org/radio" class="partner-badge" aria-label="Interlochen Public Radio">Interlochen<br/>Public</a>
         <a href="https://www.wgvu.org" class="partner-badge" aria-label="WGVU Public Media">WGVU</a>
+        <a href="https://www.wmuk.org" class="partner-badge" aria-label="WMUK Public Radio">WMUK</a>
+        <a href="https://www.wnmufm.org" class="partner-badge" aria-label="WNMU Public Radio">WNMU</a>
+        <a href="https://www.wemu.org" class="partner-badge" aria-label="WEMU Public Radio">WEMU</a>
       </div>
 
     </div>
@@ -4974,19 +7022,19 @@
       </div>
     </div>
     <div class="explainer-grid">
-      <a href="#" class="explainer-card">
+      <a href="https://www.michigan.gov/sos/elections/voting" class="explainer-card" target="_blank" rel="noopener noreferrer">
         <p class="section-eyebrow explainer-card-eyebrow">Voting Basics</p>
         <h3 class="explainer-card-title">How does Michigan's primary work?</h3>
       </a>
-      <a href="#" class="explainer-card">
+      <a href="https://mvic.sos.state.mi.us/AbsenteeVoter" class="explainer-card" target="_blank" rel="noopener noreferrer">
         <p class="section-eyebrow explainer-card-eyebrow">Absentee</p>
         <h3 class="explainer-card-title">How do I vote absentee in Michigan?</h3>
       </a>
-      <a href="#" class="explainer-card">
+      <a href="https://www.michigan.gov/sos/elections/voting/voters/voter-id" class="explainer-card" target="_blank" rel="noopener noreferrer">
         <p class="section-eyebrow explainer-card-eyebrow">Voter ID</p>
         <h3 class="explainer-card-title">What ID do I need at the polls?</h3>
       </a>
-      <a href="#" class="explainer-card">
+      <a href="https://www.michigan.gov/micrc" class="explainer-card" target="_blank" rel="noopener noreferrer">
         <p class="section-eyebrow explainer-card-eyebrow">Districts</p>
         <h3 class="explainer-card-title">How were Michigan's district lines drawn?</h3>
       </a>
@@ -5084,7 +7132,7 @@
       const diff = PRIMARY - now;
       const days = diff <= 0 ? 0 : Math.floor(diff / 86400000);
 
-      ['days-counter','ticker-days','ticker-days-dup','ballot-days','dates-countdown-days'].forEach(function(id) {
+      ['days-counter','ticker-days','ballot-days','dates-countdown-days'].forEach(function(id) {
         var el = document.getElementById(id);
         if (el) el.textContent = days;
       });
@@ -5201,6 +7249,16 @@
       ionia: 'Supports township clerks with ballot proofing, voter registration, and election-day logistics.',
       gratiot: 'Processes candidate filings, maintains precinct equipment, and certifies Gratiot County election results.'
     };
+    var countyRaceContext = {
+      ingham: { congress: 'MI-07 / MI-08 watch', focus: 'State government, MSU, data centers' },
+      eaton: { congress: 'MI-07 watch', focus: 'Suburban growth, schools, local taxes' },
+      clinton: { congress: 'MI-07 watch', focus: 'Township turnout, agriculture, local services' },
+      jackson: { congress: 'MI-05 / MI-07 edge', focus: 'Courts, county government, labor' },
+      livingston: { congress: 'MI-07 battleground', focus: 'Suburban voters, growth, schools' },
+      shiawassee: { congress: 'MI-08 / rural watch', focus: 'Energy, agriculture, local roads' },
+      ionia: { congress: 'MI-02 watch', focus: 'Small towns, schools, courthouse races' },
+      gratiot: { congress: 'MI-02 watch', focus: 'Rural economy, energy, turnout' }
+    };
 
     var countyData = {};
     if (mapData && mapData.counties) {
@@ -5211,19 +7269,21 @@
           clerk: county.clerk,
           seat: county.seat,
           note: countyNotes[county.slug] || '',
-          url: county.url
+          url: county.url,
+          congress: (countyRaceContext[county.slug] || {}).congress || 'District watch',
+          focus: (countyRaceContext[county.slug] || {}).focus || 'Local races and voter access'
         };
       });
     } else {
       countyData = {
-        ingham: { name: 'Ingham County', clerk: 'Barb Byrum', seat: 'Lansing & East Lansing', note: countyNotes.ingham, url: 'https://www.ingham.org/departments/clerk/' },
-        eaton: { name: 'Eaton County', clerk: 'Diane Bryant', seat: 'Charlotte', note: countyNotes.eaton, url: 'https://www.eatoncounty.org/158/County-Clerk' },
-        clinton: { name: 'Clinton County', clerk: 'Michelle Schoenherr', seat: 'St. Johns', note: countyNotes.clinton, url: 'https://www.clinton-county.org/192/County-Clerk' },
-        jackson: { name: 'Jackson County', clerk: 'Chuck Reynolds', seat: 'Jackson', note: countyNotes.jackson, url: 'https://www.co.jackson.mi.us/158/County-Clerk' },
-        livingston: { name: 'Livingston County', clerk: 'Elizabeth Hundley', seat: 'Howell', note: countyNotes.livingston, url: 'https://www.livgov.com/clerk/' },
-        shiawassee: { name: 'Shiawassee County', clerk: 'Lori Neal', seat: 'Corunna', note: countyNotes.shiawassee, url: 'https://www.shiawassee.net/Departments/Clerk/' },
-        ionia: { name: 'Ionia County', clerk: 'Suzanna Hay', seat: 'Ionia', note: countyNotes.ionia, url: 'https://www.ioniacounty.org/departments/county-clerk/' },
-        gratiot: { name: 'Gratiot County', clerk: 'Kathy Wilson', seat: 'Ithaca', note: countyNotes.gratiot, url: 'https://www.gratiotmi.com/171/County-Clerk' }
+        ingham: { name: 'Ingham County', clerk: 'Barb Byrum', seat: 'Lansing & East Lansing', note: countyNotes.ingham, url: 'https://www.ingham.org/departments/clerk/', congress: countyRaceContext.ingham.congress, focus: countyRaceContext.ingham.focus },
+        eaton: { name: 'Eaton County', clerk: 'Diane Bryant', seat: 'Charlotte', note: countyNotes.eaton, url: 'https://www.eatoncounty.org/158/County-Clerk', congress: countyRaceContext.eaton.congress, focus: countyRaceContext.eaton.focus },
+        clinton: { name: 'Clinton County', clerk: 'Michelle Schoenherr', seat: 'St. Johns', note: countyNotes.clinton, url: 'https://www.clinton-county.org/192/County-Clerk', congress: countyRaceContext.clinton.congress, focus: countyRaceContext.clinton.focus },
+        jackson: { name: 'Jackson County', clerk: 'Chuck Reynolds', seat: 'Jackson', note: countyNotes.jackson, url: 'https://www.co.jackson.mi.us/158/County-Clerk', congress: countyRaceContext.jackson.congress, focus: countyRaceContext.jackson.focus },
+        livingston: { name: 'Livingston County', clerk: 'Elizabeth Hundley', seat: 'Howell', note: countyNotes.livingston, url: 'https://www.livgov.com/clerk/', congress: countyRaceContext.livingston.congress, focus: countyRaceContext.livingston.focus },
+        shiawassee: { name: 'Shiawassee County', clerk: 'Lori Neal', seat: 'Corunna', note: countyNotes.shiawassee, url: 'https://www.shiawassee.net/Departments/Clerk/', congress: countyRaceContext.shiawassee.congress, focus: countyRaceContext.shiawassee.focus },
+        ionia: { name: 'Ionia County', clerk: 'Suzanna Hay', seat: 'Ionia', note: countyNotes.ionia, url: 'https://www.ioniacounty.org/departments/county-clerk/', congress: countyRaceContext.ionia.congress, focus: countyRaceContext.ionia.focus },
+        gratiot: { name: 'Gratiot County', clerk: 'Kathy Wilson', seat: 'Ithaca', note: countyNotes.gratiot, url: 'https://www.gratiotmi.com/171/County-Clerk', congress: countyRaceContext.gratiot.congress, focus: countyRaceContext.gratiot.focus }
       };
     }
 
@@ -5236,6 +7296,8 @@
     var detailSeat = document.getElementById('county-detail-seat');
     var detailNote = document.getElementById('county-detail-note');
     var detailLink = document.getElementById('county-detail-link');
+    var detailCongress = document.getElementById('county-detail-congress');
+    var detailFocus = document.getElementById('county-detail-focus');
 
     if (!mapGroups.length || !defaultPane || !detailPane) return;
 
@@ -5249,6 +7311,8 @@
       detailNote.textContent = dataset.note;
       detailLink.href = dataset.url;
       detailLink.textContent = 'Open ' + dataset.name.replace(' County', '') + " clerk\u2019s office \u2192";
+      if (detailCongress) detailCongress.textContent = dataset.congress || 'District watch';
+      if (detailFocus) detailFocus.textContent = dataset.focus || 'Local races and voter access';
 
       defaultPane.hidden = true;
       detailPane.hidden = false;
@@ -5264,7 +7328,9 @@
       var selectedGroup = svg.querySelector('.county-group[data-county="' + targetId + '"]');
       if (selectedGroup) {
         selectedGroup.classList.add('is-active');
-        selectedGroup.focus({ preventScroll: true });
+        if (selectedGroup.getClientRects().length) {
+          selectedGroup.focus({ preventScroll: true });
+        }
       }
 
       chips.forEach(function(chip) {
@@ -5294,11 +7360,41 @@
 
 
 
+  // ── Subtle Mid-Michigan town drift ───────────────────────
+  (function() {
+    var roots = Array.prototype.slice.call(document.querySelectorAll('[data-town-drift]'));
+    if (!roots.length) return;
+    var towns = [
+      'Webberville', 'St. Johns', 'Eaton Rapids', 'Okemos', 'Ionia', 'Owosso', 'Mason', 'Grand Ledge',
+      'Fowlerville', 'Charlotte', 'East Lansing', 'Portland', 'Holt', 'DeWitt', 'Jackson', 'Williamston',
+      'Alma', 'Leslie', 'Bath', 'Olivet', 'Brooklyn', 'Perry', 'Ithaca', 'Stockbridge', 'Potterville',
+      'Ovid', 'Michigan Center', 'Saranac', 'Elsie', 'Bellevue', 'Grass Lake', 'Corunna', 'Lake Odessa',
+      'Parma', 'Springport', 'Belding', 'Laingsburg', 'Durand', 'Mulliken', 'Sunfield', 'Vermontville',
+      'Hubbardston', 'New Lothrop', 'Dansville', 'Carson City'
+    ];
+
+    roots.forEach(function(root) {
+      root.innerHTML = '';
+      for (var row = 0; row < 5; row += 1) {
+        var rowEl = document.createElement('div');
+        rowEl.className = 'town-drift-row';
+        var offset = row * 7;
+        var ordered = towns.slice(offset).concat(towns.slice(0, offset));
+        ordered.concat(ordered).forEach(function(town) {
+          var span = document.createElement('span');
+          span.textContent = town;
+          rowEl.appendChild(span);
+        });
+        root.appendChild(rowEl);
+      }
+    });
+  })();
+
   // ── Hero background slideshow (45s loop, capitol dome opens) ─────
   (function() {
     var root = document.getElementById('hero-bg-slides');
     if (!root) return;
-    var slides = Array.prototype.slice.call(root.querySelectorAll('img'));
+    var slides = Array.prototype.slice.call(root.querySelectorAll('img, video'));
     if (slides.length < 2) return;
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -5309,7 +7405,7 @@
 
     function preloadNext(nextIdx) {
       var next = slides[nextIdx];
-      if (!next || next.complete) return;
+      if (!next || next.tagName !== 'IMG' || next.complete) return;
       var img = new Image();
       img.src = next.getAttribute('src');
     }
@@ -5362,15 +7458,18 @@
     if (!cards.length) return;
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var focusIdx = 1;
-    var intervalMs = 5000;
+    var focusIdx = 0;
+    var intervalMs = 3600;
     var timer = null;
-    var positions = ['left', 'center', 'right'];
+    var kickTimer = null;
 
     function layoutStack() {
       cards.forEach(function(card, i) {
         var offset = (i - focusIdx + cards.length) % cards.length;
-        var pos = offset < 3 ? positions[offset] : 'hidden';
+        var pos = 'hidden';
+        if (offset === 0) pos = 'center';
+        else if (offset === 1) pos = 'right';
+        else if (offset === cards.length - 1) pos = 'left';
         card.setAttribute('data-pos', pos);
       });
       if (labelEl && cards[focusIdx] && cards[focusIdx].dataset.label) {
@@ -5385,6 +7484,12 @@
 
     function start() {
       if (timer || reduceMotion || cards.length < 2) return;
+      if (!kickTimer) {
+        kickTimer = setTimeout(function() {
+          kickTimer = null;
+          advance();
+        }, 650);
+      }
       timer = setInterval(advance, intervalMs);
     }
 
@@ -5392,6 +7497,10 @@
       if (!timer) return;
       clearInterval(timer);
       timer = null;
+      if (kickTimer) {
+        clearTimeout(kickTimer);
+        kickTimer = null;
+      }
     }
 
     layoutStack();
@@ -5404,6 +7513,7 @@
         });
       }, { threshold: 0.2 });
       obs.observe(document.getElementById('signal-promo') || root);
+      start();
     } else if (!reduceMotion) {
       start();
     }

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" role="img" aria-labelledby="wkar-news-dark-title">
+  <title id="wkar-news-dark-title">WKAR News</title>
+  <defs>
+    <linearGradient id="wkar-tricolor-d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#274c98"/>
+      <stop offset="50%" stop-color="#1a3a2a"/>
+      <stop offset="100%" stop-color="#c52e26"/>
+    </linearGradient>
+    <linearGradient id="wkar-bg-d" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a2a"/>
+      <stop offset="55%" stop-color="#25453d"/>
+      <stop offset="100%" stop-color="#1e3348"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="420" height="96" rx="16" fill="url(#wkar-bg-d)"/>
+  <rect width="420" height="4" rx="2" fill="url(#wkar-tricolor-d)"/>
+  <rect y="92" width="420" height="4" rx="2" fill="url(#wkar-tricolor-d)"/>
+  <rect x="0" y="14" width="5" height="68" rx="2.5" fill="url(#wkar-tricolor-d)"/>
+
+  <text x="28" y="62"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+        font-weight="800" font-size="42" fill="#ffffff"
+        letter-spacing="-1.5">WKAR</text>
+
+  <rect x="152" y="26" width="2" height="40" rx="1" fill="rgba(255,255,255,0.22)"/>
+
+  <text x="168" y="62"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+        font-weight="600" font-size="36" fill="#faf7f3"
+        letter-spacing="7">NEWS</text>
+</svg>

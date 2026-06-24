@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="wkar-news-title">
+  <title id="wkar-news-title">WKAR News</title>
+  <defs>
+    <linearGradient id="wkar-tricolor" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#274c98"/>
+      <stop offset="50%" stop-color="#1a3a2a"/>
+      <stop offset="100%" stop-color="#c52e26"/>
+    </linearGradient>
+    <linearGradient id="wkar-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a2a"/>
+      <stop offset="55%" stop-color="#25453d"/>
+      <stop offset="100%" stop-color="#1e3348"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="520" height="120" rx="18" fill="url(#wkar-bg)"/>
+  <rect width="520" height="4" rx="2" fill="url(#wkar-tricolor)"/>
+  <rect y="116" width="520" height="4" rx="2" fill="url(#wkar-tricolor)"/>
+
+  <!-- Left accent -->
+  <rect x="0" y="18" width="6" height="84" rx="3" fill="url(#wkar-tricolor)"/>
+
+  <!-- Wordmark -->
+  <text x="34" y="76"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+        font-weight="800" font-size="52" fill="#ffffff"
+        letter-spacing="-1.5">WKAR</text>
+
+  <rect x="188" y="34" width="2" height="52" rx="1" fill="rgba(255,255,255,0.22)"/>
+
+  <text x="206" y="76"
+        font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+        font-weight="600" font-size="44" fill="#faf7f3"
+        letter-spacing="8">NEWS</text>
+
+  <!-- Subtle broadcast mark -->
+  <circle cx="468" cy="60" r="5" fill="#4ade80" opacity="0.95"/>
+  <circle cx="468" cy="60" r="9" fill="#4ade80" opacity="0.18"/>
+</svg>
