@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Election 2026 Promo — WKAR Preview</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --wkar-green: #25453d;
+      --wkar-green-deep: #1a3a2a;
+      --wkar-green-mid: #3d7a59;
+      --wkar-blue: #274c98;
+      --wkar-red: #c52e26;
+      --wkar-tricolor: linear-gradient(90deg, var(--wkar-blue) 0%, var(--wkar-green-deep) 50%, var(--wkar-red) 100%);
+      --lux-bg: #faf7f3;
+      --apple-radius-lg: 22px;
+      --apple-shadow: 0 1px 2px rgba(39,76,152,0.04), 0 10px 36px rgba(26,58,42,0.06);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--lux-bg);
+      background-image:
+        radial-gradient(ellipse 120% 80% at 100% 0%, rgba(39,76,152,0.04) 0%, transparent 55%),
+        radial-gradient(ellipse 90% 60% at 0% 100%, rgba(197,46,38,0.03) 0%, transparent 50%);
+      color: #1a1a1c;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .chrome {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.85rem 1.25rem;
+    }
+    .chrome-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .chrome img { height: 52px; width: auto; }
+    .chrome-kicker {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #2d5c42;
+      padding-left: 1rem;
+      border-left: 1px solid #e8e8ed;
+    }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    .section-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      position: relative;
+    }
+    .section-header::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--wkar-tricolor);
+      opacity: 0.42;
+    }
+    .eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--wkar-green-mid);
+      margin: 0 0 0.35rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--wkar-green-mid);
+    }
+    h1 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(1.35rem, 3vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+      line-height: 1.15;
+    }
+    .sub {
+      color: #6e6e73;
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0;
+      line-height: 1.5;
+    }
+    .promo-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 720px) {
+      .promo-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .promo-card {
+      background: #fff;
+      border-radius: var(--apple-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--apple-shadow);
+      border: 1px solid rgba(37,69,61,0.08);
+    }
+    .promo-card-bar {
+      height: 3px;
+      background: var(--wkar-tricolor);
+    }
+    .promo-card-body { padding: 1rem 1rem 1.15rem; }
+    .promo-card h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 0.65rem;
+      letter-spacing: -0.02em;
+    }
+    .promo-card video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      background: #0f1613;
+    }
+    .promo-card .tag {
+      display: inline-block;
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--wkar-blue);
+      background: #e8eef8;
+      padding: 0.2rem 0.5rem;
+      border-radius: 980px;
+      margin-bottom: 0.5rem;
+    }
+    .team {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 2rem 0 1rem;
+    }
+    @media (max-width: 600px) { .team { grid-template-columns: repeat(2, 1fr); } }
+    .avatar {
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgba(37,69,61,0.09);
+      border-radius: 14px;
+      padding: 0.85rem 0.5rem;
+      box-shadow: var(--apple-shadow);
+    }
+    .avatar img {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(61,122,89,0.35);
+    }
+    .avatar p {
+      margin: 0.5rem 0 0;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #515154;
+    }
+    .note {
+      font-size: 0.8rem;
+      color: #6e6e73;
+      line-height: 1.55;
+      border-top: 1px solid rgba(37,69,61,0.09);
+      padding-top: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .note strong { color: #1a3a2a; }
+    code {
+      color: var(--wkar-blue);
+      font-size: 0.85em;
+      background: rgba(39,76,152,0.06);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--wkar-green);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--wkar-blue); }
+  </style>
+</head>
+<body>
+  <header class="chrome">
+    <div class="chrome-inner">
+      <img src="../assets/images/wkar-election-logo-transparent.png" alt="WKAR Election 2026" />
+      <span class="chrome-kicker">Promo Preview</span>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="section-header">
+      <p class="eyebrow">Branded Spot · v2</p>
+      <h1>WKAR Election 2026 Promo</h1>
+      <p class="sub">Site-matched slides, music bed, and team cards — ready for pro voice talent before on-air use.</p>
+    </div>
+
+    <div class="promo-grid">
+      <article class="promo-card">
+        <div class="promo-card-bar"></div>
+        <video controls playsinline poster="../assets/images/capitol-dome.jpg">
+          <source src="../assets/video/wkar-election-2026-promo.mp4" type="video/mp4" />
+        </video>
+        <div class="promo-card-body">
+          <span class="tag">Full</span>
+          <h2>Broadcast &amp; Web (~26s)</h2>
+        </div>
+      </article>
+
+      <article class="promo-card">
+        <div class="promo-card-bar"></div>
+        <video controls playsinline poster="../assets/images/capitol-dome.jpg">
+          <source src="../assets/video/wkar-election-2026-promo-15.mp4" type="video/mp4" />
+        </video>
+        <div class="promo-card-body">
+          <span class="tag">Social</span>
+          <h2>Instagram / X (:15)</h2>
+        </div>
+      </article>
+    </div>
+
+    <div class="team" aria-label="WKAR News political team">
+      <div class="avatar"><img src="../assets/images/sophia-saliby.webp" alt="Sophia Saliby" /><p>Sophia Saliby</p></div>
+      <div class="avatar"><img src="../assets/images/melorie-begay.webp" alt="Melorie Begay" /><p>Melorie Begay</p></div>
+      <div class="avatar"><img src="../assets/images/danielle-prieur-studio.jpg" alt="Danielle Prieur" /><p>Danielle Prieur</p></div>
+      <div class="avatar"><img src="../assets/images/rick-pluta-studio.jpg" alt="Rick Pluta" /><p>Rick Pluta</p></div>
+      <div class="avatar"><img src="../assets/images/colin-jackson.webp" alt="Colin Jackson" /><p>Colin Jackson</p></div>
+      <div class="avatar"><img src="../assets/images/tim-skubick-studio.png" alt="Tim Skubick" /><p>Tim Skubick</p></div>
+    </div>
+
+    <p class="note">
+      <strong>Placeholder voice</strong> uses macOS text-to-speech — swap for a news anchor before broadcast.<br />
+      Rebuild full: <code>cd promo && ./build-promo-v2.sh</code><br />
+      Rebuild social: <code>cd promo && ./build-promo-v2.sh social</code><br />
+      Mixed audio: <code>promo/output/wkar-election-2026-promo-audio.wav</code>
+    </p>
+
+    <a href="../index.html#promo" class="back-link">← View on the live site mockup</a>
+  </div>
+</body>
+</html>

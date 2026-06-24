@@ -3596,8 +3596,157 @@
       .election-nav-toggle { display: none !important; }
     }
 
+    /* ── Election promo spotlight ─────────────────────────── */
+    .promo-spotlight-section {
+      position: relative;
+      background:
+        radial-gradient(ellipse 90% 70% at 100% 0%, rgba(39,76,152,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 55% at 0% 100%, rgba(197,46,38,0.14) 0%, transparent 50%),
+        linear-gradient(158deg, #1a3a2a 0%, #25453d 48%, #1e3348 100%);
+      color: #faf7f3;
+      overflow: hidden;
+    }
+    .promo-spotlight-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 38%, rgba(0,0,0,0.12) 100%);
+      pointer-events: none;
+    }
+    .promo-spotlight-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .promo-spotlight-grid {
+      display: grid;
+      gap: 1.25rem;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .promo-spotlight-grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 2rem;
+      }
+    }
+    .promo-spotlight-section .section-eyebrow {
+      color: rgba(255,255,255,0.72);
+    }
+    .promo-spotlight-section .section-eyebrow.election {
+      color: #d4e4da;
+    }
+    .promo-spotlight-section .section-eyebrow.election::before {
+      background: #7eb8f7;
+    }
+    .promo-spotlight-section .section-brand-copy > h2 {
+      color: #fff !important;
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem) !important;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.18);
+    }
+    .promo-spotlight-section .section-header-bar::after {
+      opacity: 0.65;
+    }
+    .promo-spotlight-deck {
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: rgba(250,247,243,0.82);
+      margin: 0 0 1rem;
+      max-width: 34rem;
+    }
+    .promo-format-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .promo-format-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 980px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.88);
+    }
+    .promo-format-pill--active {
+      border-color: rgba(126,184,247,0.45);
+      background: rgba(39,76,152,0.28);
+      color: #fff;
+    }
+    .promo-format-pill svg {
+      width: 10px;
+      height: 10px;
+      opacity: 0.85;
+    }
+    .promo-video-stage {
+      position: relative;
+      border-radius: var(--apple-radius-lg);
+      overflow: hidden;
+      background: #0f1613;
+      box-shadow:
+        0 2px 8px rgba(0,0,0,0.28),
+        0 18px 52px rgba(0,0,0,0.32),
+        0 0 0 1px rgba(255,255,255,0.06);
+    }
+    .promo-video-stage::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--wkar-tricolor);
+      z-index: 2;
+    }
+    .promo-video-stage video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .promo-video-glow {
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(ellipse at 50% 100%, rgba(39,76,152,0.25) 0%, transparent 62%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .promo-team-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.25rem;
+    }
+    .promo-team-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.65rem 0.3rem 0.3rem;
+      border-radius: 980px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+    }
+    .promo-team-chip img {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid rgba(255,255,255,0.25);
+    }
+    body.election-hub .promo-spotlight-section .section-header-bar::after {
+      opacity: 0.72;
+    }
+
     #county-map,
     #team,
+    #promo,
     #signal,
     #your-ballot,
     #data-centers {
@@ -3997,6 +4146,62 @@
         </div>
       </li>
     </ul>
+
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+<!-- ============================================================
+     ELECTION 2026 PROMO — Branded spot
+     ============================================================ -->
+<section id="promo" class="promo-spotlight-section py-5 sm:py-6 section-compact" aria-labelledby="promo-heading">
+  <div class="promo-spotlight-inner max-w-screen-xl mx-auto px-4 sm:px-6">
+
+    <div class="section-header-bar">
+      <div class="section-brand-row section-brand-row--center">
+        <img src="assets/images/wkar-election-logo-transparent.png" alt="" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" aria-hidden="true" style="filter: brightness(1.08);" />
+        <div class="section-brand-copy">
+          <p class="section-eyebrow election mb-0.5">On Air &amp; Online</p>
+          <h2 id="promo-heading" class="font-display font-bold">Your Guide to Michigan's 2026 Election</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="promo-spotlight-grid">
+      <div class="promo-video-wrap">
+        <span class="promo-video-glow" aria-hidden="true"></span>
+        <div class="promo-video-stage">
+          <video id="promo-player" controls playsinline preload="metadata" poster="assets/images/capitol-dome.jpg">
+            <source src="assets/video/wkar-election-2026-promo.mp4" type="video/mp4" />
+            Your browser does not support embedded video.
+          </video>
+        </div>
+      </div>
+
+      <div class="promo-spotlight-copy">
+        <p class="promo-spotlight-deck">
+          From the Capitol to your county — WKAR News and Michigan Public bring you the races, the reporters, and the context Mid-Michigan needs before you vote.
+        </p>
+        <div class="promo-format-pills" role="group" aria-label="Promo formats">
+          <span class="promo-format-pill promo-format-pill--active">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Full spot · ~26s
+          </span>
+          <a href="assets/video/wkar-election-2026-promo-15.mp4" class="promo-format-pill" download>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Social cut · :15
+          </a>
+        </div>
+        <div class="promo-team-strip" aria-label="Featured in this promo">
+          <span class="promo-team-chip"><img src="assets/images/sophia-saliby.webp" alt="" width="26" height="26" loading="lazy" decoding="async" />Sophia Saliby</span>
+          <span class="promo-team-chip"><img src="assets/images/melorie-begay.webp" alt="" width="26" height="26" loading="lazy" decoding="async" />Melorie Begay</span>
+          <span class="promo-team-chip"><img src="assets/images/danielle-prieur-studio.jpg" alt="" width="26" height="26" loading="lazy" decoding="async" />Danielle Prieur</span>
+          <span class="promo-team-chip"><img src="assets/images/rick-pluta-studio.jpg" alt="" width="26" height="26" loading="lazy" decoding="async" />Rick Pluta</span>
+          <span class="promo-team-chip"><img src="assets/images/tim-skubick-studio.png" alt="" width="26" height="26" loading="lazy" decoding="async" />Tim Skubick</span>
+        </div>
+      </div>
+    </div>
 
   </div>
 </section>
