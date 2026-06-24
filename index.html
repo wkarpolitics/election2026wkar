@@ -437,7 +437,7 @@
     }
     .section-brand-copy > h2 {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(1.125rem, 2.2vw, 1.5rem) !important;
+      font-size: clamp(1.35rem, 2.7vw, 2.05rem) !important;
       font-weight: 700;
       letter-spacing: -0.02em;
       line-height: 1.15;
@@ -545,6 +545,15 @@
       gap: 0.35rem;
       padding-top: 0.35rem;
       border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .hero-headlines-feed-status {
+      margin: -0.18rem 0 0.35rem;
+      font-size: 0.6875rem;
+      line-height: 1.4;
+      color: #6b746f;
+    }
+    .hero-headlines-feed-status[hidden] {
+      display: none !important;
     }
     @media (min-width: 768px) {
       .hero-headlines-body {
@@ -772,7 +781,7 @@
       align-items: center;
       width: max-content;
       gap: clamp(1.35rem, 3vw, 3rem);
-      color: rgba(37, 69, 61, 0.075);
+      color: rgba(37, 69, 61, 0.105);
       font-family: 'Source Serif 4', Georgia, serif;
       font-size: clamp(0.92rem, 1.55vw, 1.45rem);
       font-weight: 600;
@@ -785,27 +794,27 @@
     .town-drift-row:nth-child(1) { top: 12%; }
     .town-drift-row:nth-child(2) {
       top: 31%;
-      color: rgba(39, 76, 152, 0.06);
+      color: rgba(39, 76, 152, 0.085);
       font-size: clamp(0.86rem, 1.35vw, 1.25rem);
       animation-name: townDriftRight;
       animation-duration: var(--town-duration-alt, 340s);
     }
     .town-drift-row:nth-child(3) {
       top: 54%;
-      color: rgba(197, 46, 38, 0.055);
+      color: rgba(197, 46, 38, 0.078);
       font-size: clamp(0.84rem, 1.2vw, 1.14rem);
       animation-duration: var(--town-duration-slow, 420s);
     }
     .town-drift-row:nth-child(4) {
       top: 73%;
-      color: rgba(37, 69, 61, 0.055);
+      color: rgba(37, 69, 61, 0.08);
       font-size: clamp(0.82rem, 1.1vw, 1.05rem);
       animation-name: townDriftRight;
       animation-duration: 500s;
     }
     .town-drift-row:nth-child(5) {
       top: 88%;
-      color: rgba(39, 76, 152, 0.05);
+      color: rgba(39, 76, 152, 0.072);
       font-size: clamp(0.78rem, 1vw, 1rem);
       animation-duration: 560s;
     }
@@ -1212,6 +1221,21 @@
       white-space: nowrap;
       flex-shrink: 0;
       font-variant-numeric: tabular-nums;
+    }
+    .hero-hl-excerpt {
+      display: block;
+      max-width: 56rem;
+      margin-top: -0.18rem;
+      color: #656d68;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+    }
+    .hero-headlines-body.is-feed-loading {
+      opacity: 0.78;
+    }
+    .hero-headlines-body.is-feed-ready {
+      opacity: 1;
+      transition: opacity 0.18s ease;
     }
 
     .hero-editorial-main--solo {
@@ -5986,8 +6010,9 @@
             <p class="hero-stat-label">MI Voters</p>
           </div>
         </div>
+        <p class="hero-headlines-feed-status" data-wkar-feed-status hidden>Showing selected WKAR stories while the live feed loads.</p>
       </div>
-      <div class="hero-headlines-body">
+      <div class="hero-headlines-body" data-wkar-feed="https://www.wkar.org/election-2026.rss">
         <ul class="hero-headlines-list">
           <li class="hero-hl-item hero-hl-item--lead">
             <a href="https://www.wkar.org/wkar-news/2026-06-23/ingham-county-board-opposes-transmission-line-route-through-park" class="hero-hl-link">
@@ -6382,7 +6407,7 @@
         <img src="assets/images/wkar-election-logo-transparent.png" alt="" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" aria-hidden="true" />
         <div class="section-brand-copy">
           <p class="section-eyebrow mb-0.5">WKAR-TV &amp; YouTube</p>
-          <h2 id="otr-heading" class="font-display font-bold text-wkar-black">Off The Record</h2>
+          <h2 id="otr-heading" class="font-display font-bold text-wkar-black">Off The Record: Rewind</h2>
         </div>
       </div>
       <a href="https://www.youtube.com/@wkarnews" target="_blank" rel="noopener noreferrer" class="text-wkar-green-light hover:text-wkar-green text-xs font-medium whitespace-nowrap shrink-0">WKAR News YouTube →</a>
@@ -6439,7 +6464,7 @@
     <div class="signal-section-head mb-5 pb-2.5 border-b border-gray-200 flex items-center gap-3 flex-wrap">
       <img src="assets/images/wkar-election-logo-transparent.png" alt="WKAR Election 2026" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" />
       <a href="#signal-email-top" class="signal-logo-link" aria-label="Subscribe to The Signal">
-        <img src="assets/images/the-signal-logo.svg"
+          <img src="assets/images/signal-logo-transparent.png"
              alt="The Signal — WKAR Michigan Politics Newsletter"
              class="signal-logo signal-logo--section"
              width="560" height="172"
@@ -6514,7 +6539,7 @@
             </svg>
           </div>
           <a href="#signal-email-top" class="signal-logo-link mb-3" aria-label="Subscribe to The Signal">
-            <img src="assets/images/the-signal-logo.svg"
+            <img src="assets/images/signal-logo-transparent.png"
                  alt="The Signal — Week Ahead by WKAR News"
                  class="signal-logo signal-logo--form"
                  width="380" height="116"
@@ -7287,7 +7312,7 @@
         </div>
         <div class="signal-footer-promo">
           <a href="#signal" class="signal-logo-link" aria-label="Subscribe to The Signal newsletter">
-            <img src="assets/images/the-signal-logo.svg"
+            <img src="assets/images/signal-logo-transparent.png"
                  alt="The Signal — Week Ahead newsletter"
                  class="signal-logo signal-logo--footer"
                  width="400" height="122"
@@ -7640,6 +7665,267 @@
       });
 
       selectPin(pins[0]);
+    });
+  })();
+
+
+  // ── Live WKAR Election RSS headlines ─────────────────────
+  (function() {
+    var root = document.querySelector('[data-wkar-feed]');
+    if (!root || !window.fetch || !window.DOMParser) return;
+
+    var feedUrl = root.getAttribute('data-wkar-feed') || 'https://www.wkar.org/election-2026.rss';
+    var feedStatus = document.querySelector('[data-wkar-feed-status]');
+    var jsonFeedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feedUrl);
+
+    function cleanText(value) {
+      return (value || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function htmlToText(html) {
+      var holder = document.createElement('div');
+      holder.innerHTML = html || '';
+      return cleanText(holder.textContent || holder.innerText || '');
+    }
+
+    function truncate(value, max) {
+      var text = cleanText(value);
+      if (text.length <= max) return text;
+      return text.slice(0, max - 1).replace(/\s+\S*$/, '') + '…';
+    }
+
+    function firstByLocalName(node, localName) {
+      var nodes = node.getElementsByTagName('*');
+      for (var i = 0; i < nodes.length; i++) {
+        if (nodes[i].localName === localName) return nodes[i];
+      }
+      return null;
+    }
+
+    function childText(item, name) {
+      var node = firstByLocalName(item, name);
+      return node ? cleanText(node.textContent) : '';
+    }
+
+    function getImage(item, description) {
+      var nodes = item.getElementsByTagName('*');
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        if ((node.localName === 'content' || node.localName === 'thumbnail') && node.getAttribute('url')) {
+          var type = node.getAttribute('type') || '';
+          if (!type || type.indexOf('image/') === 0 || node.localName === 'thumbnail') {
+            return node.getAttribute('url');
+          }
+        }
+      }
+
+      var enclosure = item.querySelector('enclosure[url]');
+      if (enclosure && (enclosure.getAttribute('type') || '').indexOf('image/') === 0) {
+        return enclosure.getAttribute('url');
+      }
+
+      var holder = document.createElement('div');
+      holder.innerHTML = description || '';
+      var embedded = holder.querySelector('img[src]');
+      return embedded ? embedded.getAttribute('src') : '';
+    }
+
+    function formatDate(value) {
+      var date = new Date(value);
+      if (Number.isNaN(date.getTime())) return '';
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    function inferTag(story) {
+      var text = (story.title + ' ' + story.excerpt + ' ' + story.categories.join(' ')).toLowerCase();
+      var counties = [
+        { label: 'Ingham', test: /ingham|lansing|east lansing|okemos|mason|holt|williamston|webberville/ },
+        { label: 'Eaton', test: /eaton|charlotte|grand ledge|delta township|eaton rapids/ },
+        { label: 'Clinton', test: /clinton|st\. johns|de witt|dewitt|bath/ },
+        { label: 'Jackson', test: /jackson|brooklyn|grass lake|parma|springport|michigan center/ },
+        { label: 'Ionia', test: /ionia|portland|saranac|lake odessa|belding/ },
+        { label: 'Shiawassee', test: /shiawassee|owosso|perry|ovid|elsie|corunna|durand/ },
+        { label: 'Gratiot', test: /gratiot|alma|ithaca|hubbardston|carson city/ }
+      ];
+
+      for (var i = 0; i < counties.length; i++) {
+        if (counties[i].test.test(text)) return { label: counties[i].label, state: false };
+      }
+
+      return { label: 'Michigan', state: true };
+    }
+
+    function makeMeta(story) {
+      var parts = ['WKAR'];
+      if (story.author) parts.push(story.author);
+      if (story.date) parts.push(story.date);
+      return parts.join(' · ');
+    }
+
+    function getStory(item) {
+      var descriptionNode = firstByLocalName(item, 'description');
+      var description = descriptionNode ? descriptionNode.textContent : '';
+      var categories = Array.prototype.slice.call(item.getElementsByTagName('category')).map(function(category) {
+        return cleanText(category.textContent);
+      }).filter(Boolean);
+
+      var story = {
+        title: childText(item, 'title'),
+        link: childText(item, 'link'),
+        pubDate: childText(item, 'pubDate'),
+        author: childText(item, 'creator'),
+        excerpt: truncate(htmlToText(description), 165),
+        image: getImage(item, description),
+        categories: categories
+      };
+
+      story.date = formatDate(story.pubDate);
+      story.tag = inferTag(story);
+      return story;
+    }
+
+    function decodeHtml(value) {
+      var holder = document.createElement('textarea');
+      holder.innerHTML = value || '';
+      return holder.value;
+    }
+
+    function getJsonImage(item) {
+      if (item.thumbnail) return item.thumbnail;
+      if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+      if (item.enclosure && item.enclosure.thumbnail) return item.enclosure.thumbnail;
+      return getImage({ getElementsByTagName: function() { return []; }, querySelector: function() { return null; } }, item.description || item.content || '');
+    }
+
+    function getJsonStory(item) {
+      var story = {
+        title: decodeHtml(item.title || ''),
+        link: item.link || item.guid || '',
+        pubDate: item.pubDate || '',
+        author: decodeHtml(item.author || ''),
+        excerpt: truncate(htmlToText(item.description || item.content || ''), 165),
+        image: getJsonImage(item),
+        categories: Array.isArray(item.categories) ? item.categories.map(decodeHtml).filter(Boolean) : []
+      };
+
+      story.date = formatDate(story.pubDate);
+      story.tag = inferTag(story);
+      return story;
+    }
+
+    function buildStory(story, isLead) {
+      var item = document.createElement('li');
+      item.className = isLead ? 'hero-hl-item hero-hl-item--lead' : 'hero-hl-item';
+
+      if (isLead && story.image) {
+        var figure = document.createElement('figure');
+        figure.className = 'hero-hl-thumb';
+        var image = document.createElement('img');
+        image.src = story.image;
+        image.alt = '';
+        image.loading = 'eager';
+        image.decoding = 'async';
+        figure.appendChild(image);
+        item.appendChild(figure);
+      }
+
+      var content = document.createElement('div');
+      content.className = 'hero-hl-content';
+
+      var link = document.createElement('a');
+      link.className = 'hero-hl-link';
+      link.href = story.link || 'https://www.wkar.org/election-2026';
+
+      var title = document.createElement('span');
+      title.className = 'hero-hl-title';
+      title.textContent = story.title || 'Latest WKAR politics story';
+      link.appendChild(title);
+
+      var meta = document.createElement('span');
+      meta.className = 'hero-hl-meta';
+      meta.textContent = makeMeta(story);
+      link.appendChild(meta);
+
+      content.appendChild(link);
+
+      var tag = document.createElement('span');
+      tag.className = 'hero-hl-tag' + (story.tag.state ? ' hero-hl-tag--state' : '');
+      tag.textContent = story.tag.label;
+      content.appendChild(tag);
+
+      if (isLead && story.excerpt) {
+        var excerpt = document.createElement('span');
+        excerpt.className = 'hero-hl-excerpt';
+        excerpt.textContent = story.excerpt;
+        content.appendChild(excerpt);
+      }
+
+      item.appendChild(content);
+      return item;
+    }
+
+    function render(stories) {
+      if (!stories.length) return;
+
+      var leadList = document.createElement('ul');
+      leadList.className = 'hero-headlines-list';
+      leadList.appendChild(buildStory(stories[0], true));
+
+      var secondaryList = document.createElement('ul');
+      secondaryList.className = 'hero-headlines-list hero-headlines-secondary';
+      stories.slice(1, 6).forEach(function(story) {
+        secondaryList.appendChild(buildStory(story, false));
+      });
+
+      root.innerHTML = '';
+      root.appendChild(leadList);
+      root.appendChild(secondaryList);
+      root.classList.remove('is-feed-loading');
+      root.classList.add('is-feed-ready');
+      if (feedStatus) feedStatus.hidden = true;
+    }
+
+    function parseFeed(xmlText) {
+      var doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+      if (doc.querySelector('parsererror')) throw new Error('WKAR feed could not be parsed.');
+      return Array.prototype.slice.call(doc.querySelectorAll('item')).map(getStory).filter(function(story) {
+        return story.title && story.link;
+      });
+    }
+
+    function fetchFeed(urls, index) {
+      return fetch(urls[index], { cache: 'no-store' }).then(function(response) {
+        if (!response.ok) throw new Error('WKAR feed request failed.');
+        return response.text();
+      }).then(parseFeed).catch(function(error) {
+        if (index + 1 < urls.length) return fetchFeed(urls, index + 1);
+        throw error;
+      });
+    }
+
+    function fetchJsonFeed(url) {
+      return fetch(url, { cache: 'no-store' }).then(function(response) {
+        if (!response.ok) throw new Error('WKAR JSON feed request failed.');
+        return response.json();
+      }).then(function(payload) {
+        if (!payload || payload.status !== 'ok' || !Array.isArray(payload.items)) {
+          throw new Error('WKAR JSON feed could not be parsed.');
+        }
+        return payload.items.map(getJsonStory).filter(function(story) {
+          return story.title && story.link;
+        });
+      });
+    }
+
+    root.classList.add('is-feed-loading');
+    fetchFeed([feedUrl], 0).catch(function() {
+      return fetchJsonFeed(jsonFeedUrl);
+    }).then(render).catch(function() {
+      root.classList.remove('is-feed-loading');
+      if (feedStatus) {
+        feedStatus.hidden = false;
+        feedStatus.textContent = 'Could not load the live WKAR feed. Showing selected WKAR stories.';
+      }
     });
   })();
 
