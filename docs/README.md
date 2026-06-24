@@ -49,6 +49,44 @@ WKAR POLITICS/
 | Colin Jackson | `colin-jackson.webp` |
 | Tim Skubick | `tim-skubick-studio.png` |
 
+## Publish to GitHub (live website)
+
+**Repo:** [github.com/wkarpolitics/election2026wkar](https://github.com/wkarpolitics/election2026wkar)
+
+**Live URL after Pages is enabled:**
+`https://wkarpolitics.github.io/election2026wkar/`
+
+### One-time: log in as wkarpolitics
+
+In Terminal:
+
+```bash
+gh auth login
+```
+
+Choose GitHub.com → HTTPS → Login with browser → sign in as **wkarpolitics** (not another account).
+
+### Push and turn on Pages
+
+```bash
+cd ~/Desktop/WKAR\ POLITICS
+chmod +x deploy-to-github.sh
+./deploy-to-github.sh
+```
+
+Or manually:
+
+```bash
+git push -u origin main --force
+```
+
+Then on GitHub: **election2026wkar** → **Settings** → **Pages** → Source: **Deploy from branch** → Branch: **main** → Folder: **/ (root)** → Save.
+
+### What gets published
+
+- `index.html`, `assets/`, `docs/`, `.nojekyll`
+- Not published: `archive/`, `backup grok build/`, unused large videos (over GitHub size limits)
+
 ## GitHub-ready notes
 
 - Only commit `index.html`, `assets/`, and `docs/` for the public site.
