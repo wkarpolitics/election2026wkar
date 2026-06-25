@@ -86,6 +86,8 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
 
   <!-- Open Graph (Facebook, LinkedIn, iMessage, etc.) -->
@@ -10217,6 +10219,252 @@
         font-size: 0.5rem;
         letter-spacing: 0.12em;
         margin-bottom: 0.32rem;
+      }
+    }
+
+    /* ── Board pass: final visual quieting + responsive fit ── */
+    body.election-hub .signal-promo-scatter-band--whisper {
+      display: none !important;
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="melorie-studio"] {
+      object-position: 50% 44%;
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="meeting"] {
+      object-position: 50% 43%;
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="otr-bts"] {
+      object-position: 50% 41%;
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="capitol-promise"] {
+      object-position: 50% 44%;
+    }
+    body.election-hub .hero-headlines-band,
+    body.election-hub .team-flagship-intro,
+    body.election-hub .team-reporter-grid--seven .reporter-card,
+    body.election-hub .otr-video-item,
+    body.election-hub .signal-form-card,
+    body.election-hub .dates-timeline-wrap,
+    body.election-hub .resource-command-main,
+    body.election-hub .resource-command-panel,
+    body.election-hub .race-feature-card,
+    body.election-hub .race-mini-card,
+    body.election-hub .dc-county-card,
+    body.election-hub .explainer-card {
+      border-color: rgba(20, 35, 31, 0.08) !important;
+    }
+    @media (min-width: 900px) {
+      body.election-hub .team-desktop-seven-inner {
+        gap: 1rem 1.1rem;
+      }
+      body.election-hub .team-reporter-grid--seven {
+        gap: 0.72rem;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-card {
+        box-shadow: 0 1px 2px rgba(20,35,31,0.03), 0 12px 28px rgba(20,35,31,0.055);
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-card img {
+        max-height: 188px;
+        filter: contrast(1.025) saturate(1.02) brightness(1.01);
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-card-body {
+        padding: 0.58rem 0.55rem 0.62rem;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-name {
+        font-size: clamp(0.78rem, 0.95vw, 0.92rem);
+      }
+    }
+    @media (min-width: 1280px) {
+      body.election-hub .hero-section--cinematic .hero-bg-media {
+        max-height: min(34vw, 366px);
+      }
+      body.election-hub .hero-promise-panel {
+        max-width: min(48%, 560px);
+      }
+    }
+    @media (max-width: 767px) {
+      body.election-hub .election-chrome-nav {
+        margin-bottom: 0 !important;
+        background: rgba(255,255,255,0.96) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(1.06);
+        backdrop-filter: blur(12px) saturate(1.06);
+        border-bottom: 1px solid #ececee;
+      }
+      body.election-hub .election-chrome-nav > .max-w-screen-xl {
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+      }
+      body.election-hub .election-nav-bar {
+        min-height: 42px !important;
+        border-bottom: none !important;
+        background: transparent !important;
+      }
+      body.election-hub .election-masthead-flag {
+        display: none !important;
+      }
+      body.election-hub .election-nav-mark {
+        display: block !important;
+        height: 30px;
+        width: auto;
+        opacity: 0.98;
+      }
+      body.election-hub .election-nav-toggle {
+        min-width: 38px;
+        min-height: 38px;
+        border-radius: 999px;
+        border-color: #e5e5ea;
+        box-shadow: 0 1px 5px rgba(20,35,31,0.05);
+      }
+      body.election-hub .election-mobile-menu {
+        position: absolute;
+        left: 0.7rem;
+        right: 0.7rem;
+        top: calc(100% + 0.35rem);
+        z-index: 120;
+        grid-template-columns: 1fr;
+        padding: 0.45rem;
+        border: 1px solid #e5e5ea;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.98);
+        box-shadow: 0 18px 42px rgba(20,35,31,0.13);
+      }
+      body.election-hub .election-mobile-link {
+        justify-content: flex-start;
+        min-height: 40px;
+        border-radius: 10px;
+        background: transparent;
+        border-color: transparent;
+        padding-left: 0.85rem;
+      }
+      body.election-hub .election-mobile-link.active,
+      body.election-hub .election-mobile-link:hover {
+        background: #f5f7f6;
+        color: #10271d;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-media {
+        max-height: clamp(190px, 48vw, 245px);
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="melorie-studio"] {
+        object-position: 50% 36%;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="meeting"] {
+        object-position: 50% 40%;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="capitol-promise"] {
+        object-position: 50% 26%;
+      }
+      body.election-hub .hero-section--cinematic .hero-promise-panel {
+        padding: 0.95rem 1rem 0.92rem;
+        border-top-color: rgba(39, 76, 152, 0.18);
+      }
+      body.election-hub .hero-section--cinematic .hero-promise-link {
+        font-size: clamp(1.72rem, 7vw, 2.05rem);
+      }
+      body.election-hub .hero-promise-commitment {
+        font-size: 0.5625rem;
+        letter-spacing: 0.13em;
+      }
+      body.election-hub .hero-section--cinematic .hero-lede {
+        max-width: 21.5rem;
+        font-size: 0.84rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-ribbon {
+        min-height: 34px;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-pin {
+        align-items: center;
+        min-height: 26px;
+        margin-left: 0.35rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: 999px;
+        background: var(--wkar-red);
+        border-right: none;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-num,
+      body.election-hub .hero-section--cinematic .hero-glance-num-sub {
+        color: #fff;
+        font-size: 0.6rem;
+        letter-spacing: 0.06em;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-marquee {
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-marquee::-webkit-scrollbar {
+        display: none;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-track {
+        justify-content: flex-start;
+        width: max-content;
+        min-width: 100%;
+        gap: 0.65rem;
+        padding: 0 0.8rem 0 0.6rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-chip {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-size: 0.64rem;
+        color: #515154;
+      }
+      body.election-hub .hero-headlines-band {
+        border-left: 0;
+        border-right: 0;
+        box-shadow: none;
+      }
+      body.election-hub .hero-headlines-title {
+        font-size: clamp(1.72rem, 7.8vw, 2.3rem);
+      }
+      body.election-hub .hero-hl-item--lead .hero-hl-media {
+        min-height: clamp(176px, 47vw, 226px);
+      }
+      body.election-hub .team-flagship {
+        padding-top: 1rem !important;
+      }
+      body.election-hub .team-flagship-intro {
+        border-radius: 14px !important;
+        overflow: hidden;
+      }
+      body.election-hub .reporter-card {
+        grid-template-columns: 76px minmax(0, 1fr);
+        border-radius: 12px !important;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(20,35,31,0.03), 0 8px 22px rgba(20,35,31,0.05);
+      }
+      body.election-hub .reporter-card img {
+        width: 76px;
+        height: 96px;
+      }
+      body.election-hub .reporter-card--sophia img,
+      body.election-hub .reporter-card--melorie img,
+      body.election-hub .reporter-card--andrew img,
+      body.election-hub .reporter-card--rick img,
+      body.election-hub .reporter-card--colin img {
+        object-position: center 18%;
+      }
+      body.election-hub .reporter-card--danielle img {
+        object-position: center 12%;
+      }
+      body.election-hub .reporter-card--tim img {
+        object-position: center 16%;
+      }
+      body.election-hub .signal-promo-ad-unit--rail,
+      body.election-hub .signal-promo-ad-unit--footer {
+        display: none !important;
+      }
+      body.election-hub .section-brand-row {
+        align-items: flex-start;
+      }
+      body.election-hub main .section-brand-row > .brand-logo--sm {
+        height: clamp(54px, 15vw, 72px);
+        max-width: 5.8rem;
+      }
+      body.election-hub .section-header-link {
+        min-height: 40px;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
       }
     }
   </style>
