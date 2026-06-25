@@ -4,16 +4,20 @@ A single-page election hub for WKAR Public Media — Michigan 2026 races, headli
 
 ## Folder structure
 
+See **`STRUCTURE.md`** in the project root for the full layout, CSS/JS map, and county map locations.
+
 ```
-WKAR POLITICS/
+GROK ELEX BUILD/
 ├── index.html              ← Main website (start here)
+├── STRUCTURE.md            ← Project map (start here for file locations)
 ├── assets/
 │   ├── images/             ← All photos and graphics
 │   ├── video/              ← Short clips used on the page
 │   └── mi-counties-map.js  ← Interactive county map script
 ├── docs/
 │   └── README.md           ← This file
-└── archive/                ← Old tests and raw source files (safe to ignore)
+├── promo/                  ← Promo build scripts (not on live site)
+└── archive/                ← Source files & screenshots (not published)
 ```
 
 ## How to preview locally
@@ -21,10 +25,10 @@ WKAR POLITICS/
 1. Open Terminal.
 2. Run:
    ```bash
-   cd ~/Desktop/WKAR\ POLITICS
-   python3 -m http.server 8766
+   cd ~/Desktop/GROK\ ELEX\ BUILD
+   python3 -m http.server 8767 --bind 127.0.0.1
    ```
-3. Visit: `http://localhost:8766/index.html`
+3. Visit: `http://127.0.0.1:8767/index.html`
 
 ## Where files go
 
@@ -69,7 +73,7 @@ Choose GitHub.com → HTTPS → Login with browser → sign in as **wkarpolitics
 ### Push and turn on Pages
 
 ```bash
-cd ~/Desktop/WKAR\ POLITICS
+cd ~/Desktop/GROK\ ELEX\ BUILD
 chmod +x deploy-to-github.sh
 ./deploy-to-github.sh
 ```

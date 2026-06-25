@@ -6,8 +6,19 @@ promo/output/
 
 # Unused large videos (not referenced in index.html; hero-capitol exceeds GitHub 100MB limit)
 assets/video/hero-capitol.mp4
+assets/video/hero-capitol-4k-archive.mp4
 assets/video/dc-header.mp4
 assets/video/hero-michigan.mp4
 assets/video/capitol-flyover.mp4
 assets/video/wkar-election-2026-promo.mp4
 assets/video/wkar-election-2026-promo-15.mp4
+assets/video/waving-flag-promise-tmp.mp4
+assets/video/road-power-lines.mp4
+
+# Flag crop / frame test exports (scratch, not on live site)
+assets/images/flag-crop-test*.jpg
+assets/images/flag-frame-test.jpg
+assets/images/flag-new-test.jpg
+assets/images/flag-promo-test.jpg
+assets/images/flag-reference-portrait.jpg
+assets/images/flag-t*.jpg
