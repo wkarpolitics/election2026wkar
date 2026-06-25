@@ -3518,6 +3518,58 @@
       }
     }
     @media (min-width: 1024px) {
+      body.election-hub .election-chrome-nav {
+        margin-bottom: -3rem;
+      }
+      body.election-hub .election-nav-flag-desktop {
+        margin-bottom: -1.65rem;
+      }
+      body.election-hub .hero-section--cinematic {
+        margin-top: -0.25rem;
+        padding-top: 0;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-media {
+        aspect-ratio: 21 / 9;
+        height: auto;
+        min-height: 0;
+        max-height: min(34vw, 380px);
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="capitol-promise"] {
+        object-position: 50% 46%;
+        --hero-push-from: 1;
+        --hero-push-to: 1.015;
+        transform-origin: 50% 46%;
+      }
+      body.election-hub .hero-section--cinematic .hero-countdown-badge {
+        display: none !important;
+      }
+      body.election-hub .hero-cinematic-overlay {
+        grid-template-areas:
+          ". ."
+          ". ."
+          "panel .";
+        align-items: end;
+        padding: clamp(1.1rem, 2.2vw, 1.75rem);
+      }
+      body.election-hub .hero-promise-panel {
+        max-width: min(52%, 560px);
+        margin: 0;
+        background: rgba(255, 255, 255, 0.93);
+        backdrop-filter: blur(14px) saturate(1.15);
+        -webkit-backdrop-filter: blur(14px) saturate(1.15);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-left: none;
+        border-radius: 8px;
+        box-shadow:
+          0 4px 22px rgba(0, 0, 0, 0.07),
+          0 1px 3px rgba(0, 0, 0, 0.04);
+      }
+      body.election-hub .hero-promise-panel::before {
+        display: none;
+      }
+      body.election-hub .hero-promise-star {
+        display: none;
+      }
       body.election-hub .otr-videos {
         max-width: none;
       }
@@ -8912,10 +8964,10 @@
       bottom: auto;
       width: 100%;
       max-width: 100%;
-      height: clamp(300px, 54vw, 440px);
-      min-height: 300px;
-      max-height: none;
-      aspect-ratio: auto;
+      aspect-ratio: 21 / 9;
+      height: auto;
+      min-height: 0;
+      max-height: clamp(280px, 52vw, 400px);
       margin: 0;
       opacity: 1;
       -webkit-mask-image: none;
@@ -9251,8 +9303,10 @@
     }
     @media (min-width: 768px) {
       body.election-hub .hero-section--cinematic .hero-bg-media {
-        height: clamp(360px, 40vw, 500px);
-        min-height: 360px;
+        aspect-ratio: 21 / 9;
+        height: auto;
+        min-height: 0;
+        max-height: clamp(300px, 36vw, 420px);
       }
       body.election-hub .hero-section--cinematic #hero-logo-wrap,
       body.election-hub .hero-cinematic-logo {
@@ -9688,8 +9742,8 @@
       }
       body.election-hub .election-chrome-nav {
         overflow: visible;
-        padding-bottom: 0.15rem;
-        margin-bottom: -2.65rem;
+        padding-bottom: 0;
+        margin-bottom: -3.75rem;
       }
       body.election-hub .election-chrome-nav::before {
         display: none;
@@ -9707,7 +9761,7 @@
         align-items: flex-end;
         align-self: flex-end;
         margin-right: 0.15rem;
-        margin-bottom: -1.35rem;
+        margin-bottom: -2rem;
         padding: 0.38rem 0.55rem 0.48rem;
         background: #fff;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
@@ -9735,6 +9789,8 @@
       body.election-hub .hero-section--cinematic {
         position: relative;
         z-index: 1;
+        margin-top: -0.35rem;
+        padding-top: 0;
         padding-bottom: 0;
         background: #fff;
       }
@@ -9743,8 +9799,24 @@
         display: none !important;
       }
       body.election-hub .hero-section--cinematic .hero-bg-media {
-        height: clamp(440px, 36vw, 540px);
-        min-height: 440px;
+        aspect-ratio: 21 / 9;
+        height: auto;
+        min-height: 0;
+        max-height: min(36vw, 380px);
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="capitol-promise"] {
+        object-position: 50% 46%;
+        --hero-push-from: 1;
+        --hero-push-to: 1.015;
+        transform-origin: 50% 46%;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="melorie-studio"] {
+        object-position: 52% 44%;
+        transform-origin: 52% 44%;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-slides [data-focus="meeting"] {
+        object-position: 50% 44%;
+        transform-origin: 50% 44%;
       }
       body.election-hub .hero-section--cinematic .hero-bg-media::after {
         background:
