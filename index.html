@@ -401,8 +401,11 @@
       color: #2d5c42;
       white-space: nowrap;
     }
-    .election-masthead-flag {
+    .election-nav-flag-desktop {
       display: none;
+      flex-shrink: 0;
+      line-height: 0;
+      text-decoration: none;
     }
     .brand-logo-surface--footer {
       padding: 0.45rem 0.85rem;
@@ -7266,7 +7269,7 @@
         line-height: normal;
         gap: 0.5rem;
       }
-      body.election-hub #hero-logo-wrap {
+      body.election-hub .hero-section:not(.hero-section--cinematic) #hero-logo-wrap {
         position: relative;
         flex: 0 0 auto;
         display: inline-block;
@@ -7276,7 +7279,7 @@
         padding: 0;
         line-height: 0;
       }
-      body.election-hub #hero-logo-wrap::after {
+      body.election-hub .hero-section:not(.hero-section--cinematic) #hero-logo-wrap::after {
         content: '';
         display: block;
         width: 2.5rem;
@@ -7284,8 +7287,8 @@
         margin: 0.46rem auto 0;
         background: linear-gradient(90deg, transparent, rgba(0,0,0,0.09), transparent);
       }
-      body.election-hub #hero-logo-wrap img,
-      body.election-hub #hero-logo-wrap svg {
+      body.election-hub .hero-section:not(.hero-section--cinematic) #hero-logo-wrap img,
+      body.election-hub .hero-section:not(.hero-section--cinematic) #hero-logo-wrap svg {
         display: block;
         height: clamp(104px, 27vw, 124px) !important;
         width: auto !important;
@@ -9308,17 +9311,23 @@
       }
     }
 
-    /* ── Desktop masthead: election section flag (1280px+, hero logo stays on mobile) ── */
-    @media (min-width: 1280px) {
-      body.election-hub .election-masthead-flag {
-        display: block;
-        position: relative;
-        z-index: 3;
-        background: #fff;
-        border-bottom: 1px solid #e5e5ea;
-        padding: 0.7rem 0 0.6rem;
+    /* ── Desktop masthead: election section flag in nav (1280px+; mobile hero unchanged) ── */
+    @media (max-width: 1279px) {
+      body.election-hub .election-nav-flag-desktop {
+        display: none !important;
       }
-      body.election-hub .election-masthead-flag::before {
+      body.election-hub .hero-section--cinematic #hero-logo-wrap,
+      body.election-hub .hero-section--cinematic .hero-cinematic-logo {
+        display: block !important;
+        visibility: visible !important;
+      }
+      body.election-hub .hero-section--cinematic #hero-logo-wrap::after {
+        display: none !important;
+        content: none !important;
+      }
+    }
+    @media (min-width: 1280px) {
+      body.election-hub .election-chrome-nav::before {
         content: '';
         position: absolute;
         top: 0;
@@ -9326,25 +9335,27 @@
         right: 0;
         height: 3px;
         background: var(--wkar-tricolor);
-        opacity: 0.8;
+        z-index: 2;
+        pointer-events: none;
       }
-      body.election-hub .election-masthead-flag-inner {
-        display: flex;
+      body.election-hub .election-nav-bar {
         align-items: center;
-        min-height: 80px;
+        min-height: 88px;
+        gap: 1rem;
+        padding-top: 0.35rem;
+        padding-bottom: 0.35rem;
       }
-      body.election-hub .election-masthead-flag-link {
+      body.election-hub .election-nav-flag-desktop {
         display: inline-flex;
         align-items: center;
-        line-height: 0;
-        text-decoration: none;
+        margin-right: 0.15rem;
         transition: opacity 0.2s ease, transform 0.2s ease;
       }
-      body.election-hub .election-masthead-flag-link:hover {
+      body.election-hub .election-nav-flag-desktop:hover {
         opacity: 0.92;
         transform: translateY(-1px);
       }
-      body.election-hub .election-masthead-flag-logo {
+      body.election-hub .election-nav-flag-desktop img {
         display: block;
         height: clamp(80px, 7.8vw, 100px);
         width: auto;
@@ -9353,6 +9364,10 @@
       }
       body.election-hub .election-nav-mark {
         display: none !important;
+      }
+      body.election-hub .election-nav-kicker {
+        padding-left: 0;
+        margin-left: 0;
       }
       body.election-hub .hero-section--cinematic #hero-logo-wrap,
       body.election-hub .hero-section--cinematic .hero-cinematic-logo {
@@ -9395,25 +9410,19 @@
   </a>
 </header>
 
-<div class="election-masthead-flag" aria-label="WKAR Election 2026">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 election-masthead-flag-inner">
-    <a href="#latest" class="election-masthead-flag-link" aria-label="WKAR Election 2026 — latest political coverage">
-      <img src="assets/images/wkar-election-logo-tight.png"
-           alt="WKAR Election 2026"
-           class="election-masthead-flag-logo"
-           width="400"
-           height="150"
-           decoding="async" />
-    </a>
-  </div>
-</div>
-
 <!-- ============================================================
      ELECTION-SPECIFIC NAVIGATION
      ============================================================ -->
 <nav class="election-chrome-nav sticky top-0 z-50" aria-label="Election 2026 navigation">
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
     <div class="election-nav-bar">
+      <a href="#latest" class="election-nav-flag-desktop" aria-label="WKAR Election 2026 — latest political coverage">
+        <img src="assets/images/wkar-election-logo-tight.png"
+             alt="WKAR Election 2026"
+             width="400"
+             height="150"
+             decoding="async" />
+      </a>
       <img src="assets/images/wkar-election-logo-tight.png" alt="" class="election-nav-mark" width="120" height="34" decoding="async" aria-hidden="true" />
       <p class="election-nav-kicker">Election 2026</p>
       <div class="nav-scroll nav-scroll--desktop flex items-center">
