@@ -5701,10 +5701,11 @@
       margin: 0.75rem 0 0;
     }
     .county-race-pill {
-      border-radius: 12px;
+      border-radius: 0;
       padding: 0.65rem;
       background: #fff;
-      border: 1px solid rgba(39,76,152,0.12);
+      border: 1px solid #e5e5ea;
+      border-top: 2px solid var(--wkar-blue);
     }
     .county-race-pill strong {
       display: block;
@@ -5732,34 +5733,45 @@
       }
     }
     .race-feature-card {
-      border-radius: 20px;
+      border-radius: 0;
       overflow: hidden;
-      background: #10271d;
-      color: #fff;
-      box-shadow: 0 18px 56px rgba(16,39,29,0.17);
+      background: #fff;
+      color: #1d1d1f;
+      border: 1px solid #e5e5ea;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
     }
     .race-feature-media {
       min-height: 220px;
       background:
-        linear-gradient(90deg, rgba(16,39,29,0.86), rgba(16,39,29,0.2)),
+        linear-gradient(90deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.18) 44%, rgba(0,0,0,0.32) 100%),
         url('assets/images/capitol-night.jpg') center 35% / cover;
       padding: 1rem;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      border-bottom: 1px solid #e5e5ea;
     }
     .race-feature-media h3 {
-      max-width: 13ch;
+      max-width: 14ch;
       margin: 0;
       font-family: 'Source Serif 4', Georgia, serif;
       font-size: clamp(2rem, 5vw, 3.8rem);
       line-height: 0.95;
       letter-spacing: -0.055em;
+      color: #fff;
+      text-shadow: 0 1px 14px rgba(0,0,0,0.35);
     }
     .race-feature-body {
-      padding: 1rem;
+      padding: 1rem 1.05rem 1.1rem;
       display: grid;
       gap: 0.75rem;
+      background: #fff;
+    }
+    .race-feature-lede {
+      margin: 0;
+      color: #6e6e73;
+      font-size: 0.875rem;
+      line-height: 1.5;
     }
     .candidate-grid {
       display: grid;
@@ -5770,33 +5782,38 @@
       .candidate-grid { grid-template-columns: 1fr 1fr; }
     }
     .candidate-card {
-      border-radius: 15px;
-      padding: 0.8rem;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 0;
+      padding: 0.8rem 0.85rem;
+      background: #f5f5f7;
+      border: 1px solid #e5e5ea;
+      border-top: 2px solid var(--wkar-red);
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
     .candidate-card strong {
       display: block;
       font-family: 'Source Serif 4', Georgia, serif;
       font-size: 1rem;
       line-height: 1.1;
+      color: #1d1d1f;
     }
     .candidate-card span {
       display: block;
       margin-top: 0.2rem;
-      color: rgba(255,255,255,0.68);
+      color: #6e6e73;
       font-size: 0.72rem;
+      line-height: 1.35;
     }
     .race-side-stack {
       display: grid;
       gap: 0.75rem;
     }
     .race-mini-card {
-      border-radius: 18px;
+      border-radius: 0;
       padding: 1rem;
       background: #fff;
-      border: 1px solid rgba(26,58,42,0.08);
-      box-shadow: 0 10px 28px rgba(26,58,42,0.07);
+      border: 1px solid #e5e5ea;
+      border-top: 2px solid #1d1d1f;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     .race-mini-card h3 {
       margin: 0.25rem 0 0.35rem;
@@ -6047,7 +6064,7 @@
     .ask-newsroom-card,
     .race-feature-card,
     .race-mini-card {
-      border-radius: 12px;
+      border-radius: 0;
     }
     .resource-search input,
     .resource-search a,
@@ -6100,7 +6117,7 @@
     .county-race-pill,
     .resource-api-item,
     .candidate-card {
-      border-radius: 10px;
+      border-radius: 0;
     }
     .county-map-card {
       min-height: 92px;
@@ -6157,9 +6174,13 @@
       text-decoration: none;
       color: inherit;
     }
+    .candidate-card:hover {
+      background: #fff;
+      border-color: #d2d2d7;
+    }
     .candidate-card:hover strong {
       text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,0.34);
+      text-decoration-color: var(--wkar-red);
     }
 
     @media (max-width: 767px) {
@@ -8110,6 +8131,20 @@
     }
     body.election-hub #races .section-header-deck {
       margin-top: 0.5rem;
+    }
+    body.election-hub #races .race-feature-card,
+    body.election-hub #races .race-mini-card,
+    body.election-hub #races .candidate-card,
+    body.election-hub #races .county-race-pill {
+      border-radius: 0 !important;
+    }
+    body.election-hub #races .race-feature-card {
+      background: #fff;
+      border-color: #e5e5ea;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+    body.election-hub #races .race-feature-body {
+      background: #fff;
     }
     body.election-hub .ballot-card,
     body.election-hub .coverage-card,
@@ -10592,7 +10627,7 @@
           <h3>Who leads Michigan after Whitmer?</h3>
         </div>
         <div class="race-feature-body">
-          <p style="margin:0;color:rgba(255,255,255,0.76);font-size:0.9rem;line-height:1.5;">A living candidate guide for the open governor's race: biography, money, endorsements, interviews, policy answers, and the local stakes question WKAR will press every candidate to answer.</p>
+          <p class="race-feature-lede">A living candidate guide for the open governor's race: biography, money, endorsements, interviews, policy answers, and the local stakes question WKAR will press every candidate to answer.</p>
           <div class="candidate-grid">
             <a class="candidate-card" href="https://www.wkar.org/wkar-news/2026-06-22/president-trump-endorses-rep-john-james-in-michigan-governors-race"><strong>John James</strong><span>Republican · Trump endorsement shifts the open governor's race</span></a>
             <a class="candidate-card" href="https://www.michiganpublic.org/politics-government/2026-06-22/fact-check-john-james-kill-switch-claims-rile-michigan-governors-race"><strong>Fact check file</strong><span>Claims, context, and what voters need to know before the interview</span></a>
