@@ -9539,23 +9539,122 @@
      ============================================================ -->
 <section id="signal" class="signal-section-elevated py-5 sm:py-7" aria-labelledby="signal-main-heading">
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
-    <h2 id="signal-main-heading" class="sr-only">The Signal — Michigan Politics Newsletter</h2>
-    <a href="https://www.wkar.org/subscribe-the-signal"
-       class="signal-promo-feature"
-       id="signal-email-top"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Subscribe to The Signal — Sunday mornings. Signal+ coming Wednesdays this summer.">
-      <picture class="signal-promo-feature-picture">
-        <source media="(max-width: 767px)" srcset="assets/images/signal/signal-plus-promo-vertical.png" width="1122" height="1402" />
-        <img src="assets/images/signal/signal-plus-promo-horizontal.png"
-             alt="WKAR Politics Newsletter — What The Signal is and what's next. The Signal, Sunday mornings. Signal+ coming Wednesdays this summer. Subscribe now."
-             width="1672"
-             height="941"
-             loading="lazy"
-             decoding="async" />
-      </picture>
-    </a>
+
+    <div class="signal-section-head mb-5 pb-2.5 border-b border-gray-200 flex items-center gap-3 flex-wrap">
+      <img src="assets/images/wkar-election-logo-transparent.png" alt="WKAR Election 2026" class="brand-logo brand-logo--sm" width="200" height="56" decoding="async" />
+      <a href="#signal-email-top" class="signal-logo-link" aria-label="Subscribe to The Signal">
+        <img src="assets/images/the-signal-logo.svg"
+             alt="The Signal — WKAR Michigan Politics Newsletter"
+             class="signal-logo signal-logo--section"
+             width="560" height="172"
+             decoding="async"
+             onerror="this.style.display='none'; document.getElementById('signal-wordmark-fallback').style.display='block';" />
+      </a>
+      <span id="signal-wordmark-fallback"
+            class="font-display font-bold text-wkar-black hidden"
+            style="font-size:2.25rem; display:none; line-height:1;">The Signal</span>
+      <span class="signal-newsletter-tag">Free Newsletter</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start">
+
+      <div class="lg:col-span-7">
+        <h2 id="signal-main-heading" class="sr-only">The Signal — Michigan Politics Newsletter</h2>
+
+        <div class="signal-promo-wrap" id="signal-promo">
+          <div class="signal-promo-stage" aria-live="polite">
+            <div class="signal-promo-stack" id="signal-promo-stack" aria-hidden="true">
+              <figure class="signal-promo-card" data-label="Data Center Tracker">
+                <img src="assets/images/signal/data-center-tracker.jpg" alt="Data Center Tracker — votes, rules, and what's next in Michigan" loading="eager" decoding="async" />
+              </figure>
+              <figure class="signal-promo-card" data-label="Inside this week's Signal">
+                <img src="assets/images/signal/promo-collage.jpg" alt="Preview of The Signal newsletter — Week Ahead, Data Center Tracker, Off The Record, and more" loading="eager" decoding="async" />
+              </figure>
+              <figure class="signal-promo-card" data-label="Week Ahead — every Sunday">
+                <img src="assets/images/signal/week-ahead.jpg" alt="The Signal Week Ahead — Sunday briefing for Mid-Michigan" loading="eager" decoding="async" />
+              </figure>
+              <figure class="signal-promo-card" data-label="What Roth's Watching">
+                <img src="assets/images/signal/roth-watching.jpg" alt="What Roth's Watching — Lansing and civic affairs coverage" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="signal-promo-card" data-label="The Signal Ahead">
+                <img src="assets/images/signal/st-johns.jpg" alt="The Signal Ahead — St. Johns and Mid-Michigan communities" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <span class="signal-promo-scrim" aria-hidden="true"></span>
+            <div class="signal-promo-caption">
+              <p class="signal-promo-caption-text" id="signal-promo-label">Inside this week's Signal</p>
+              <span class="signal-promo-live">Issue preview</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="font-display font-normal text-wkar-black leading-snug mt-4 mb-2"
+           style="font-size:clamp(1.125rem, 2.2vw, 1.5rem);">
+          Your week ahead in Mid-Michigan — filtered for impact.
+        </p>
+        <p class="signal-social-proof">1,500+ readers now start their week here.</p>
+        <p class="signal-section-deck text-wkar-muted text-sm mt-2 mb-0">
+          <strong>The Signal</strong> — Sunday mornings.
+          <strong>Signal+</strong> coming Wednesdays this summer.
+        </p>
+
+        <ul class="space-y-2 mt-4 mb-0">
+          <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d7a59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+            Week Ahead every Sunday morning
+          </li>
+          <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d7a59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+            Data centers, Lansing, and local government deep dives
+          </li>
+          <li class="flex items-center gap-2.5 text-wkar-muted text-sm">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3d7a59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+            Free, nonpartisan, from WKAR's politics team
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-5 lg:sticky lg:top-20">
+        <div class="signal-form-card p-4 sm:p-5 relative">
+          <div style="position:absolute; top:1.25rem; right:1.25rem; opacity:0.08;" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1a3a2a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <a href="#signal-email-top" class="signal-logo-link mb-3" aria-label="Subscribe to The Signal">
+            <img src="assets/images/the-signal-logo.svg"
+                 alt="The Signal — Week Ahead by WKAR News"
+                 class="signal-logo signal-logo--form"
+                 width="380" height="116"
+                 decoding="async" />
+          </a>
+          <p class="text-wkar-muted text-sm mb-5">Get the Week Ahead in your inbox. Free — no spam, unsubscribe anytime.</p>
+
+          <div class="flex flex-col gap-3">
+            <div>
+              <label for="signal-name-top" class="text-wkar-muted text-xs font-medium mb-1.5 block">First name</label>
+              <input type="text" id="signal-name-top" name="first_name" autocomplete="given-name"
+                     placeholder="Your first name"
+                     class="signal-input" />
+            </div>
+            <div>
+              <label for="signal-email-top" class="text-wkar-muted text-xs font-medium mb-1.5 block">Email address</label>
+              <input type="email" id="signal-email-top" name="email" autocomplete="email" required
+                     placeholder="you@example.com"
+                     class="signal-input" />
+            </div>
+            <a href="https://www.wkar.org/subscribe-the-signal"
+               class="signal-subscribe-btn w-full bg-wkar-green hover:bg-wkar-green-mid text-white font-semibold text-sm py-3 rounded-sm transition-colors mt-1 text-center"
+               target="_blank"
+               rel="noopener noreferrer">
+              Subscribe — It's Free
+            </a>
+          </div>
+          <p class="text-wkar-subtle text-xs mt-4 leading-relaxed">WKAR respects your privacy. We never sell subscriber data. <a href="https://www.wkar.org/privacy" class="underline hover:text-wkar-green transition-colors">Privacy policy</a>.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
