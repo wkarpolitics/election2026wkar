@@ -8287,6 +8287,7 @@
       height: clamp(140px, 32vw, 220px);
       object-fit: cover;
       object-position: center center;
+      filter: contrast(1.05) saturate(1.04) brightness(1.04);
     }
     .dc-visual-band video {
       position: relative;
@@ -8302,7 +8303,7 @@
       inset: 0;
       z-index: 2;
       background:
-        linear-gradient(90deg, rgba(16,39,29,0.88) 0%, rgba(16,39,29,0.42) 50%, rgba(16,39,29,0.78) 100%);
+        linear-gradient(90deg, rgba(0,0,0,0.34) 0%, rgba(0,0,0,0.08) 34%, transparent 52%);
       pointer-events: none;
     }
     .dc-visual-band-copy {
@@ -8320,6 +8321,7 @@
       font-weight: 700;
       line-height: 1.08;
       letter-spacing: -0.03em;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.45);
     }
     .dc-visual-band-copy span {
       display: block;
