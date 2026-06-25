@@ -7132,6 +7132,29 @@
     }
 
     @media (min-width: 768px) and (max-width: 1099px) {
+      body.election-hub .election-chrome-nav {
+        margin-bottom: -2rem;
+      }
+      body.election-hub .election-nav-flag-desktop {
+        margin-bottom: -1rem;
+        padding: 0.22rem 0.34rem 0.3rem;
+      }
+      body.election-hub .election-nav-flag-desktop img {
+        height: clamp(56px, 7.5vw, 68px);
+        max-width: min(240px, 32vw);
+      }
+      body.election-hub .election-nav-bar {
+        min-height: 38px;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-media {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        min-height: 0;
+        max-height: clamp(240px, 40vw, 340px);
+      }
+      body.election-hub .hero-section--cinematic .hero-countdown-badge {
+        display: none !important;
+      }
       body.election-hub .nav-scroll--desktop {
         display: none !important;
       }
@@ -9415,22 +9438,8 @@
         flex-direction: column;
         position: relative;
       }
-      body.election-hub .hero-section--cinematic .hero-bg-media {
-        height: clamp(300px, 58vw, 400px);
-        min-height: 300px;
-        flex: 0 0 auto;
-      }
       body.election-hub .hero-cinematic-overlay {
         display: contents;
-      }
-      body.election-hub .hero-section--cinematic .hero-countdown-badge {
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        z-index: 6;
-        grid-area: unset;
-        justify-self: unset;
-        align-self: unset;
       }
       body.election-hub .hero-section--cinematic #hero-logo-wrap,
       body.election-hub .hero-cinematic-logo {
@@ -9791,19 +9800,43 @@
       body.election-hub header img {
         max-height: clamp(64px, 16vw, 96px);
       }
+      body.election-hub .election-nav-flag-desktop {
+        display: none !important;
+      }
       body.election-hub .election-masthead-flag {
-        margin-bottom: -3.15rem;
-        padding: 0.18rem 0.35rem 0.32rem;
+        display: block !important;
+        margin: 0 0 -3.1rem;
+        padding: 0.02rem 0.28rem 0.06rem;
+        background: transparent;
+        box-shadow: none;
+      }
+      body.election-hub .election-masthead-flag-surface {
+        background: transparent;
+        padding: 0;
       }
       body.election-hub .election-masthead-flag-surface img {
-        height: clamp(108px, 27vw, 142px);
-        max-width: min(228px, 54vw);
+        height: clamp(64px, 17vw, 88px);
+        max-width: min(168px, 42vw);
       }
       body.election-hub .election-nav-bar {
         min-height: 32px;
       }
+      body.election-hub .election-chrome-nav {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
       body.election-hub .hero-section--cinematic {
-        margin-top: 0;
+        margin-top: -0.12rem;
+        padding-bottom: 0;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-media {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        min-height: 0;
+        max-height: clamp(210px, 54vw, 300px);
+      }
+      body.election-hub .hero-section--cinematic .hero-countdown-badge {
+        display: none !important;
       }
     }
     @media (min-width: 768px) {
