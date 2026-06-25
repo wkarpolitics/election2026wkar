@@ -401,6 +401,9 @@
       color: #2d5c42;
       white-space: nowrap;
     }
+    .election-masthead-flag {
+      display: none;
+    }
     .brand-logo-surface--footer {
       padding: 0.45rem 0.85rem;
       border-radius: 6px;
@@ -9304,6 +9307,64 @@
         font-size: 0.76rem;
       }
     }
+
+    /* ── Desktop masthead: election section flag (1280px+, hero logo stays on mobile) ── */
+    @media (min-width: 1280px) {
+      body.election-hub .election-masthead-flag {
+        display: block;
+        position: relative;
+        z-index: 3;
+        background: #fff;
+        border-bottom: 1px solid #e5e5ea;
+        padding: 0.7rem 0 0.6rem;
+      }
+      body.election-hub .election-masthead-flag::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--wkar-tricolor);
+        opacity: 0.8;
+      }
+      body.election-hub .election-masthead-flag-inner {
+        display: flex;
+        align-items: center;
+        min-height: 80px;
+      }
+      body.election-hub .election-masthead-flag-link {
+        display: inline-flex;
+        align-items: center;
+        line-height: 0;
+        text-decoration: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+      body.election-hub .election-masthead-flag-link:hover {
+        opacity: 0.92;
+        transform: translateY(-1px);
+      }
+      body.election-hub .election-masthead-flag-logo {
+        display: block;
+        height: clamp(80px, 7.8vw, 100px);
+        width: auto;
+        max-width: min(440px, 34vw);
+        margin: 0;
+      }
+      body.election-hub .election-nav-mark {
+        display: none !important;
+      }
+      body.election-hub .hero-section--cinematic #hero-logo-wrap,
+      body.election-hub .hero-section--cinematic .hero-cinematic-logo {
+        display: none !important;
+      }
+      body.election-hub .hero-cinematic-overlay {
+        grid-template-areas:
+          ". countdown"
+          ". ."
+          "panel panel";
+      }
+    }
   </style>
 </head>
 
@@ -9333,6 +9394,19 @@
     />
   </a>
 </header>
+
+<div class="election-masthead-flag" aria-label="WKAR Election 2026">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 election-masthead-flag-inner">
+    <a href="#latest" class="election-masthead-flag-link" aria-label="WKAR Election 2026 — latest political coverage">
+      <img src="assets/images/wkar-election-logo-tight.png"
+           alt="WKAR Election 2026"
+           class="election-masthead-flag-logo"
+           width="400"
+           height="150"
+           decoding="async" />
+    </a>
+  </div>
+</div>
 
 <!-- ============================================================
      ELECTION-SPECIFIC NAVIGATION
