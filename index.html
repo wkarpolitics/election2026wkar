@@ -8617,6 +8617,254 @@
         gap: 0.35rem;
       }
     }
+
+    /* ── Hero Option A — full-bleed cinematic mockup (mobile + desktop) ── */
+    body.election-hub .hero-section--cinematic {
+      padding: 0 0 0.65rem;
+      background: #f5f5f7;
+      overflow: visible;
+    }
+    body.election-hub .hero-cinematic {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      isolation: isolate;
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-media {
+      display: block !important;
+      position: relative;
+      top: auto;
+      right: auto;
+      left: auto;
+      bottom: auto;
+      width: 100%;
+      max-width: 100%;
+      height: clamp(260px, 52vw, 420px);
+      min-height: 260px;
+      max-height: none;
+      aspect-ratio: auto;
+      margin: 0;
+      opacity: 1;
+      -webkit-mask-image: none;
+      mask-image: none;
+      border: none;
+      border-radius: 0;
+      overflow: hidden;
+      background: #0f1a16;
+      box-shadow: none;
+      clip-path: none;
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-media::after {
+      background:
+        linear-gradient(90deg, rgba(8,14,12,0.42) 0%, rgba(8,14,12,0.12) 38%, transparent 62%),
+        linear-gradient(180deg, rgba(8,14,12,0.08) 0%, transparent 42%, rgba(8,14,12,0.22) 100%);
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-scrim {
+      background: linear-gradient(180deg, transparent 55%, rgba(8,14,12,0.18) 100%);
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-vignette {
+      background: linear-gradient(to top, rgba(8,14,12,0.28) 0%, transparent 55%);
+    }
+    body.election-hub .hero-cinematic-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(0.75rem, 2.4vw, 1.35rem);
+    }
+    body.election-hub .hero-cinematic-overlay a,
+    body.election-hub .hero-cinematic-overlay button {
+      pointer-events: auto;
+    }
+    body.election-hub .hero-countdown-badge {
+      display: inline-flex !important;
+      align-self: flex-end;
+      align-items: center;
+      gap: 0.35rem;
+      margin: 0;
+      padding: 0.5rem 0.85rem;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-left: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+      color: #1d1d1f;
+      line-height: 1;
+      pointer-events: auto;
+    }
+    body.election-hub .hero-countdown-badge-num {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--wkar-blue);
+      font-variant-numeric: tabular-nums;
+    }
+    body.election-hub .hero-countdown-badge-text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(0.5625rem, 1.4vw, 0.6875rem);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #1d1d1f;
+      white-space: nowrap;
+    }
+    body.election-hub .hero-mobile-countdown-pulse,
+    body.election-hub .hero-mobile-countdown-meta {
+      display: none !important;
+    }
+    body.election-hub .hero-cinematic-logo {
+      position: absolute;
+      left: clamp(0.75rem, 2.4vw, 1.35rem);
+      top: 50%;
+      transform: translateY(-58%);
+      z-index: 2;
+      max-width: min(52%, 320px);
+      line-height: 0;
+      filter: drop-shadow(0 6px 22px rgba(0,0,0,0.28));
+    }
+    body.election-hub .hero-cinematic-logo img,
+    body.election-hub .hero-cinematic-logo svg {
+      display: block;
+      width: auto !important;
+      height: clamp(108px, 22vw, 168px) !important;
+      max-width: 100% !important;
+      margin: 0;
+    }
+    body.election-hub .hero-promise-panel {
+      position: relative;
+      z-index: 3;
+      align-self: stretch;
+      margin-top: auto;
+      padding: clamp(0.85rem, 2vw, 1.15rem) clamp(0.95rem, 2.2vw, 1.35rem);
+      background: rgba(255,255,255,0.97);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 2px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.16);
+      overflow: hidden;
+      pointer-events: auto;
+    }
+    body.election-hub .hero-promise-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--wkar-tricolor);
+      opacity: 0.7;
+    }
+    body.election-hub .hero-promise-panel-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.45rem;
+    }
+    body.election-hub .hero-section--cinematic .hero-promise-link {
+      display: inline-flex !important;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      box-shadow: none;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.65rem, 4.2vw, 2.35rem);
+      font-weight: 700;
+      font-style: normal;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      color: #0a0a0a;
+      text-decoration: none;
+    }
+    body.election-hub .hero-section--cinematic .hero-promise-link::after {
+      display: inline !important;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(0.5625rem, 1.2vw, 0.6875rem);
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #3d7a59;
+    }
+    body.election-hub .hero-section--cinematic .hero-lede {
+      display: block !important;
+      max-width: none;
+      margin: 0;
+      text-align: left;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: clamp(0.8125rem, 1.55vw, 0.9375rem);
+      font-weight: 500;
+      line-height: 1.42;
+      letter-spacing: -0.012em;
+      color: #2c2c2e;
+    }
+    body.election-hub .hero-section--cinematic .hero-lede-line {
+      display: inline;
+    }
+    body.election-hub .hero-section--cinematic .hero-lede-line + .hero-lede-line::before {
+      content: ' ';
+    }
+    body.election-hub .hero-section--cinematic .hero-slogan,
+    body.election-hub .hero-section--cinematic .hero-deck,
+    body.election-hub .hero-section--cinematic .hero-proof-row {
+      display: none !important;
+    }
+    body.election-hub .hero-section--cinematic .hero-promise-town-drift {
+      display: none !important;
+    }
+    body.election-hub .hero-section--cinematic > .town-drift {
+      display: none;
+    }
+    body.election-hub .hero-section--cinematic .hero-content {
+      position: relative;
+      z-index: 6;
+      margin: 0.55rem auto 0;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      overflow: visible;
+    }
+    body.election-hub .hero-section--cinematic .hero-editorial,
+    body.election-hub .hero-section--cinematic .hero-editorial-main--solo {
+      display: none !important;
+    }
+    @media (min-width: 768px) {
+      body.election-hub .hero-section--cinematic .hero-bg-media {
+        height: clamp(320px, 38vw, 460px);
+        min-height: 320px;
+      }
+      body.election-hub .hero-cinematic-logo {
+        max-width: min(44%, 380px);
+        transform: translateY(-54%);
+      }
+      body.election-hub .hero-cinematic-logo img,
+      body.election-hub .hero-cinematic-logo svg {
+        height: clamp(128px, 14vw, 188px) !important;
+      }
+      body.election-hub .hero-promise-panel {
+        max-width: min(96%, 1120px);
+        margin-left: auto;
+        margin-right: auto;
+      }
+      body.election-hub .hero-section--cinematic .hero-content {
+        margin-top: 0.75rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    @media (max-width: 767px) {
+      body.election-hub .hero-cinematic-logo {
+        top: 42%;
+        max-width: min(58%, 220px);
+      }
+      body.election-hub .hero-cinematic-logo img,
+      body.election-hub .hero-cinematic-logo svg {
+        height: clamp(92px, 24vw, 118px) !important;
+      }
+    }
   </style>
 </head>
 
@@ -8687,28 +8935,98 @@
 </div><!-- /.site-chrome -->
 
 <!-- ============================================================
-     HERO — Election 2026
+     HERO — Election 2026 (Option A cinematic mockup)
      ============================================================ -->
-<section class="hero-section" aria-labelledby="hero-heading">
-  <div class="hero-bg-media" aria-hidden="true">
-    <div class="hero-bg-slides" id="hero-bg-slides" data-hero-loop-ms="35000" data-hero-dwell-ms="5000" data-hero-first-ms="5000">
-      <img src="assets/images/hero-capitol-promise.jpg" alt="" class="is-active" data-focus="capitol-promise" data-dwell-ms="5000" data-push-slow="1" loading="eager" decoding="async" fetchpriority="high" />
-      <img src="assets/images/hero-interviews.jpg" alt="" data-focus="melorie-studio" data-dwell-ms="5000" loading="eager" decoding="async" />
-      <video src="assets/video/corn-wind.mp4" alt="" data-focus="corn-wind" data-dwell-ms="5000" muted loop playsinline preload="metadata"></video>
-      <img src="assets/images/headlines-meeting.jpg" alt="" data-focus="meeting" data-dwell-ms="5000" loading="lazy" decoding="async" />
-      <img src="assets/images/hero-otr-bts.jpg" alt="" data-focus="otr-bts" data-dwell-ms="5000" loading="lazy" decoding="async" />
-      <img src="assets/images/hero-otr-panel.webp" alt="" data-focus="otr-panel" data-dwell-ms="5000" loading="lazy" decoding="async" />
-      <img src="assets/images/hero-countryside.jpg" alt="" data-focus="countryside" data-dwell-ms="5000" loading="lazy" decoding="async" />
+<section class="hero-section hero-section--cinematic" aria-labelledby="hero-heading">
+  <div class="hero-cinematic">
+    <div class="hero-bg-media" aria-hidden="true">
+      <div class="hero-bg-slides" id="hero-bg-slides" data-hero-loop-ms="35000" data-hero-dwell-ms="5000" data-hero-first-ms="5000">
+        <img src="assets/images/hero-interviews.jpg" alt="" class="is-active" data-focus="melorie-studio" data-dwell-ms="5000" data-push-slow="1" loading="eager" decoding="async" fetchpriority="high" />
+        <img src="assets/images/hero-capitol-promise.jpg" alt="" data-focus="capitol-promise" data-dwell-ms="5000" loading="eager" decoding="async" />
+        <video src="assets/video/corn-wind.mp4" alt="" data-focus="corn-wind" data-dwell-ms="5000" muted loop playsinline preload="metadata"></video>
+        <img src="assets/images/headlines-meeting.jpg" alt="" data-focus="meeting" data-dwell-ms="5000" loading="lazy" decoding="async" />
+        <img src="assets/images/hero-otr-bts.jpg" alt="" data-focus="otr-bts" data-dwell-ms="5000" loading="lazy" decoding="async" />
+        <img src="assets/images/hero-otr-panel.webp" alt="" data-focus="otr-panel" data-dwell-ms="5000" loading="lazy" decoding="async" />
+        <img src="assets/images/hero-countryside.jpg" alt="" data-focus="countryside" data-dwell-ms="5000" loading="lazy" decoding="async" />
+      </div>
+      <span class="hero-bg-scrim"></span>
+      <span class="hero-bg-vignette"></span>
     </div>
-    <span class="hero-bg-scrim"></span>
-    <span class="hero-bg-vignette"></span>
-    <div class="hero-mobile-countdown" role="status" aria-live="polite" aria-label="Days until Michigan Primary">
-      <span class="hero-mobile-countdown-pulse" aria-hidden="true"></span>
-      <span class="hero-mobile-countdown-num" id="hero-mobile-days">40</span>
-      <span class="hero-mobile-countdown-meta">
-        <span class="hero-mobile-countdown-label">Days</span>
-        <span class="hero-mobile-countdown-sublabel">to Primary</span>
-      </span>
+
+    <div class="hero-cinematic-overlay">
+      <div class="hero-mobile-countdown hero-countdown-badge" role="status" aria-live="polite" aria-label="Days until Michigan Primary">
+        <span class="hero-countdown-badge-num" id="hero-mobile-days">40</span>
+        <span class="hero-countdown-badge-text">days to primary</span>
+      </div>
+
+      <div class="hero-cinematic-logo" id="hero-logo-wrap">
+        <svg id="hero-logo-svg"
+             viewBox="0 0 240 200"
+             xmlns="http://www.w3.org/2000/svg"
+             aria-hidden="true">
+          <text x="4" y="30"
+                font-family="'Source Serif 4', Georgia, serif"
+                font-weight="700" font-size="26" fill="#ffffff"
+                letter-spacing="2.5">WKAR</text>
+          <rect x="4" y="38" width="232" height="1.5" fill="#ffffff" opacity="0.35" rx="1"/>
+          <text x="2" y="140"
+                font-family="'Inter', system-ui, sans-serif"
+                font-weight="900" font-size="115" fill="#ffffff"
+                letter-spacing="-4">2</text>
+          <polygon points="63,61 67.5,75 81,75 70.5,83 74,97 63,89 52,97 55.5,83 45,75 58.5,75"
+                   fill="#c52e26"/>
+          <text x="116" y="140"
+                font-family="'Inter', system-ui, sans-serif"
+                font-weight="900" font-size="115" fill="#ffffff"
+                letter-spacing="-4">6</text>
+          <text x="4" y="166"
+                font-family="'Inter', system-ui, sans-serif"
+                font-weight="700" font-size="14.5" fill="#ffffff"
+                letter-spacing="6.5">ELECTION</text>
+          <rect x="4" y="174" width="232" height="2" fill="#ffffff" rx="1"/>
+        </svg>
+      </div>
+      <script>
+        (function() {
+          var logoSrc = window.matchMedia('(max-width: 767px)').matches
+            ? 'assets/images/wkar-election-logo-tight.png'
+            : 'assets/images/wkar-election-logo-transparent.png';
+          var img = new Image();
+          img.onload = function() {
+            var wrap = document.getElementById('hero-logo-wrap');
+            var svg  = document.getElementById('hero-logo-svg');
+            if (wrap && svg) {
+              var ri = document.createElement('img');
+              ri.src = logoSrc;
+              ri.alt = 'WKAR Election 2026';
+              ri.id = 'hero-logo-img';
+              ri.className = 'brand-logo brand-logo--lg hero-cinematic-logo-img';
+              wrap.replaceChild(ri, svg);
+            }
+          };
+          img.src = logoSrc;
+        })();
+      </script>
+
+      <div class="hero-promise-panel">
+        <div class="hero-promise-town-drift town-drift" data-town-drift aria-hidden="true"></div>
+        <div class="hero-promise-panel-head">
+          <a class="hero-promise-link" href="#promise" aria-label="Jump to WKAR News promise">We promise</a>
+        </div>
+        <p class="hero-lede">
+          <span class="hero-lede-line">Seven WKAR political voices. Local questions, statewide stakes.</span>
+          <span class="hero-lede-line">The answers that matter before you vote.</span>
+        </p>
+        <p class="hero-slogan">From WKAR News</p>
+        <p class="hero-deck">
+          Candidate interviews, race explainers, ballot tools, precinct lookup, key dates, and local reporting on how 2026 will affect your life.
+        </p>
+        <div class="hero-proof-row" aria-label="Election 2026 coverage promise">
+          <span class="hero-proof-pill">In-depth interviews</span>
+          <span class="hero-proof-pill">Interactive ballot tools</span>
+          <span class="hero-proof-pill">County-by-county resources</span>
+        </div>
+      </div>
     </div>
   </div>
   <div class="town-drift" data-town-drift aria-hidden="true"></div>
@@ -8716,86 +9034,6 @@
   <div class="hero-content max-w-screen-xl mx-auto px-4 sm:px-6">
 
     <h1 id="hero-heading" class="sr-only">WKAR Election 2026 — Mid-Michigan's Voice</h1>
-
-    <!-- Editorial hero — primary above-the-fold -->
-    <div class="hero-editorial">
-
-      <div class="hero-editorial-main hero-editorial-main--solo py-4 sm:py-5 lg:py-6">
-        <div class="hero-copy">
-        <div class="hero-promise-town-drift town-drift" data-town-drift aria-hidden="true"></div>
-        <div class="hero-brand-inline">
-          <div id="hero-logo-wrap">
-            <svg id="hero-logo-svg"
-                 viewBox="0 0 240 200"
-                 xmlns="http://www.w3.org/2000/svg"
-                 aria-hidden="true">
-              <text x="4" y="30"
-                    font-family="'Source Serif 4', Georgia, serif"
-                    font-weight="700" font-size="26" fill="#25453d"
-                    letter-spacing="2.5">WKAR</text>
-              <rect x="4" y="38" width="232" height="1.5" fill="#25453d" opacity="0.18" rx="1"/>
-              <text x="2" y="140"
-                    font-family="'Inter', system-ui, sans-serif"
-                    font-weight="900" font-size="115" fill="#274c98"
-                    letter-spacing="-4">2</text>
-              <polygon points="63,61 67.5,75 81,75 70.5,83 74,97 63,89 52,97 55.5,83 45,75 58.5,75"
-                       fill="white"/>
-              <text x="116" y="140"
-                    font-family="'Inter', system-ui, sans-serif"
-                    font-weight="900" font-size="115" fill="#c52e26"
-                    letter-spacing="-4">6</text>
-              <text x="4" y="166"
-                    font-family="'Inter', system-ui, sans-serif"
-                    font-weight="700" font-size="14.5" fill="#25453d"
-                    letter-spacing="6.5">ELECTION</text>
-              <rect x="4" y="174" width="232" height="2" fill="#25453d" rx="1"/>
-            </svg>
-          </div>
-          <script>
-            (function() {
-              var logoSrc = window.matchMedia('(max-width: 767px)').matches
-                ? 'assets/images/wkar-election-logo-tight.png'
-                : 'assets/images/wkar-election-logo-transparent.png';
-              var img = new Image();
-              img.onload = function() {
-                var wrap = document.getElementById('hero-logo-wrap');
-                var svg  = document.getElementById('hero-logo-svg');
-                if (wrap && svg) {
-                  var ri = document.createElement('img');
-                  ri.src = logoSrc;
-                  ri.alt = 'WKAR Election 2026';
-                  ri.id = 'hero-logo-img';
-                  ri.className = 'brand-logo brand-logo--lg';
-                  wrap.replaceChild(ri, svg);
-                }
-              };
-              img.src = logoSrc;
-            })();
-          </script>
-          <a class="hero-promise-link" href="#promise" aria-label="Jump to WKAR News promise">We promise</a>
-        </div>
-
-        <p class="hero-slogan">From WKAR News</p>
-
-        <p class="hero-lede">
-          <span class="hero-lede-line">Seven WKAR political voices. Local questions, statewide stakes.</span>
-          <span class="hero-lede-line">The answers that matter before you vote.</span>
-        </p>
-        <p class="hero-deck">
-          Candidate interviews, race explainers, ballot tools, precinct lookup, key dates, and local reporting on how 2026 will affect your life.
-        </p>
-
-        <div class="hero-proof-row" aria-label="Election 2026 coverage promise">
-          <span class="hero-proof-pill">In-depth interviews</span>
-          <span class="hero-proof-pill">Interactive ballot tools</span>
-          <span class="hero-proof-pill">County-by-county resources</span>
-        </div>
-
-        </div><!-- /.hero-copy -->
-
-      </div>
-
-    </div>
 
     <!-- Slim glance ribbon — sits above headlines panel -->
     <div class="hero-glance-wrap">
