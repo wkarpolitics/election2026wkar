@@ -407,6 +407,45 @@
       line-height: 0;
       text-decoration: none;
     }
+    .election-masthead-flag {
+      display: none;
+      position: relative;
+      z-index: 3;
+      line-height: 0;
+      pointer-events: none;
+    }
+    .election-masthead-flag-link {
+      display: inline-block;
+      pointer-events: auto;
+      text-decoration: none;
+    }
+    .election-masthead-flag-surface {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      line-height: 0;
+    }
+    .election-masthead-flag-surface img {
+      display: block;
+      width: auto;
+      height: clamp(88px, 22vw, 128px);
+      max-width: min(220px, 52vw);
+      object-fit: contain;
+      object-position: left center;
+    }
+    .election-nav-flag-surface {
+      display: inline-flex;
+      align-items: center;
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+      line-height: 0;
+    }
     .brand-logo-surface--footer {
       padding: 0.45rem 0.85rem;
       border-radius: 6px;
@@ -2260,8 +2299,8 @@
       grid-template-columns: 1fr;
       gap: 1rem;
     }
-    @media (min-width: 768px) {
-      .otr-videos { max-width: 52rem; }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .otr-videos { max-width: 40rem; }
     }
     .otr-video-item {
       display: flex;
@@ -3422,7 +3461,94 @@
       aspect-ratio: 5 / 4;
     }
     @media (min-width: 1024px) {
-      .signal-promo-stage { aspect-ratio: 16 / 11; }
+      .signal-promo-stage { aspect-ratio: 16 / 10; }
+    }
+    @media (min-width: 1024px) {
+      body.election-hub .signal-promo-wrap {
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      body.election-hub .signal-promo-stage {
+        border-radius: 10px;
+        border-color: #e8e8ed;
+        background: #f8f8fa;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.04);
+      }
+      body.election-hub .signal-promo-stack {
+        inset: 0 0 2.65rem;
+        overflow: hidden;
+      }
+      body.election-hub .signal-promo-card[data-pos="left"],
+      body.election-hub .signal-promo-card[data-pos="right"] {
+        display: none !important;
+      }
+      body.election-hub .signal-promo-card[data-pos="center"] {
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        transform: none !important;
+        box-shadow: none;
+        background: #f8f8fa;
+      }
+      body.election-hub .signal-promo-card[data-pos="center"] img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+        object-fit: contain;
+        object-position: center center;
+        padding: 0.65rem 0.75rem 0.35rem;
+        background: #f8f8fa;
+      }
+      body.election-hub .signal-promo-card[data-pos="hidden"] {
+        display: none !important;
+      }
+      body.election-hub .signal-promo-scrim {
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          transparent 72%,
+          rgba(26, 58, 42, 0.55) 88%,
+          rgba(26, 58, 42, 0.9) 100%
+        );
+      }
+    }
+    @media (min-width: 1024px) {
+      body.election-hub .otr-videos {
+        max-width: none;
+      }
+      body.election-hub .otr-video-item {
+        display: grid;
+        grid-template-columns: minmax(0, 28rem) minmax(0, 1fr);
+        align-items: stretch;
+        border-radius: 10px;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.28s ease;
+      }
+      body.election-hub .otr-video-item:hover {
+        transform: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      }
+      body.election-hub .otr-embed-wrap {
+        border-radius: 10px 0 0 10px;
+        aspect-ratio: 16 / 9;
+      }
+      body.election-hub .otr-video-body {
+        border-top: none;
+        border-left: 3px solid var(--wkar-blue);
+        padding: 1.15rem 1.3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      body.election-hub .otr-host-chip--text {
+        max-width: none;
+        margin-bottom: 0.85rem;
+      }
     }
     .signal-promo-stack {
       position: absolute;
@@ -3636,27 +3762,98 @@
       margin-top: 0.35rem;
     }
     .signal-promo-scatter-band {
-      padding: 0.85rem 0 1rem;
-      background: #f5f5f7;
-      border-top: 1px solid #e5e5ea;
-      border-bottom: 1px solid #e5e5ea;
+      padding: 1.1rem 0 1.25rem;
+      background: transparent;
+      border: none;
+    }
+    .signal-promo-scatter-band--whisper {
+      padding: 0.75rem 0 1.35rem;
     }
     .signal-section-elevated .signal-promo-feature,
     .signal-footer-promo .signal-promo-feature,
     .signal-promo-scatter-band .signal-promo-feature {
       background: transparent;
     }
+    .signal-promo-ad-unit {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0.55rem 0.6rem 0.62rem;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 10px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .signal-promo-ad-unit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    }
+    .signal-promo-ad-unit-kicker {
+      display: block;
+      margin: 0 0 0.4rem;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.5625rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #86868b;
+      line-height: 1.2;
+    }
+    .signal-promo-ad-unit img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      filter: none;
+      box-shadow: none;
+    }
+    .signal-promo-ad-unit--rail {
+      max-width: 13.75rem;
+      margin: 1.75rem auto 0;
+    }
+    .signal-promo-ad-unit--strip {
+      max-width: min(100%, 21rem);
+      margin-left: auto;
+      margin-right: 0;
+      padding: 0.5rem 0.55rem 0.55rem;
+    }
+    .signal-promo-ad-unit--footer {
+      max-width: 11.5rem;
+      margin-top: 0.65rem;
+      padding: 0.45rem 0.5rem 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+    .signal-subscribe-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
     .signal-promo-feature--scatter img {
-      max-width: min(100%, 26rem);
+      max-width: 100%;
     }
     @media (min-width: 768px) {
-      .signal-promo-feature--scatter img {
-        max-width: min(100%, 52rem);
+      .signal-promo-ad-unit--rail {
+        margin: 2rem 0 0 auto;
+      }
+      .signal-promo-ad-unit--strip {
+        max-width: min(100%, 24rem);
       }
     }
     @media (max-width: 767px) {
-      .signal-promo-feature img {
-        max-width: min(100%, 26rem);
+      .signal-promo-ad-unit--rail {
+        max-width: min(100%, 15.5rem);
+        margin: 1.5rem auto 0;
+      }
+      .signal-promo-scatter-band--whisper {
+        padding: 0.55rem 0 1rem;
+      }
+      .signal-promo-ad-unit--strip {
+        max-width: min(100%, 17.5rem);
+        margin-left: auto;
+        margin-right: auto;
       }
     }
     .signal-form-card .signal-input {
@@ -4386,11 +4583,6 @@
     .section-compact { padding-top: 1rem !important; padding-bottom: 1rem !important; }
     @media (max-width: 639px) {
       .hide-mobile { display: none !important; }
-      body.election-hub header { zoom: 0.68; }
-      .election-nav-kicker {
-        padding: 0.55rem 0.65rem 0.55rem 0;
-        font-size: 0.5625rem;
-      }
       .election-nav-bar { min-height: 40px; }
 
       .signal-quote-mobile-hide { display: none; }
@@ -4585,23 +4777,16 @@
       background: #fff;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
-      border-top: 1px solid #ececee;
-      border-bottom: 1px solid #e8e8ed;
+      border-top: none;
+      border-bottom: none;
       box-shadow: none;
       position: relative;
       overflow: hidden;
       isolation: isolate;
     }
     body.election-hub .election-chrome-nav::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 2px;
-      background: var(--wkar-tricolor);
-      opacity: 0.7;
-      pointer-events: none;
+      display: none;
+      content: none;
     }
     body.election-hub .section-rule {
       background: linear-gradient(to right, transparent 0%, rgba(39,76,152,0.22) 12%, rgba(26,58,42,0.18) 50%, rgba(197,46,38,0.22) 88%, transparent 100%);
@@ -4709,6 +4894,7 @@
       border: none;
       box-shadow: none;
     }
+
     body.election-hub .signal-promo-stage {
       border-radius: var(--apple-radius-lg);
       box-shadow: var(--apple-shadow);
@@ -6894,20 +7080,12 @@
       }
       body.election-hub header {
         zoom: 1 !important;
+        line-height: 0;
       }
       body.election-hub header a {
         display: block;
         width: 100%;
         line-height: 0;
-      }
-      body.election-hub header img {
-        display: block;
-        width: 100%;
-        height: auto;
-        max-height: none;
-        background: #fff;
-        object-fit: contain;
-        object-position: center top;
       }
       body.election-hub .election-chrome-nav {
         position: sticky;
@@ -6915,11 +7093,12 @@
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
         box-shadow: none;
-        border-bottom: 1px solid #d2d2d7;
+        border-bottom: none;
+        border-top: none;
       }
       body.election-hub .election-chrome-nav::after {
-        height: 1px;
-        opacity: 0.55;
+        display: none;
+        content: none;
       }
       body.election-hub .election-nav-bar {
         min-height: 44px;
@@ -8522,11 +8701,8 @@
       body.election-hub .county-map-chip {
         min-height: 44px;
       }
-      body.election-hub .signal-promo-scatter-band {
-        padding: 0.6rem 0 0.7rem;
-      }
-      body.election-hub .signal-promo-feature--scatter img {
-        max-width: min(100%, 24rem);
+      body.election-hub .signal-promo-scatter-band--whisper {
+        padding: 0.5rem 0 0.85rem;
       }
       body.election-hub #signal {
         padding-top: 1.15rem !important;
@@ -8668,7 +8844,7 @@
         margin-top: 0.75rem;
         padding-top: 0.75rem;
       }
-      body.election-hub .signal-promo-scatter--footer {
+      body.election-hub .signal-promo-ad-unit--footer {
         max-width: min(100%, 10.5rem);
       }
       body.election-hub .signal-promo-scatter-band {
@@ -8699,9 +8875,6 @@
       }
       body.election-hub .explainer-grid {
         gap: 1.1rem;
-      }
-      body.election-hub .otr-videos {
-        max-width: 54rem;
       }
       body.election-hub .promise-wrap {
         gap: 1.5rem;
@@ -8867,14 +9040,15 @@
       grid-area: panel;
       align-self: end;
       margin-top: 0;
-      padding: clamp(0.9rem, 2.1vw, 1.2rem) clamp(1rem, 2.4vw, 1.4rem);
-      background: rgba(255,255,255,0.98);
-      border: 1px solid rgba(0,0,0,0.08);
+      padding: clamp(1rem, 2.2vw, 1.3rem) clamp(1.15rem, 2.6vw, 1.5rem) clamp(1.05rem, 2vw, 1.25rem);
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.05);
       border-left: 3px solid var(--wkar-blue);
       border-radius: 0;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.14);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.09);
       overflow: hidden;
       pointer-events: auto;
+      isolation: isolate;
     }
     body.election-hub .hero-promise-panel::before {
       content: '';
@@ -8888,19 +9062,8 @@
       z-index: 2;
     }
     body.election-hub .hero-promise-panel::after {
-      content: 'We promise';
-      position: absolute;
-      right: -0.02em;
-      bottom: -0.14em;
-      z-index: 0;
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(3.25rem, 11vw, 6.5rem);
-      font-weight: 600;
-      letter-spacing: -0.065em;
-      line-height: 0.82;
-      color: rgba(16, 46, 33, 0.055);
-      pointer-events: none;
-      white-space: nowrap;
+      display: none;
+      content: none;
     }
     body.election-hub .hero-promise-panel-head {
       position: relative;
@@ -8908,8 +9071,8 @@
       display: flex;
       align-items: center;
       gap: 0.65rem;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
+      margin-bottom: 0.45rem;
+      flex-wrap: nowrap;
     }
     body.election-hub .hero-promise-divider {
       display: block;
@@ -8920,22 +9083,23 @@
     }
     body.election-hub .hero-promise-commitment {
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: clamp(0.5625rem, 1.2vw, 0.6875rem);
+      font-size: clamp(0.5625rem, 1.15vw, 0.6875rem);
       font-weight: 700;
-      letter-spacing: 0.16em;
+      font-style: normal;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--wkar-red);
-      line-height: 1;
+      color: #1d1d1f;
+      line-height: 1.1;
     }
     body.election-hub .hero-promise-star {
       position: relative;
       z-index: 1;
       display: block;
-      width: 0.72rem;
-      height: 0.72rem;
-      margin: 0.12rem 0 0.28rem;
-      color: #aeaeb2;
-      opacity: 0.72;
+      width: 0.62rem;
+      height: 0.62rem;
+      margin: 0 0 0.35rem;
+      color: #c7c7cc;
+      opacity: 0.85;
     }
     body.election-hub .hero-promise-star svg {
       display: block;
@@ -8949,14 +9113,15 @@
       border: 0;
       background: none;
       box-shadow: none;
-      font-family: var(--font-display, 'Source Serif 4'), Georgia, serif;
-      font-size: clamp(1.65rem, 4.2vw, 2.35rem);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(1.75rem, 4.4vw, 2.4rem);
       font-weight: 700;
-      font-style: normal;
-      letter-spacing: -0.035em;
+      font-style: italic;
+      letter-spacing: -0.034em;
       line-height: 1.02;
       color: #0a0a0a;
       text-decoration: none;
+      -webkit-font-smoothing: antialiased;
     }
     body.election-hub .hero-section--cinematic .hero-promise-link::after {
       display: none !important;
@@ -8995,16 +9160,10 @@
       display: none !important;
     }
     body.election-hub .hero-section--cinematic .hero-promise-town-drift {
-      display: block !important;
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-      opacity: 1;
-      mix-blend-mode: normal;
-      mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%, #000 88%, transparent 100%);
-      -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%, #000 88%, transparent 100%);
+      display: none !important;
+    }
+    body.election-hub .hero-section--cinematic .mobile-hero-promise {
+      display: none !important;
     }
     body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row {
       color: rgba(37, 69, 61, 0.06);
@@ -9025,6 +9184,9 @@
     body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row:nth-child(4),
     body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row:nth-child(5) {
       display: none;
+    }
+    body.election-hub .hero-section--cinematic {
+      position: relative;
     }
     body.election-hub .hero-section--cinematic > .town-drift {
       display: none;
@@ -9104,9 +9266,21 @@
         height: clamp(120px, 13vw, 172px) !important;
       }
       body.election-hub .hero-promise-panel {
-        max-width: min(96%, 1120px);
+        max-width: min(94%, 960px);
         margin-left: auto;
         margin-right: auto;
+        padding: 1.15rem 1.5rem 1.1rem;
+      }
+      body.election-hub .hero-promise-panel-head {
+        margin-bottom: 0.4rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-promise-link {
+        font-size: clamp(1.9rem, 2.8vw, 2.35rem);
+      }
+      body.election-hub .hero-section--cinematic .hero-lede {
+        font-size: 0.9rem;
+        line-height: 1.42;
+        color: #1d1d1f;
       }
       body.election-hub .hero-section--cinematic .hero-content {
         margin-top: 0.75rem;
@@ -9133,31 +9307,74 @@
       }
       body.election-hub .hero-section--cinematic {
         margin-top: 0;
+        padding-bottom: 0;
+      }
+      body.election-hub .hero-cinematic {
+        display: flex;
+        flex-direction: column;
+        position: relative;
       }
       body.election-hub .hero-section--cinematic .hero-bg-media {
-        height: clamp(320px, 62vw, 420px);
-        min-height: 320px;
+        height: clamp(300px, 58vw, 400px);
+        min-height: 300px;
+        flex: 0 0 auto;
       }
       body.election-hub .hero-cinematic-overlay {
-        padding: 0.55rem 0.5rem 0.45rem;
+        display: contents;
+      }
+      body.election-hub .hero-section--cinematic .hero-countdown-badge {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        z-index: 6;
+        grid-area: unset;
+        justify-self: unset;
+        align-self: unset;
       }
       body.election-hub .hero-section--cinematic #hero-logo-wrap,
       body.election-hub .hero-cinematic-logo {
-        max-width: min(50%, 188px);
-        margin: 0.05rem 0 0 !important;
-      }
-      body.election-hub .hero-section--cinematic #hero-logo-wrap img,
-      body.election-hub .hero-section--cinematic #hero-logo-wrap svg,
-      body.election-hub .hero-cinematic-logo img,
-      body.election-hub .hero-cinematic-logo svg {
-        height: clamp(108px, 28vw, 136px) !important;
+        display: none !important;
       }
       body.election-hub .hero-section--cinematic .hero-promise-panel {
-        margin-left: 0;
-        margin-right: 0;
+        position: relative;
+        grid-area: unset;
+        align-self: stretch;
+        width: 100%;
+        margin: 0;
+        padding: 1.05rem 1.15rem 1rem;
+        border: none;
+        border-top: 2px solid rgba(39, 76, 152, 0.28);
+        border-left: none;
+        box-shadow: none;
+      }
+      body.election-hub .hero-promise-panel::before {
+        display: none;
+      }
+      body.election-hub .hero-promise-panel-head {
+        justify-content: center;
+        margin-bottom: 0.38rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-promise-link {
+        font-size: clamp(1.9rem, 7.2vw, 2.2rem);
+        font-style: italic;
+      }
+      body.election-hub .hero-section--cinematic .hero-lede {
+        text-align: center;
+        align-items: center;
+        max-width: 20rem;
+        margin: 0.3rem auto 0;
+        font-size: clamp(0.8rem, 3.2vw, 0.875rem);
+        line-height: 1.36;
+        color: #1d1d1f;
+      }
+      body.election-hub .hero-promise-star {
+        margin: 0.05rem auto 0.32rem;
+      }
+      body.election-hub .hero-section--cinematic > .town-drift {
+        display: none;
       }
       body.election-hub .hero-section--cinematic .hero-content {
-        margin: 0.45rem 0.55rem 0;
+        margin: 0;
         padding-left: 0;
         padding-right: 0;
       }
@@ -9227,8 +9444,11 @@
       }
     }
 
-    /* ── Team: 7 individual shots across (desktop only) ── */
+    /* ── Team: categorized desktop rows (4 local + 3 statewide) ── */
     .team-desktop-seven {
+      display: none;
+    }
+    .team-desktop-divider {
       display: none;
     }
     @media (min-width: 900px) {
@@ -9243,6 +9463,14 @@
         display: block;
         margin-top: 0.35rem;
       }
+      body.election-hub .team-desktop-seven-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+      }
+      body.election-hub .team-desktop-group {
+        min-width: 0;
+      }
       body.election-hub .team-desktop-seven-head {
         display: flex;
         align-items: baseline;
@@ -9251,7 +9479,17 @@
         padding-top: 0.62rem;
         position: relative;
       }
-      body.election-hub .team-desktop-seven-head::before {
+      body.election-hub .team-desktop-seven-head--local::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 3px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--wkar-green-mid), var(--wkar-blue));
+      }
+      body.election-hub .team-desktop-seven-head--state::before {
         content: '';
         position: absolute;
         left: 0;
@@ -9261,14 +9499,32 @@
         border-radius: 999px;
         background: linear-gradient(90deg, var(--wkar-blue), var(--wkar-red));
       }
+      body.election-hub .team-desktop-seven-head--local .talent-group-title {
+        color: var(--wkar-green-mid);
+      }
+      body.election-hub .team-desktop-seven-head--state .talent-group-title {
+        color: var(--wkar-blue);
+      }
       body.election-hub .team-reporter-grid--seven {
         display: grid !important;
-        grid-template-columns: repeat(7, minmax(0, 1fr));
         gap: 0.62rem;
         overflow: visible;
         padding: 0;
         margin: 0;
         scroll-snap-type: none;
+      }
+      body.election-hub .team-reporter-grid--local {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      body.election-hub .team-reporter-grid--state {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      body.election-hub .team-desktop-divider {
+        display: block;
+        width: 100%;
+        height: 1px;
+        margin: 0.15rem 0;
+        background: linear-gradient(90deg, transparent, rgba(39, 76, 152, 0.28) 12%, rgba(197, 46, 38, 0.28) 88%, transparent);
       }
       body.election-hub .team-reporter-grid--seven .reporter-card {
         min-width: 0;
@@ -9310,45 +9566,151 @@
         font-size: 0.76rem;
       }
     }
+    @media (min-width: 1100px) {
+      body.election-hub .team-desktop-seven-inner {
+        grid-template-columns: minmax(0, 4fr) 1px minmax(0, 3fr);
+        gap: 0.85rem;
+        align-items: stretch;
+      }
+      body.election-hub .team-desktop-divider {
+        display: block;
+        width: 1px;
+        height: auto;
+        min-height: 100%;
+        margin: 0;
+        background: linear-gradient(180deg, rgba(39, 76, 152, 0.12), rgba(39, 76, 152, 0.42) 18%, rgba(197, 46, 38, 0.42) 82%, rgba(197, 46, 38, 0.12));
+      }
+      body.election-hub .team-desktop-group--state {
+        padding-left: 0.15rem;
+      }
+    }
 
-    /* ── Desktop masthead: election section flag in nav (1280px+; mobile hero unchanged) ── */
+    /* ── Masthead election flag: white surface + lip over hero ── */
     @media (max-width: 1279px) {
+      body.election-hub .site-chrome {
+        overflow: visible;
+      }
+      body.election-hub header img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: clamp(72px, 17vw, 128px);
+        background: #fff;
+        object-fit: cover;
+        object-position: center top;
+      }
+      body.election-hub .election-chrome-nav {
+        overflow: visible;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        border-top: none;
+        border-bottom: none;
+      }
+      body.election-hub .election-chrome-nav > .max-w-screen-xl {
+        padding-top: 0;
+        padding-left: 0.65rem;
+        padding-right: 0.65rem;
+      }
       body.election-hub .election-nav-flag-desktop {
         display: none !important;
+      }
+      body.election-hub .election-nav-kicker {
+        display: none !important;
+      }
+      body.election-hub .election-nav-bar {
+        min-height: 34px;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom: 1px solid #ececee;
+      }
+      body.election-hub .election-nav-toggle {
+        min-width: 36px;
+        min-height: 36px;
+        margin-left: auto;
+      }
+      body.election-hub .election-masthead-flag {
+        display: block;
+        margin: 0 0 -3rem;
+        padding: 0.22rem 0.4rem 0.36rem;
+        background: #fff;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+      }
+      body.election-hub .election-masthead-flag-surface img {
+        height: clamp(104px, 24vw, 148px);
+        max-width: min(240px, 56vw);
+      }
+      body.election-hub .election-nav-mark {
+        display: none !important;
+      }
+      body.election-hub .hero-section--cinematic {
+        position: relative;
+        z-index: 1;
+        margin-top: 0;
       }
       body.election-hub .hero-section--cinematic #hero-logo-wrap,
       body.election-hub .hero-section--cinematic .hero-cinematic-logo {
-        display: block !important;
-        visibility: visible !important;
-      }
-      body.election-hub .hero-section--cinematic #hero-logo-wrap::after {
         display: none !important;
-        content: none !important;
+        visibility: hidden !important;
+      }
+      body.election-hub .hero-cinematic-overlay {
+        grid-template-areas:
+          ". countdown"
+          ". ."
+          "panel panel";
+      }
+    }
+    @media (max-width: 767px) {
+      body.election-hub header img {
+        max-height: clamp(64px, 16vw, 96px);
+      }
+      body.election-hub .election-masthead-flag {
+        margin-bottom: -3.15rem;
+        padding: 0.18rem 0.35rem 0.32rem;
+      }
+      body.election-hub .election-masthead-flag-surface img {
+        height: clamp(108px, 27vw, 142px);
+        max-width: min(228px, 54vw);
+      }
+      body.election-hub .election-nav-bar {
+        min-height: 32px;
+      }
+      body.election-hub .hero-section--cinematic {
+        margin-top: 0;
       }
     }
     @media (min-width: 1280px) {
+      body.election-hub .election-masthead-flag {
+        display: none !important;
+      }
+      body.election-hub .site-chrome {
+        overflow: visible;
+      }
+      body.election-hub .election-chrome-nav {
+        overflow: visible;
+        padding-bottom: 0.15rem;
+        margin-bottom: -2.65rem;
+      }
       body.election-hub .election-chrome-nav::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: var(--wkar-tricolor);
-        z-index: 2;
-        pointer-events: none;
+        display: none;
+        content: none;
       }
       body.election-hub .election-nav-bar {
-        align-items: center;
+        align-items: flex-end;
         min-height: 88px;
         gap: 1rem;
         padding-top: 0.35rem;
-        padding-bottom: 0.35rem;
+        padding-bottom: 0;
       }
       body.election-hub .election-nav-flag-desktop {
         display: inline-flex;
-        align-items: center;
+        align-items: flex-end;
+        align-self: flex-end;
         margin-right: 0.15rem;
+        margin-bottom: -1.35rem;
+        padding: 0.38rem 0.55rem 0.48rem;
+        background: #fff;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
         transition: opacity 0.2s ease, transform 0.2s ease;
       }
       body.election-hub .election-nav-flag-desktop:hover {
@@ -9368,16 +9730,259 @@
       body.election-hub .election-nav-kicker {
         padding-left: 0;
         margin-left: 0;
+        align-self: center;
+      }
+      body.election-hub .hero-section--cinematic {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 0;
+        background: #fff;
       }
       body.election-hub .hero-section--cinematic #hero-logo-wrap,
       body.election-hub .hero-section--cinematic .hero-cinematic-logo {
         display: none !important;
       }
+      body.election-hub .hero-section--cinematic .hero-bg-media {
+        height: clamp(440px, 36vw, 540px);
+        min-height: 440px;
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-media::after {
+        background:
+          linear-gradient(90deg, rgba(8, 14, 12, 0.1) 0%, rgba(8, 14, 12, 0.02) 26%, transparent 50%),
+          linear-gradient(180deg, transparent 0%, transparent 56%, rgba(8, 14, 12, 0.2) 100%);
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-scrim {
+        background: linear-gradient(180deg, transparent 58%, rgba(8, 14, 12, 0.1) 100%);
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-vignette {
+        background: linear-gradient(to top, rgba(8, 14, 12, 0.18) 0%, transparent 52%);
+      }
+      body.election-hub .hero-section--cinematic .hero-bg-slides img,
+      body.election-hub .hero-section--cinematic .hero-bg-slides video {
+        filter: contrast(1.02) saturate(1.04) brightness(1.04);
+      }
       body.election-hub .hero-cinematic-overlay {
         grid-template-areas:
-          ". countdown"
           ". ."
-          "panel panel";
+          ". ."
+          "panel .";
+        align-items: end;
+        padding: clamp(1.35rem, 2.8vw, 2.15rem);
+      }
+      body.election-hub .hero-section--cinematic .hero-countdown-badge {
+        display: none !important;
+      }
+      body.election-hub .hero-promise-panel {
+        max-width: min(52%, 580px);
+        margin: 0;
+        padding: 1.3rem 1.55rem 1.25rem;
+        background: rgba(255, 255, 255, 0.93);
+        backdrop-filter: blur(14px) saturate(1.15);
+        -webkit-backdrop-filter: blur(14px) saturate(1.15);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-left: none;
+        border-radius: 8px;
+        box-shadow:
+          0 4px 22px rgba(0, 0, 0, 0.07),
+          0 1px 3px rgba(0, 0, 0, 0.04);
+      }
+      body.election-hub .hero-promise-panel::before {
+        display: none;
+      }
+      body.election-hub .hero-promise-panel-head {
+        margin-bottom: 0.48rem;
+        gap: 0.72rem;
+      }
+      body.election-hub .hero-promise-divider {
+        height: 1.35rem;
+        width: 1px;
+        background: #d2d2d7;
+      }
+      body.election-hub .hero-promise-commitment {
+        font-size: 0.625rem;
+        letter-spacing: 0.12em;
+        color: #6e6e73;
+      }
+      body.election-hub .hero-promise-star {
+        display: none;
+      }
+      body.election-hub .hero-section--cinematic .hero-promise-link {
+        font-size: clamp(2rem, 2.4vw, 2.5rem);
+        letter-spacing: -0.038em;
+      }
+      body.election-hub .hero-section--cinematic .hero-lede {
+        font-size: 0.875rem;
+        line-height: 1.45;
+        color: #3a3a3c;
+        max-width: 28rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-content {
+        margin-top: 0;
+        padding-left: clamp(1.5rem, 4vw, 2rem);
+        padding-right: clamp(1.5rem, 4vw, 2rem);
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-wrap {
+        margin: 0 0 0.55rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-ribbon {
+        min-height: 36px;
+        max-height: none;
+        border: 1px solid #e8e8ed;
+        border-top: 1px solid #e8e8ed;
+        border-radius: 6px;
+        background: #fafafa;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-pin {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.35rem;
+        margin: 0;
+        padding: 0 0.9rem 0 0.8rem;
+        border-radius: 0;
+        border-right: 1px solid #e5e5ea;
+        background: transparent;
+        color: inherit;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-num {
+        color: var(--wkar-red);
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        text-transform: none;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-num-sub {
+        color: #6e6e73;
+        font-size: 0.5625rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-track {
+        min-height: 36px;
+        padding: 0 0.75rem 0 0.35rem;
+        gap: 0.15rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-chip {
+        font-size: 0.6875rem;
+        font-weight: 500;
+        color: #48484a;
+        padding: 0 0.5rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-chip strong {
+        font-weight: 600;
+        color: #1d1d1f;
+      }
+
+      /* ── The Signal — premium desktop cleanup ── */
+      body.election-hub .signal-section-elevated {
+        background: #fff;
+        overflow: hidden;
+      }
+      body.election-hub .signal-section-elevated::before {
+        height: 2px;
+        opacity: 0.65;
+      }
+      body.election-hub .signal-section-head.signal-section-head--premium {
+        margin-bottom: 1.5rem !important;
+        padding-bottom: 1rem !important;
+        border-bottom: 1px solid #e8e8ed !important;
+      }
+      body.election-hub .signal-section-head-row {
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem 1.25rem;
+      }
+      body.election-hub .signal-fan {
+        display: none;
+      }
+      body.election-hub .signal-logo--section {
+        height: clamp(3.25rem, 3.6vw, 4rem);
+      }
+      body.election-hub .signal-plus-badge {
+        margin-left: auto;
+        flex-shrink: 0;
+        min-height: auto;
+        padding: 0.38rem 0.8rem;
+        border-radius: 6px;
+        border: 1px solid rgba(26, 74, 46, 0.14);
+        background: rgba(26, 74, 46, 0.06);
+        color: #1a4a2e;
+        font-size: 0.5625rem;
+        font-weight: 700;
+        letter-spacing: 0.11em;
+      }
+      body.election-hub #signal .grid {
+        gap: 2.75rem;
+        align-items: start;
+      }
+      body.election-hub .signal-promo-wrap {
+        margin-bottom: 0;
+      }
+      body.election-hub .signal-promo-caption {
+        padding: 0.62rem 1.05rem;
+        background: rgba(26, 58, 42, 0.94);
+        border-top: none;
+      }
+      body.election-hub .signal-promo-caption-text {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+      body.election-hub .signal-promo-live {
+        font-size: 0.5rem;
+        letter-spacing: 0.12em;
+        padding: 0.26rem 0.52rem;
+      }
+      body.election-hub #signal .font-display.font-normal.text-wkar-black {
+        margin-top: 1.15rem !important;
+        font-size: clamp(1.2rem, 1.55vw, 1.375rem) !important;
+        letter-spacing: -0.022em;
+        line-height: 1.35 !important;
+        max-width: 34ch;
+      }
+      body.election-hub .signal-social-proof {
+        font-style: normal;
+        color: #6e6e73;
+        font-size: 0.8125rem;
+        margin-top: 0.45rem;
+      }
+      body.election-hub #signal ul {
+        margin-top: 0.85rem !important;
+      }
+      body.election-hub #signal ul li {
+        font-size: 0.8125rem;
+        color: #48484a;
+      }
+      body.election-hub #signal ul li:nth-child(2) {
+        display: none;
+      }
+      body.election-hub .signal-subscribe-rail {
+        gap: 1.15rem;
+      }
+      body.election-hub .signal-form-card {
+        border-radius: 10px !important;
+        border: 1px solid #e8e8ed !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
+        padding: 1.35rem 1.45rem !important;
+      }
+      body.election-hub .signal-form-card .signal-subscribe-btn {
+        border-radius: 8px;
+        letter-spacing: -0.01em;
+      }
+      body.election-hub .signal-promo-ad-unit--rail {
+        max-width: 11.5rem;
+        margin: 0 0 0 auto;
+        padding: 0.42rem 0.48rem 0.48rem;
+        border-radius: 8px;
+        border-color: #e8e8ed;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
+      }
+      body.election-hub .signal-promo-ad-unit-kicker {
+        font-size: 0.5rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 0.32rem;
       }
     }
   </style>
@@ -9417,11 +10022,13 @@
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
     <div class="election-nav-bar">
       <a href="#latest" class="election-nav-flag-desktop" aria-label="WKAR Election 2026 — latest political coverage">
-        <img src="assets/images/wkar-election-logo-tight.png"
-             alt="WKAR Election 2026"
-             width="400"
-             height="150"
-             decoding="async" />
+        <span class="election-nav-flag-surface">
+          <img src="assets/images/wkar-election-logo-tight.png"
+               alt="WKAR Election 2026"
+               width="400"
+               height="150"
+               decoding="async" />
+        </span>
       </a>
       <img src="assets/images/wkar-election-logo-tight.png" alt="" class="election-nav-mark" width="120" height="34" decoding="async" aria-hidden="true" />
       <p class="election-nav-kicker">Election 2026</p>
@@ -9439,6 +10046,17 @@
       <button type="button" class="election-nav-toggle" id="election-nav-toggle" aria-expanded="false" aria-controls="election-mobile-menu" aria-label="Open election menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
+    </div>
+    <div class="election-masthead-flag" aria-hidden="false">
+      <a href="#latest" class="election-masthead-flag-link" aria-label="WKAR Election 2026 — latest political coverage">
+        <span class="election-masthead-flag-surface">
+          <img src="assets/images/wkar-election-logo-tight.png"
+               alt="WKAR Election 2026"
+               width="400"
+               height="150"
+               decoding="async" />
+        </span>
+      </a>
     </div>
     <div id="election-mobile-menu" class="election-mobile-menu" hidden>
       <a href="#latest" class="election-mobile-link active">Latest</a>
@@ -9837,17 +10455,18 @@
   </div>
 </section>
 
-<aside class="signal-promo-scatter-band" aria-label="The Signal newsletter promo">
+<aside class="signal-promo-scatter-band signal-promo-scatter-band--whisper" aria-label="The Signal+ editorial promo">
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
     <a href="https://www.wkar.org/subscribe-the-signal"
-       class="signal-promo-feature signal-promo-feature--scatter"
+       class="signal-promo-ad-unit signal-promo-ad-unit--strip"
        target="_blank"
        rel="noopener noreferrer"
-       aria-label="Subscribe to The Signal — Sunday mornings. Signal+ coming Wednesdays this summer.">
-      <picture class="signal-promo-feature-picture">
+       aria-label="The Signal+ — Wednesday politics briefing from WKAR News">
+      <span class="signal-promo-ad-unit-kicker">From WKAR News</span>
+      <picture>
         <source media="(max-width: 767px)" srcset="assets/images/signal/signal-plus-promo-vertical.png" width="1122" height="1402" />
         <img src="assets/images/signal/signal-plus-promo-horizontal.png"
-             alt=""
+             alt="The Signal+ — Sunday mornings and Wednesdays this summer"
              width="1672"
              height="941"
              loading="lazy"
@@ -9895,7 +10514,7 @@
         <div class="team-talent-groups team-talent-groups--mobile" aria-label="Election 2026 reporter team">
         <section class="talent-group talent-group--wkar" aria-labelledby="talent-wkar-heading">
           <div class="talent-group-head">
-            <h3 id="talent-wkar-heading" class="talent-group-title">The WKAR News Local Team</h3>
+            <h3 id="talent-wkar-heading" class="talent-group-title">WKAR News Mid-Michigan Political Team</h3>
             <p class="talent-group-note">Hosts + Mid-Michigan reporters</p>
           </div>
           <div class="team-reporter-grid team-reporter-grid--wkar">
@@ -9935,7 +10554,7 @@
         </section>
         <section class="talent-group talent-group--state" aria-labelledby="talent-state-heading">
           <div class="talent-group-head">
-            <h3 id="talent-state-heading" class="talent-group-title">The WKAR News State Team</h3>
+            <h3 id="talent-state-heading" class="talent-group-title">WKAR News Statewide Politics</h3>
             <p class="talent-group-note">Capitol + statewide politics</p>
           </div>
           <div class="talent-group-state-duo">
@@ -9964,60 +10583,71 @@
     </div>
 
     <div class="team-desktop-seven" aria-label="WKAR Election 2026 reporting team — desktop">
-      <div class="team-desktop-seven-head">
-        <h3 class="talent-group-title">The WKAR News Team</h3>
-        <p class="talent-group-note">Seven political voices · local to statewide</p>
-      </div>
-      <div class="team-reporter-grid team-reporter-grid--seven">
-        <a class="reporter-card reporter-card--sophia" href="https://www.wkar.org/people/sophia-saliby" target="_blank" rel="noopener noreferrer">
-          <img src="assets/images/sophia-saliby.webp" alt="Sophia Saliby" width="400" height="400" loading="eager" decoding="async" />
-          <div class="reporter-card-body">
-            <p class="reporter-station">All Things Considered Host</p>
-            <h3 class="reporter-name">Sophia Saliby</h3>
+      <div class="team-desktop-seven-inner">
+        <section class="team-desktop-group team-desktop-group--local" aria-labelledby="talent-desktop-local-heading">
+          <div class="team-desktop-seven-head team-desktop-seven-head--local">
+            <h3 id="talent-desktop-local-heading" class="talent-group-title">WKAR News Mid-Michigan Political Team</h3>
           </div>
-        </a>
-        <a class="reporter-card reporter-card--melorie" href="https://www.wkar.org/people/melorie-begay" target="_blank" rel="noopener noreferrer">
-          <img src="assets/images/melorie-begay.webp" alt="Melorie Begay" width="400" height="400" loading="lazy" decoding="async" />
-          <div class="reporter-card-body">
-            <p class="reporter-station">Morning Edition Host</p>
-            <h3 class="reporter-name">Melorie Begay</h3>
+          <div class="team-reporter-grid team-reporter-grid--seven team-reporter-grid--local">
+            <a class="reporter-card reporter-card--sophia" href="https://www.wkar.org/people/sophia-saliby" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/sophia-saliby.webp" alt="Sophia Saliby" width="400" height="400" loading="eager" decoding="async" />
+              <div class="reporter-card-body">
+                <p class="reporter-station">All Things Considered Host</p>
+                <h3 class="reporter-name">Sophia Saliby</h3>
+              </div>
+            </a>
+            <a class="reporter-card reporter-card--melorie" href="https://www.wkar.org/people/melorie-begay" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/melorie-begay.webp" alt="Melorie Begay" width="400" height="400" loading="lazy" decoding="async" />
+              <div class="reporter-card-body">
+                <p class="reporter-station">Morning Edition Host</p>
+                <h3 class="reporter-name">Melorie Begay</h3>
+              </div>
+            </a>
+            <a class="reporter-card reporter-card--danielle" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/danielle-prieur-studio.jpg" alt="Danielle Prieur" width="400" height="400" loading="lazy" decoding="async" />
+              <div class="reporter-card-body">
+                <p class="reporter-station">Lead Mid-Michigan Political Reporter</p>
+                <h3 class="reporter-name">Danielle Prieur</h3>
+              </div>
+            </a>
+            <a class="reporter-card reporter-card--andrew" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/andrew-roth-reporter-wkar-flat.jpg" alt="Andrew Roth" width="400" height="400" loading="eager" decoding="async" />
+              <div class="reporter-card-body">
+                <p class="reporter-station">Mid-Michigan Political Reporter</p>
+                <h3 class="reporter-name">Andrew Roth</h3>
+              </div>
+            </a>
           </div>
-        </a>
-        <a class="reporter-card reporter-card--danielle" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
-          <img src="assets/images/danielle-prieur-studio.jpg" alt="Danielle Prieur" width="400" height="400" loading="lazy" decoding="async" />
-          <div class="reporter-card-body">
-            <p class="reporter-station">Lead Mid-Michigan Political Reporter</p>
-            <h3 class="reporter-name">Danielle Prieur</h3>
+        </section>
+        <div class="team-desktop-divider" aria-hidden="true"></div>
+        <section class="team-desktop-group team-desktop-group--state" aria-labelledby="talent-desktop-state-heading">
+          <div class="team-desktop-seven-head team-desktop-seven-head--state">
+            <h3 id="talent-desktop-state-heading" class="talent-group-title">WKAR News Statewide Politics</h3>
           </div>
-        </a>
-        <a class="reporter-card reporter-card--andrew" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
-          <img src="assets/images/andrew-roth-reporter-wkar-flat.jpg" alt="Andrew Roth" width="400" height="400" loading="eager" decoding="async" />
-          <div class="reporter-card-body">
-            <p class="reporter-station">Mid-Michigan Political Reporter</p>
-            <h3 class="reporter-name">Andrew Roth</h3>
+          <div class="team-reporter-grid team-reporter-grid--seven team-reporter-grid--state">
+            <a class="reporter-card reporter-card--rick" href="https://www.michiganpublic.org/people/rick-pluta" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/rick-pluta-updated.jpg" alt="Rick Pluta" width="400" height="400" loading="lazy" decoding="async" />
+              <div class="reporter-card-body">
+                <p class="reporter-station">Senior Capitol Correspondent</p>
+                <h3 class="reporter-name">Rick Pluta</h3>
+              </div>
+            </a>
+            <a class="reporter-card reporter-card--colin" href="https://www.michiganpublic.org/people/colin-jackson" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/colin-jackson.webp" alt="Colin Jackson" width="400" height="400" loading="lazy" decoding="async" />
+              <div class="reporter-card-body">
+                <p class="reporter-station">Capitol Correspondent</p>
+                <h3 class="reporter-name">Colin Jackson</h3>
+              </div>
+            </a>
+            <a class="reporter-card reporter-card--tim" href="https://www.wkar.org/people/tim-skubick" target="_blank" rel="noopener noreferrer">
+              <img src="assets/images/tim-skubick-recent.jpg" alt="Tim Skubick" width="400" height="400" loading="lazy" decoding="async" />
+              <div class="reporter-card-body">
+                <p class="reporter-station">Host of Off The Record</p>
+                <h3 class="reporter-name">Tim Skubick</h3>
+              </div>
+            </a>
           </div>
-        </a>
-        <a class="reporter-card reporter-card--rick" href="https://www.michiganpublic.org/people/rick-pluta" target="_blank" rel="noopener noreferrer">
-          <img src="assets/images/rick-pluta-updated.jpg" alt="Rick Pluta" width="400" height="400" loading="lazy" decoding="async" />
-          <div class="reporter-card-body">
-            <p class="reporter-station">Senior Capitol Correspondent</p>
-            <h3 class="reporter-name">Rick Pluta</h3>
-          </div>
-        </a>
-        <a class="reporter-card reporter-card--colin" href="https://www.michiganpublic.org/people/colin-jackson" target="_blank" rel="noopener noreferrer">
-          <img src="assets/images/colin-jackson.webp" alt="Colin Jackson" width="400" height="400" loading="lazy" decoding="async" />
-          <div class="reporter-card-body">
-            <p class="reporter-station">Capitol Correspondent</p>
-            <h3 class="reporter-name">Colin Jackson</h3>
-          </div>
-        </a>
-        <a class="reporter-card reporter-card--tim" href="https://www.wkar.org/people/tim-skubick" target="_blank" rel="noopener noreferrer">
-          <img src="assets/images/tim-skubick-recent.jpg" alt="Tim Skubick" width="400" height="400" loading="lazy" decoding="async" />
-          <div class="reporter-card-body">
-            <p class="reporter-station">Host of Off The Record</p>
-            <h3 class="reporter-name">Tim Skubick</h3>
-          </div>
-        </a>
+        </section>
       </div>
     </div>
 
@@ -10124,7 +10754,7 @@
 <section id="signal" class="signal-section-elevated py-5 sm:py-7" aria-labelledby="signal-main-heading">
   <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
 
-    <div class="signal-section-head signal-section-head--premium mb-5 pb-2.5 border-b border-gray-200">
+    <div class="signal-section-head signal-section-head--premium mb-6 sm:mb-7 pb-3 border-b border-gray-200">
       <div class="signal-section-head-row">
         <div class="signal-fan" aria-hidden="true">
           <span class="signal-fan-core"></span>
@@ -10147,7 +10777,7 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-5 lg:gap-8 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-10 xl:gap-12 items-start">
 
       <div>
         <h2 id="signal-main-heading" class="sr-only">The Signal — Michigan Politics Newsletter</h2>
@@ -10201,20 +10831,13 @@
         </ul>
       </div>
 
-      <div class="lg:sticky lg:top-20">
+      <div class="signal-subscribe-rail lg:sticky lg:top-20">
         <div class="signal-form-card p-4 sm:p-5 relative">
           <div style="position:absolute; top:1.25rem; right:1.25rem; opacity:0.08;" aria-hidden="true">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1a3a2a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
             </svg>
           </div>
-          <a href="#signal-email-top" class="signal-logo-link mb-3" aria-label="Subscribe to The Signal">
-            <img src="assets/images/signal-logo-transparent.png"
-                 alt="The Signal — Week Ahead by WKAR News"
-                 class="signal-logo signal-logo--form"
-                 width="380" height="116"
-                 decoding="async" />
-          </a>
           <p class="text-wkar-muted text-sm mb-5">Get the Sunday Week Ahead now. The Signal+ is coming Wednesdays this summer.</p>
 
           <div class="flex flex-col gap-3">
@@ -10239,6 +10862,19 @@
           </div>
           <p class="text-wkar-subtle text-xs mt-4 leading-relaxed">WKAR respects your privacy. We never sell subscriber data. <a href="https://www.wkar.org/privacy" class="underline hover:text-wkar-green transition-colors">Privacy policy</a>.</p>
         </div>
+        <a href="https://www.wkar.org/subscribe-the-signal"
+           class="signal-promo-ad-unit signal-promo-ad-unit--rail"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="The Signal+ — Wednesday politics briefing from WKAR News">
+          <span class="signal-promo-ad-unit-kicker">Signal+ · Wednesdays this summer</span>
+          <img src="assets/images/signal/signal-plus-promo-vertical.png"
+               alt="The Signal+ — subscribe to WKAR's politics newsletter"
+               width="1122"
+               height="1402"
+               loading="lazy"
+               decoding="async" />
+        </a>
       </div>
 
     </div>
@@ -10998,13 +11634,13 @@
         </div>
         <div class="signal-footer-promo">
           <a href="https://www.wkar.org/subscribe-the-signal"
-             class="signal-promo-feature signal-promo-feature--footer"
+             class="signal-promo-ad-unit signal-promo-ad-unit--footer"
              target="_blank"
              rel="noopener noreferrer"
              aria-label="Subscribe to The Signal newsletter">
+            <span class="signal-promo-ad-unit-kicker">The Signal+</span>
             <img src="assets/images/signal/signal-plus-promo-vertical.png"
                  alt="The Signal and Signal+ — subscribe to WKAR's politics newsletter"
-                 class="signal-promo-scatter signal-promo-scatter--footer"
                  width="1122"
                  height="1402"
                  loading="lazy"
