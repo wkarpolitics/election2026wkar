@@ -8865,6 +8865,90 @@
         height: clamp(92px, 24vw, 118px) !important;
       }
     }
+
+    /* ── Team: 7 individual shots across (desktop only) ── */
+    .team-desktop-seven {
+      display: none;
+    }
+    @media (min-width: 900px) {
+      body.election-hub .team-flagship-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.15rem;
+      }
+      body.election-hub .team-talent-groups--mobile {
+        display: none !important;
+      }
+      body.election-hub .team-desktop-seven {
+        display: block;
+        margin-top: 0.35rem;
+      }
+      body.election-hub .team-desktop-seven-head {
+        display: flex;
+        align-items: baseline;
+        gap: 0.55rem;
+        margin: 0 0 0.75rem;
+        padding-top: 0.62rem;
+        position: relative;
+      }
+      body.election-hub .team-desktop-seven-head::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 3px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--wkar-blue), var(--wkar-red));
+      }
+      body.election-hub .team-reporter-grid--seven {
+        display: grid !important;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 0.62rem;
+        overflow: visible;
+        padding: 0;
+        margin: 0;
+        scroll-snap-type: none;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-card {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-card img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-card-body {
+        padding: 0.55rem 0.5rem 0.62rem;
+        gap: 0.18rem;
+        flex: 1 1 auto;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-station {
+        font-size: 0.4375rem;
+        letter-spacing: 0.09em;
+        line-height: 1.25;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-name {
+        font-size: clamp(0.78rem, 0.95vw, 0.92rem);
+        line-height: 1.08;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-question {
+        display: none;
+      }
+    }
+    @media (min-width: 900px) and (max-width: 1180px) {
+      body.election-hub .team-reporter-grid--seven .reporter-station {
+        font-size: 0.4rem;
+        letter-spacing: 0.07em;
+      }
+      body.election-hub .team-reporter-grid--seven .reporter-name {
+        font-size: 0.76rem;
+      }
+    }
   </style>
 </head>
 
@@ -9366,7 +9450,7 @@
       </div>
 
       <div>
-        <div class="team-talent-groups" aria-label="Election 2026 reporter team">
+        <div class="team-talent-groups team-talent-groups--mobile" aria-label="Election 2026 reporter team">
         <section class="talent-group talent-group--wkar" aria-labelledby="talent-wkar-heading">
           <div class="talent-group-head">
             <h3 id="talent-wkar-heading" class="talent-group-title">The WKAR News Local Team</h3>
@@ -9434,6 +9518,64 @@
         </section>
         </div>
 
+      </div>
+    </div>
+
+    <div class="team-desktop-seven" aria-label="WKAR Election 2026 reporting team — desktop">
+      <div class="team-desktop-seven-head">
+        <h3 class="talent-group-title">The WKAR News Team</h3>
+        <p class="talent-group-note">Seven political voices · local to statewide</p>
+      </div>
+      <div class="team-reporter-grid team-reporter-grid--seven">
+        <a class="reporter-card reporter-card--sophia" href="https://www.wkar.org/people/sophia-saliby" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/sophia-saliby.webp" alt="Sophia Saliby" width="400" height="400" loading="eager" decoding="async" />
+          <div class="reporter-card-body">
+            <p class="reporter-station">All Things Considered Host</p>
+            <h3 class="reporter-name">Sophia Saliby</h3>
+          </div>
+        </a>
+        <a class="reporter-card reporter-card--melorie" href="https://www.wkar.org/people/melorie-begay" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/melorie-begay.webp" alt="Melorie Begay" width="400" height="400" loading="lazy" decoding="async" />
+          <div class="reporter-card-body">
+            <p class="reporter-station">Morning Edition Host</p>
+            <h3 class="reporter-name">Melorie Begay</h3>
+          </div>
+        </a>
+        <a class="reporter-card reporter-card--danielle" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/danielle-prieur-studio.jpg" alt="Danielle Prieur" width="400" height="400" loading="lazy" decoding="async" />
+          <div class="reporter-card-body">
+            <p class="reporter-station">Lead Mid-Michigan Political Reporter</p>
+            <h3 class="reporter-name">Danielle Prieur</h3>
+          </div>
+        </a>
+        <a class="reporter-card reporter-card--andrew" href="https://www.wkar.org/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/andrew-roth-reporter-wkar-flat.jpg" alt="Andrew Roth" width="400" height="400" loading="eager" decoding="async" />
+          <div class="reporter-card-body">
+            <p class="reporter-station">Mid-Michigan Political Reporter</p>
+            <h3 class="reporter-name">Andrew Roth</h3>
+          </div>
+        </a>
+        <a class="reporter-card reporter-card--rick" href="https://www.michiganpublic.org/people/rick-pluta" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/rick-pluta-updated.jpg" alt="Rick Pluta" width="400" height="400" loading="lazy" decoding="async" />
+          <div class="reporter-card-body">
+            <p class="reporter-station">Senior Capitol Correspondent</p>
+            <h3 class="reporter-name">Rick Pluta</h3>
+          </div>
+        </a>
+        <a class="reporter-card reporter-card--colin" href="https://www.michiganpublic.org/people/colin-jackson" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/colin-jackson.webp" alt="Colin Jackson" width="400" height="400" loading="lazy" decoding="async" />
+          <div class="reporter-card-body">
+            <p class="reporter-station">Capitol Correspondent</p>
+            <h3 class="reporter-name">Colin Jackson</h3>
+          </div>
+        </a>
+        <a class="reporter-card reporter-card--tim" href="https://www.wkar.org/people/tim-skubick" target="_blank" rel="noopener noreferrer">
+          <img src="assets/images/tim-skubick-recent.jpg" alt="Tim Skubick" width="400" height="400" loading="lazy" decoding="async" />
+          <div class="reporter-card-body">
+            <p class="reporter-station">Host of Off The Record</p>
+            <h3 class="reporter-name">Tim Skubick</h3>
+          </div>
+        </a>
       </div>
     </div>
 
