@@ -1554,15 +1554,15 @@
       justify-content: space-between;
       gap: 1rem;
       position: relative;
-      min-height: clamp(4.25rem, 7.5vw, 5.25rem);
+      min-height: clamp(4.5rem, 8vw, 5.75rem);
     }
     .hero-headlines-town-drift {
       display: none;
       position: absolute;
-      top: 0;
-      right: 4.75rem;
-      left: 40%;
-      bottom: 0;
+      top: -0.1rem;
+      right: 5.25rem;
+      left: 0;
+      bottom: -0.1rem;
       z-index: 1;
       overflow: hidden;
       pointer-events: none;
@@ -1595,6 +1595,14 @@
     @media (min-width: 768px) {
       body.election-hub .hero-headlines-town-drift {
         display: block;
+        right: 5.75rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      body.election-hub .hero-headlines-town-drift {
+        right: 6.5rem;
+        top: -0.15rem;
+        bottom: -0.15rem;
       }
     }
     .hero-headlines-more {
@@ -12579,7 +12587,10 @@
       'Alma', 'Leslie', 'Bath', 'Olivet', 'Brooklyn', 'Perry', 'Ithaca', 'Stockbridge', 'Potterville',
       'Ovid', 'Michigan Center', 'Saranac', 'Elsie', 'Bellevue', 'Grass Lake', 'Corunna', 'Lake Odessa',
       'Parma', 'Springport', 'Belding', 'Laingsburg', 'Durand', 'Mulliken', 'Sunfield', 'Vermontville',
-      'Hubbardston', 'New Lothrop', 'Dansville', 'Carson City'
+      'Hubbardston', 'New Lothrop', 'Dansville', 'Carson City',
+      'Lansing', 'Haslett', 'Dimondale', 'Waverly', 'Meridian', 'Chesaning', 'St. Charles', 'Pewamo',
+      'Westphalia', 'Fowler', 'Maple Rapids', 'Middleton', 'St. Louis', 'Shepherd', 'Breckenridge',
+      'Reese', 'Morrice', 'Clarksville', 'Lyons', 'Palo', 'Muir', 'Woodbury', 'Nashville'
     ];
 
     var scatterAnchors = [
@@ -12703,20 +12714,31 @@
           clearTimeout(spawnTimer);
           spawnTimer = null;
         }
-        spawnTimer = setTimeout(spawnBubble, 1100 + Math.random() * 1100);
+        var delay = options.spawnDelayMin != null
+          ? options.spawnDelayMin + Math.random() * (options.spawnDelayMax || 900)
+          : 1100 + Math.random() * 1100;
+        spawnTimer = setTimeout(spawnBubble, delay);
       }
 
-      setTimeout(spawnBubble, 350);
-      setTimeout(spawnBubble, 1100);
-      setTimeout(spawnBubble, 2100);
+      var initialBurst = options.initialBurst || 3;
+      setTimeout(spawnBubble, 200);
+      for (var i = 1; i < initialBurst; i += 1) {
+        setTimeout(spawnBubble, 450 + (i * 520));
+      }
     }
 
     var headlinesTownAnchors = [
-      { left: 48, top: 10, index: 0 },  { left: 62, top: 14, index: 1 },
-      { left: 74, top: 8, index: 2 },   { left: 56, top: 26, index: 3 },
-      { left: 68, top: 32, index: 4 }, { left: 82, top: 22, index: 5 },
-      { left: 52, top: 44, index: 6 }, { left: 76, top: 48, index: 7 },
-      { left: 64, top: 58, index: 8 }, { left: 88, top: 38, index: 9 }
+      { left: 6, top: 8, index: 0 },   { left: 18, top: 12, index: 1 },
+      { left: 30, top: 6, index: 2 },  { left: 42, top: 14, index: 3 },
+      { left: 54, top: 8, index: 4 },  { left: 66, top: 12, index: 5 },
+      { left: 78, top: 6, index: 6 },  { left: 90, top: 10, index: 7 },
+      { left: 8, top: 28, index: 8 },  { left: 22, top: 32, index: 9 },
+      { left: 36, top: 26, index: 10 }, { left: 50, top: 34, index: 11 },
+      { left: 64, top: 28, index: 12 }, { left: 78, top: 32, index: 13 },
+      { left: 92, top: 26, index: 14 }, { left: 12, top: 52, index: 15 },
+      { left: 28, top: 56, index: 16 }, { left: 44, top: 50, index: 17 },
+      { left: 60, top: 58, index: 18 }, { left: 76, top: 52, index: 19 },
+      { left: 88, top: 56, index: 20 }
     ];
 
     roots.forEach(function(root) {
@@ -12724,15 +12746,18 @@
         if (window.matchMedia('(min-width: 768px)').matches) {
           initScatteredTownPop(root, {
             anchors: headlinesTownAnchors,
-            maxActive: 6,
-            minLeft: 44,
-            maxLeft: 92,
-            minTop: 6,
-            maxTop: 72,
-            proximity: 120,
-            jitterX: 8,
-            jitterY: 7,
-            allowCenter: true
+            maxActive: 12,
+            minLeft: 4,
+            maxLeft: 96,
+            minTop: 4,
+            maxTop: 78,
+            proximity: 72,
+            jitterX: 11,
+            jitterY: 8,
+            allowCenter: true,
+            initialBurst: 6,
+            spawnDelayMin: 620,
+            spawnDelayMax: 780
           });
         }
         return;
