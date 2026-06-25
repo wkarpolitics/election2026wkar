@@ -7133,7 +7133,10 @@
 
     @media (min-width: 768px) and (max-width: 1099px) {
       body.election-hub .election-chrome-nav {
-        margin-bottom: -2rem;
+        margin-bottom: -2.75rem;
+      }
+      body.election-hub .hero-section--cinematic {
+        margin-top: -0.3rem;
       }
       body.election-hub .election-nav-flag-desktop {
         margin-bottom: -1rem;
@@ -7211,12 +7214,16 @@
       }
       body.election-hub .election-chrome-nav {
         position: sticky;
-        background: #fff !important;
+        background: transparent !important;
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
         box-shadow: none;
         border-bottom: none;
         border-top: none;
+        overflow: visible;
+      }
+      body.election-hub .election-nav-bar {
+        background: #fff;
       }
       body.election-hub .election-chrome-nav::after {
         display: none;
@@ -9803,32 +9810,48 @@
       body.election-hub .election-nav-flag-desktop {
         display: none !important;
       }
+      body.election-hub .election-chrome-nav > .max-w-screen-xl {
+        position: relative;
+        padding-bottom: 0;
+      }
       body.election-hub .election-masthead-flag {
         display: block !important;
-        margin: 0 0 -3rem;
-        padding: 0.1rem 0.32rem 0.14rem;
+        position: absolute;
+        left: 0.28rem;
+        top: 100%;
+        margin: -0.15rem 0 0;
+        padding: 0;
         background: transparent;
         box-shadow: none;
-        position: relative;
-        z-index: 4;
+        z-index: 6;
+        line-height: 0;
+        pointer-events: none;
+      }
+      body.election-hub .election-masthead-flag-link {
+        pointer-events: auto;
       }
       body.election-hub .election-masthead-flag-surface {
         background: transparent;
         padding: 0;
       }
       body.election-hub .election-masthead-flag-surface img {
-        height: clamp(92px, 24vw, 120px);
-        max-width: min(200px, 48vw);
+        height: clamp(80px, 21vw, 104px);
+        max-width: min(188px, 46vw);
+        filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.22));
       }
       body.election-hub .election-nav-bar {
         min-height: 32px;
+        background: #fff;
       }
       body.election-hub .election-chrome-nav {
-        margin-bottom: 0;
+        margin-bottom: calc(-1 * clamp(4.25rem, 20vw, 5.5rem));
         padding-bottom: 0;
+        background: transparent !important;
+        overflow: visible;
       }
       body.election-hub .hero-section--cinematic {
-        margin-top: -0.12rem;
+        margin-top: 0;
+        padding-top: 0;
         padding-bottom: 0;
       }
       body.election-hub .hero-section--cinematic .hero-bg-media {
