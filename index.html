@@ -8640,8 +8640,8 @@
       bottom: auto;
       width: 100%;
       max-width: 100%;
-      height: clamp(260px, 52vw, 420px);
-      min-height: 260px;
+      height: clamp(300px, 54vw, 440px);
+      min-height: 300px;
       max-height: none;
       aspect-ratio: auto;
       margin: 0;
@@ -8671,10 +8671,16 @@
       inset: 0;
       z-index: 5;
       pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(0.75rem, 2.4vw, 1.35rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      grid-template-areas:
+        ". countdown"
+        "logo ."
+        "panel panel";
+      align-items: start;
+      gap: 0;
+      padding: clamp(0.65rem, 2vw, 1.15rem);
     }
     body.election-hub .hero-cinematic-overlay a,
     body.election-hub .hero-cinematic-overlay button {
@@ -8683,7 +8689,9 @@
     body.election-hub .hero-countdown-badge {
       display: inline-flex !important;
       flex-direction: column;
-      align-self: flex-end;
+      grid-area: countdown;
+      justify-self: end;
+      align-self: start;
       align-items: center;
       justify-content: center;
       gap: 0.12rem;
@@ -8722,29 +8730,44 @@
     body.election-hub .hero-mobile-countdown-meta {
       display: none !important;
     }
+    body.election-hub .hero-section--cinematic #hero-logo-wrap,
     body.election-hub .hero-cinematic-logo {
-      position: absolute;
-      left: clamp(0.75rem, 2.4vw, 1.35rem);
-      top: 50%;
-      transform: translateY(-58%);
-      z-index: 2;
-      max-width: min(52%, 320px);
+      grid-area: logo;
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+      align-self: end;
+      justify-self: start;
+      z-index: 4;
+      max-width: min(46%, 210px);
+      margin: 0 0 0.4rem !important;
+      padding: 0 !important;
       line-height: 0;
-      filter: drop-shadow(0 6px 22px rgba(0,0,0,0.28));
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.22));
     }
+    body.election-hub .hero-section--cinematic #hero-logo-wrap::after {
+      display: none !important;
+      content: none !important;
+    }
+    body.election-hub .hero-section--cinematic #hero-logo-wrap img,
+    body.election-hub .hero-section--cinematic #hero-logo-wrap svg,
     body.election-hub .hero-cinematic-logo img,
     body.election-hub .hero-cinematic-logo svg {
       display: block;
       width: auto !important;
-      height: clamp(108px, 22vw, 168px) !important;
+      height: clamp(96px, 22vw, 156px) !important;
       max-width: 100% !important;
       margin: 0;
     }
     body.election-hub .hero-promise-panel {
       position: relative;
       z-index: 3;
-      align-self: stretch;
-      margin-top: auto;
+      grid-area: panel;
+      align-self: end;
+      margin-top: 0;
       padding: clamp(0.9rem, 2.1vw, 1.2rem) clamp(1rem, 2.4vw, 1.4rem);
       background: rgba(255,255,255,0.98);
       border: 1px solid rgba(0,0,0,0.08);
@@ -8776,7 +8799,7 @@
       font-weight: 600;
       letter-spacing: -0.065em;
       line-height: 0.82;
-      color: rgba(16, 46, 33, 0.07);
+      color: rgba(16, 46, 33, 0.055);
       pointer-events: none;
       white-space: nowrap;
     }
@@ -8885,8 +8908,8 @@
       -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%, #000 88%, transparent 100%);
     }
     body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row {
-      color: rgba(37, 69, 61, 0.09);
-      font-size: clamp(0.72rem, 2.2vw, 1rem);
+      color: rgba(37, 69, 61, 0.06);
+      font-size: clamp(0.68rem, 2vw, 0.92rem);
       font-weight: 600;
       filter: none;
       animation-duration: 320s;
@@ -8967,16 +8990,19 @@
     }
     @media (min-width: 768px) {
       body.election-hub .hero-section--cinematic .hero-bg-media {
-        height: clamp(320px, 38vw, 460px);
-        min-height: 320px;
+        height: clamp(360px, 40vw, 500px);
+        min-height: 360px;
       }
+      body.election-hub .hero-section--cinematic #hero-logo-wrap,
       body.election-hub .hero-cinematic-logo {
-        max-width: min(44%, 380px);
-        transform: translateY(-54%);
+        max-width: min(34%, 260px);
+        margin-bottom: 0.55rem !important;
       }
+      body.election-hub .hero-section--cinematic #hero-logo-wrap img,
+      body.election-hub .hero-section--cinematic #hero-logo-wrap svg,
       body.election-hub .hero-cinematic-logo img,
       body.election-hub .hero-cinematic-logo svg {
-        height: clamp(128px, 14vw, 188px) !important;
+        height: clamp(120px, 13vw, 172px) !important;
       }
       body.election-hub .hero-promise-panel {
         max-width: min(96%, 1120px);
@@ -8991,21 +9017,22 @@
     }
     @media (max-width: 767px) {
       body.election-hub .hero-section--cinematic .hero-bg-media {
-        height: clamp(300px, 58vw, 400px);
-        min-height: 300px;
+        height: clamp(320px, 62vw, 420px);
+        min-height: 320px;
       }
       body.election-hub .hero-cinematic-overlay {
-        padding: 0.65rem 0.55rem 0.5rem;
+        padding: 0.55rem 0.5rem 0.45rem;
       }
+      body.election-hub .hero-section--cinematic #hero-logo-wrap,
       body.election-hub .hero-cinematic-logo {
-        top: 38%;
-        left: 0.55rem;
-        max-width: min(54%, 200px);
-        transform: translateY(-52%);
+        max-width: min(50%, 188px);
+        margin-bottom: 0.32rem !important;
       }
+      body.election-hub .hero-section--cinematic #hero-logo-wrap img,
+      body.election-hub .hero-section--cinematic #hero-logo-wrap svg,
       body.election-hub .hero-cinematic-logo img,
       body.election-hub .hero-cinematic-logo svg {
-        height: clamp(104px, 27vw, 132px) !important;
+        height: clamp(108px, 28vw, 136px) !important;
       }
       body.election-hub .hero-section--cinematic .hero-promise-panel {
         margin-left: 0;
@@ -9288,9 +9315,7 @@
       </div>
       <script>
         (function() {
-          var logoSrc = window.matchMedia('(max-width: 767px)').matches
-            ? 'assets/images/wkar-election-logo-tight.png'
-            : 'assets/images/wkar-election-logo-transparent.png';
+          var logoSrc = 'assets/images/wkar-election-logo-tight.png';
           var img = new Image();
           img.onload = function() {
             var wrap = document.getElementById('hero-logo-wrap');
