@@ -3519,13 +3519,13 @@
     }
     @media (min-width: 1024px) {
       body.election-hub .election-chrome-nav {
-        margin-bottom: -3rem;
+        margin-bottom: -2.65rem;
       }
       body.election-hub .election-nav-flag-desktop {
-        margin-bottom: -1.65rem;
+        margin-bottom: -1.45rem;
       }
       body.election-hub .hero-section--cinematic {
-        margin-top: -0.25rem;
+        margin-top: -0.15rem;
         padding-top: 0;
       }
       body.election-hub .hero-section--cinematic .hero-bg-media {
@@ -9718,15 +9718,7 @@
         margin-left: auto;
       }
       body.election-hub .election-masthead-flag {
-        display: block;
-        margin: 0 0 -3rem;
-        padding: 0.22rem 0.4rem 0.36rem;
-        background: #fff;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-      }
-      body.election-hub .election-masthead-flag-surface img {
-        height: clamp(104px, 24vw, 148px);
-        max-width: min(240px, 56vw);
+        display: none !important;
       }
       body.election-hub .election-nav-mark {
         display: none !important;
@@ -9767,17 +9759,17 @@
         margin-top: 0;
       }
     }
-    @media (min-width: 1280px) {
-      body.election-hub .election-masthead-flag {
-        display: none !important;
-      }
+    @media (min-width: 768px) {
       body.election-hub .site-chrome {
         overflow: visible;
+      }
+      body.election-hub .election-masthead-flag {
+        display: none !important;
       }
       body.election-hub .election-chrome-nav {
         overflow: visible;
         padding-bottom: 0;
-        margin-bottom: -3.75rem;
+        margin-bottom: -2.35rem;
       }
       body.election-hub .election-chrome-nav::before {
         display: none;
@@ -9785,20 +9777,21 @@
       }
       body.election-hub .election-nav-bar {
         align-items: flex-end;
-        min-height: 88px;
-        gap: 1rem;
-        padding-top: 0.35rem;
+        min-height: 44px;
+        gap: 0.65rem;
+        padding-top: 0.18rem;
         padding-bottom: 0;
+        border-bottom: 1px solid #ececee;
       }
       body.election-hub .election-nav-flag-desktop {
-        display: inline-flex;
+        display: inline-flex !important;
         align-items: flex-end;
         align-self: flex-end;
-        margin-right: 0.15rem;
-        margin-bottom: -2rem;
-        padding: 0.38rem 0.55rem 0.48rem;
+        margin-right: 0.1rem;
+        margin-bottom: -1.25rem;
+        padding: 0.28rem 0.42rem 0.36rem;
         background: #fff;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
         transition: opacity 0.2s ease, transform 0.2s ease;
       }
       body.election-hub .election-nav-flag-desktop:hover {
@@ -9807,18 +9800,36 @@
       }
       body.election-hub .election-nav-flag-desktop img {
         display: block;
-        height: clamp(80px, 7.8vw, 100px);
+        height: clamp(68px, 9vw, 88px);
         width: auto;
-        max-width: min(440px, 34vw);
+        max-width: min(320px, 38vw);
         margin: 0;
       }
-      body.election-hub .election-nav-mark {
+      body.election-hub .election-nav-mark,
+      body.election-hub .election-nav-kicker {
         display: none !important;
       }
-      body.election-hub .election-nav-kicker {
-        padding-left: 0;
-        margin-left: 0;
+      body.election-hub .nav-scroll--desktop {
         align-self: center;
+        padding-bottom: 0.15rem;
+      }
+    }
+    @media (min-width: 1280px) {
+      body.election-hub .election-chrome-nav {
+        margin-bottom: -2.85rem;
+      }
+      body.election-hub .election-nav-bar {
+        min-height: 48px;
+        gap: 0.85rem;
+        padding-top: 0.22rem;
+      }
+      body.election-hub .election-nav-flag-desktop {
+        margin-bottom: -1.55rem;
+        padding: 0.32rem 0.48rem 0.4rem;
+      }
+      body.election-hub .election-nav-flag-desktop img {
+        height: clamp(76px, 6.8vw, 92px);
+        max-width: min(380px, 30vw);
       }
       body.election-hub .hero-section--cinematic {
         position: relative;
