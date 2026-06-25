@@ -8657,14 +8657,14 @@
     }
     body.election-hub .hero-section--cinematic .hero-bg-media::after {
       background:
-        linear-gradient(90deg, rgba(8,14,12,0.42) 0%, rgba(8,14,12,0.12) 38%, transparent 62%),
-        linear-gradient(180deg, rgba(8,14,12,0.08) 0%, transparent 42%, rgba(8,14,12,0.22) 100%);
+        linear-gradient(90deg, rgba(8,14,12,0.18) 0%, rgba(8,14,12,0.05) 34%, transparent 58%),
+        linear-gradient(180deg, transparent 0%, transparent 52%, rgba(8,14,12,0.1) 100%);
     }
     body.election-hub .hero-section--cinematic .hero-bg-scrim {
-      background: linear-gradient(180deg, transparent 55%, rgba(8,14,12,0.18) 100%);
+      background: linear-gradient(180deg, transparent 62%, rgba(8,14,12,0.06) 100%);
     }
     body.election-hub .hero-section--cinematic .hero-bg-vignette {
-      background: linear-gradient(to top, rgba(8,14,12,0.28) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(8,14,12,0.14) 0%, transparent 58%);
     }
     body.election-hub .hero-cinematic-overlay {
       position: absolute;
@@ -8682,36 +8682,41 @@
     }
     body.election-hub .hero-countdown-badge {
       display: inline-flex !important;
+      flex-direction: column;
       align-self: flex-end;
       align-items: center;
-      gap: 0.35rem;
+      justify-content: center;
+      gap: 0.12rem;
       margin: 0;
-      padding: 0.5rem 0.85rem;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.96);
-      border: 1px solid rgba(0,0,0,0.08);
+      padding: 0.5rem 0.72rem 0.46rem;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(0,0,0,0.07);
       border-left: none;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
       color: #1d1d1f;
       line-height: 1;
+      text-align: center;
       pointer-events: auto;
     }
     body.election-hub .hero-countdown-badge-num {
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+      font-size: clamp(1.85rem, 5.4vw, 2.35rem);
       font-weight: 700;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.05em;
       color: var(--wkar-blue);
       font-variant-numeric: tabular-nums;
+      line-height: 0.95;
     }
     body.election-hub .hero-countdown-badge-text {
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: clamp(0.5625rem, 1.4vw, 0.6875rem);
+      font-size: clamp(0.5rem, 1.25vw, 0.625rem);
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
-      color: #1d1d1f;
-      white-space: nowrap;
+      color: var(--wkar-blue);
+      line-height: 1.15;
+      max-width: 5.5em;
     }
     body.election-hub .hero-mobile-countdown-pulse,
     body.election-hub .hero-mobile-countdown-meta {
@@ -8740,11 +8745,12 @@
       z-index: 3;
       align-self: stretch;
       margin-top: auto;
-      padding: clamp(0.85rem, 2vw, 1.15rem) clamp(0.95rem, 2.2vw, 1.35rem);
-      background: rgba(255,255,255,0.97);
-      border: 1px solid rgba(0,0,0,0.1);
-      border-radius: 2px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.16);
+      padding: clamp(0.9rem, 2.1vw, 1.2rem) clamp(1rem, 2.4vw, 1.4rem);
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-left: 3px solid var(--wkar-blue);
+      border-radius: 0;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.14);
       overflow: hidden;
       pointer-events: auto;
     }
@@ -8755,8 +8761,8 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: var(--wkar-tricolor);
-      opacity: 0.7;
+      background: var(--wkar-red);
+      opacity: 1;
       z-index: 2;
     }
     body.election-hub .hero-promise-panel::after {
@@ -8785,9 +8791,9 @@
     }
     body.election-hub .hero-promise-divider {
       display: block;
-      width: 1px;
+      width: 2px;
       height: clamp(1.35rem, 3vw, 1.85rem);
-      background: rgba(0, 0, 0, 0.14);
+      background: var(--wkar-red);
       flex-shrink: 0;
     }
     body.election-hub .hero-promise-commitment {
@@ -8796,8 +8802,23 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #3d7a59;
+      color: var(--wkar-red);
       line-height: 1;
+    }
+    body.election-hub .hero-promise-star {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 0.72rem;
+      height: 0.72rem;
+      margin: 0.12rem 0 0.28rem;
+      color: #aeaeb2;
+      opacity: 0.72;
+    }
+    body.election-hub .hero-promise-star svg {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
     body.election-hub .hero-section--cinematic .hero-promise-link {
       display: inline-flex !important;
@@ -8852,10 +8873,49 @@
       display: none !important;
     }
     body.election-hub .hero-section--cinematic .hero-promise-town-drift {
-      display: none !important;
+      display: block !important;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 1;
+      mix-blend-mode: normal;
+      mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%, #000 88%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%, #000 88%, transparent 100%);
+    }
+    body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row {
+      color: rgba(37, 69, 61, 0.09);
+      font-size: clamp(0.72rem, 2.2vw, 1rem);
+      font-weight: 600;
+      filter: none;
+      animation-duration: 320s;
+    }
+    body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row:nth-child(2) {
+      color: rgba(39, 76, 152, 0.075);
+      animation-duration: 380s;
+    }
+    body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row:nth-child(3) {
+      color: rgba(197, 46, 38, 0.065);
+      top: 48%;
+      animation-duration: 420s;
+    }
+    body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row:nth-child(4),
+    body.election-hub .hero-section--cinematic .hero-promise-town-drift .town-drift-row:nth-child(5) {
+      display: none;
     }
     body.election-hub .hero-section--cinematic > .town-drift {
       display: none;
+    }
+    body.election-hub .hero-section--cinematic .hero-mobile-countdown,
+    body.election-hub .hero-section--cinematic .hero-countdown-badge {
+      position: static;
+      top: auto;
+      right: auto;
+    }
+    body.election-hub .hero-section--cinematic .hero-bg-slides img,
+    body.election-hub .hero-section--cinematic .hero-bg-slides video {
+      filter: contrast(1.06) saturate(1.08) brightness(1.05);
     }
     body.election-hub .hero-section--cinematic .hero-content {
       position: relative;
@@ -8864,6 +8924,42 @@
       padding-left: 1rem;
       padding-right: 1rem;
       overflow: visible;
+    }
+    body.election-hub .hero-section--cinematic .hero-glance-wrap {
+      margin: 0.35rem 0 0.3rem;
+    }
+    body.election-hub .hero-section--cinematic .hero-glance-ribbon {
+      min-height: 32px;
+      max-height: none;
+      background: #fff;
+      border: 1px solid #e5e5ea;
+      border-top: none;
+    }
+    body.election-hub .hero-section--cinematic .hero-glance-pin {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.28rem;
+      padding: 0.28rem 0.62rem;
+      margin: 0.22rem 0 0.22rem 0.28rem;
+      border-radius: 4px;
+      background: var(--wkar-red);
+      color: #fff;
+    }
+    body.election-hub .hero-section--cinematic .hero-glance-num,
+    body.election-hub .hero-section--cinematic .hero-glance-num-sub {
+      color: #fff;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    body.election-hub .hero-section--cinematic .hero-glance-num-sub {
+      font-size: 0.5625rem;
+      letter-spacing: 0.1em;
+    }
+    body.election-hub .hero-section--cinematic .hero-glance-chip--extra,
+    body.election-hub .hero-section--cinematic .hero-glance-loop {
+      display: none !important;
     }
     body.election-hub .hero-section--cinematic .hero-editorial,
     body.election-hub .hero-section--cinematic .hero-editorial-main--solo {
@@ -8894,13 +8990,95 @@
       }
     }
     @media (max-width: 767px) {
+      body.election-hub .hero-section--cinematic .hero-bg-media {
+        height: clamp(300px, 58vw, 400px);
+        min-height: 300px;
+      }
+      body.election-hub .hero-cinematic-overlay {
+        padding: 0.65rem 0.55rem 0.5rem;
+      }
       body.election-hub .hero-cinematic-logo {
-        top: 42%;
-        max-width: min(58%, 220px);
+        top: 38%;
+        left: 0.55rem;
+        max-width: min(54%, 200px);
+        transform: translateY(-52%);
       }
       body.election-hub .hero-cinematic-logo img,
       body.election-hub .hero-cinematic-logo svg {
-        height: clamp(92px, 24vw, 118px) !important;
+        height: clamp(104px, 27vw, 132px) !important;
+      }
+      body.election-hub .hero-section--cinematic .hero-promise-panel {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      body.election-hub .hero-section--cinematic .hero-content {
+        margin: 0.45rem 0.55rem 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-wrap {
+        margin: 0 !important;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-marquee {
+        mask-image: none;
+        -webkit-mask-image: none;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-marquee::after {
+        display: none;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-track {
+        animation: none !important;
+        transform: none !important;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 0.35rem 0 0.15rem;
+        min-height: 32px;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-chip {
+        flex: 1 1 0;
+        justify-content: center;
+        padding: 0 0.2rem;
+        font-size: 0.5625rem;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.15;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-chip::before {
+        content: none;
+        margin: 0;
+      }
+      body.election-hub .hero-section--cinematic .hero-headlines-band {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
+    @media (min-width: 768px) {
+      body.election-hub .hero-section--cinematic .hero-glance-marquee {
+        mask-image: none;
+        -webkit-mask-image: none;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-marquee::after {
+        display: none;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-track {
+        animation: none !important;
+        transform: none !important;
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        gap: 0.5rem;
+        padding: 0 0.65rem 0 0.2rem;
+        min-height: 32px;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-chip {
+        flex: 0 1 auto;
+        padding: 0 0.35rem;
+        font-size: 0.625rem;
+      }
+      body.election-hub .hero-section--cinematic .hero-glance-chip::before {
+        content: none;
+        margin: 0;
       }
     }
 
@@ -9078,7 +9256,7 @@
     <div class="hero-cinematic-overlay">
       <div class="hero-mobile-countdown hero-countdown-badge" role="status" aria-live="polite" aria-label="Days until Michigan Primary">
         <span class="hero-countdown-badge-num" id="hero-mobile-days">40</span>
-        <span class="hero-countdown-badge-text">days to primary</span>
+        <span class="hero-countdown-badge-text">days to<br>primary</span>
       </div>
 
       <div class="hero-cinematic-logo" id="hero-logo-wrap">
@@ -9137,6 +9315,9 @@
           <span class="hero-promise-divider" aria-hidden="true"></span>
           <span class="hero-promise-commitment">Our commitment</span>
         </div>
+        <span class="hero-promise-star" aria-hidden="true">
+          <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M6 0.8l1.24 3.8h4.01L8.01 6.9l1.24 3.8L6 8.4 2.75 10.7l1.24-3.8L0.75 4.6h4.01L6 0.8z"/></svg>
+        </span>
         <p class="hero-lede">
           <span class="hero-lede-line">Seven WKAR political voices.</span>
           <span class="hero-lede-line">Local questions, statewide stakes.</span>
@@ -9165,23 +9346,23 @@
       <div class="hero-glance-ribbon" role="region" aria-label="Key election dates at a glance">
         <div class="hero-glance-pin" aria-label="Days until Primary">
           <span class="hero-glance-num" id="days-counter">40</span>
-          <span class="hero-glance-num-sub">days</span>
+          <span class="hero-glance-num-sub">days to primary</span>
         </div>
         <div class="hero-glance-marquee">
           <div class="hero-glance-track" id="ticker-track">
+            <span class="hero-glance-chip"><strong>Register</strong> Jul 20</span>
             <span class="hero-glance-chip"><span class="ticker-countdown" id="ticker-days" hidden aria-hidden="true">—</span><strong>Primary</strong> Aug 4</span>
             <span class="hero-glance-chip"><strong>Absentee</strong> Jun 25</span>
-            <span class="hero-glance-chip"><strong>Early vote</strong> Jul 25</span>
-            <span class="hero-glance-chip"><strong>Register</strong> Jul 20</span>
-            <span class="hero-glance-chip"><strong>General</strong> Nov 3</span>
-            <span class="hero-glance-chip hero-glance-chip--stat"><em class="c-red">4</em> races</span>
-            <span class="hero-glance-chip hero-glance-chip--stat"><em class="c-green">110</em> seats</span>
-            <span class="hero-glance-chip hero-glance-chip--stat"><em class="c-blue">4M+</em> voters</span>
+            <span class="hero-glance-chip"><strong>Early Vote</strong> Now</span>
+            <span class="hero-glance-chip hero-glance-chip--extra"><strong>General</strong> Nov 3</span>
+            <span class="hero-glance-chip hero-glance-chip--stat hero-glance-chip--extra"><em class="c-red">4</em> races</span>
+            <span class="hero-glance-chip hero-glance-chip--stat hero-glance-chip--extra"><em class="c-green">110</em> seats</span>
+            <span class="hero-glance-chip hero-glance-chip--stat hero-glance-chip--extra"><em class="c-blue">4M+</em> voters</span>
             <span class="hero-glance-loop" aria-hidden="true">
+              <span class="hero-glance-chip"><strong>Register</strong> Jul 20</span>
               <span class="hero-glance-chip"><strong>Primary</strong> Aug 4</span>
               <span class="hero-glance-chip"><strong>Absentee</strong> Jun 25</span>
-              <span class="hero-glance-chip"><strong>Early vote</strong> Jul 25</span>
-              <span class="hero-glance-chip"><strong>Register</strong> Jul 20</span>
+              <span class="hero-glance-chip"><strong>Early Vote</strong> Now</span>
               <span class="hero-glance-chip"><strong>General</strong> Nov 3</span>
             </span>
           </div>
