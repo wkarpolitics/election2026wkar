@@ -563,6 +563,8 @@
       align-items: flex-start;
       gap: 0.2rem;
       min-width: 0;
+      position: relative;
+      z-index: 2;
     }
     .hero-headlines-eyebrow {
       display: flex;
@@ -1551,11 +1553,56 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      position: relative;
+      min-height: clamp(4.25rem, 7.5vw, 5.25rem);
+    }
+    .hero-headlines-town-drift {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 4.75rem;
+      left: 40%;
+      bottom: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-headlines-town-drift .town-pop-bubble {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0) scale(0.78);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(0.62rem, 1.05vw, 0.8rem);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      white-space: nowrap;
+      color: rgba(37, 69, 61, 0.36);
+      opacity: 0;
+      will-change: transform, opacity, filter;
+      animation: townPopSoft 7.2s cubic-bezier(0.28, 0.82, 0.24, 1) forwards;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.95),
+        0 0 10px rgba(255, 255, 255, 0.75);
+    }
+    .hero-headlines-town-drift .town-pop-bubble:nth-child(3n) {
+      color: rgba(39, 76, 152, 0.32);
+    }
+    .hero-headlines-town-drift .town-pop-bubble:nth-child(4n) {
+      color: rgba(197, 46, 38, 0.28);
+    }
+    @media (min-width: 768px) {
+      body.election-hub .hero-headlines-town-drift {
+        display: block;
+      }
     }
     .hero-headlines-more {
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
+      position: relative;
+      z-index: 2;
       min-height: 44px;
       font-size: 0.75rem;
       font-weight: 600;
@@ -10329,6 +10376,7 @@
     <nav id="latest" class="hero-headlines-band" aria-labelledby="latest-heading">
       <div class="hero-headlines-kicker">
         <div class="hero-headlines-kicker-row">
+          <div class="hero-headlines-town-drift town-drift" data-town-drift aria-hidden="true"></div>
           <div class="hero-headlines-brand">
             <p class="hero-headlines-eyebrow">WKAR Politics · Election 2026</p>
             <div class="hero-headlines-title-row">
@@ -12484,13 +12532,18 @@
       { left: 14, top: 70, index: 8 },  { left: 86, top: 74, index: 9 }
     ];
 
-    function initHeroTownPop(root) {
+    function initScatteredTownPop(root, options) {
+      options = options || {};
+      var anchors = options.anchors || scatterAnchors;
+      var maxActive = options.maxActive || 5;
+      var minLeft = options.minLeft != null ? options.minLeft : null;
+      var maxLeft = options.maxLeft != null ? options.maxLeft : 86;
+
       root.classList.add('town-drift--pop');
       root.innerHTML = '';
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
       var active = 0;
-      var maxActive = 5;
       var spawnTimer = null;
       var activeSpots = [];
       var anchorQueue = [];
@@ -12506,7 +12559,7 @@
       }
 
       function resetAnchorQueue() {
-        anchorQueue = scatterAnchors.map(function(anchor) {
+        anchorQueue = anchors.map(function(anchor) {
           return { left: anchor.left, top: anchor.top, index: anchor.index };
         });
         shuffleAnchors(anchorQueue);
@@ -12514,10 +12567,11 @@
       resetAnchorQueue();
 
       function isTooClose(left, top) {
+        var threshold = options.proximity || 168;
         for (var i = 0; i < activeSpots.length; i += 1) {
           var dx = left - activeSpots[i].left;
           var dy = top - activeSpots[i].top;
-          if ((dx * dx) + (dy * dy) < 168) return true;
+          if ((dx * dx) + (dy * dy) < threshold) return true;
         }
         return false;
       }
@@ -12529,16 +12583,17 @@
             resetAnchorQueue();
           }
           var anchor = anchorQueue.shift();
-          var jitterX = (Math.random() - 0.5) * 5;
-          var jitterY = (Math.random() - 0.5) * 6;
-          var left = Math.min(86, Math.max(10, anchor.left + jitterX));
-          var top = Math.min(80, Math.max(6, anchor.top + jitterY));
+          var jitterX = (Math.random() - 0.5) * (options.jitterX || 5);
+          var jitterY = (Math.random() - 0.5) * (options.jitterY || 6);
+          var leftMin = minLeft != null ? minLeft : 10;
+          var left = Math.min(maxLeft, Math.max(leftMin, anchor.left + jitterX));
+          var top = Math.min(options.maxTop || 80, Math.max(options.minTop || 6, anchor.top + jitterY));
           if (anchor.index === lastAnchorIndex) {
             attempts += 1;
             anchorQueue.push(anchor);
             continue;
           }
-          if (left > 20 && left < 80 && top > 10 && top < 68) {
+          if (!options.allowCenter && left > 20 && left < 80 && top > 10 && top < 68) {
             attempts += 1;
             anchorQueue.push(anchor);
             continue;
@@ -12552,8 +12607,10 @@
           return { left: left, top: top };
         }
         return {
-          left: Math.random() < 0.5 ? 10 + Math.random() * 7 : 79 + Math.random() * 7,
-          top: 10 + Math.random() * 66
+          left: minLeft != null
+            ? minLeft + Math.random() * (maxLeft - minLeft)
+            : (Math.random() < 0.5 ? 10 + Math.random() * 7 : 79 + Math.random() * 7),
+          top: (options.minTop || 10) + Math.random() * ((options.maxTop || 76) - (options.minTop || 10))
         };
       }
 
@@ -12596,10 +12653,35 @@
       setTimeout(spawnBubble, 2100);
     }
 
+    var headlinesTownAnchors = [
+      { left: 48, top: 10, index: 0 },  { left: 62, top: 14, index: 1 },
+      { left: 74, top: 8, index: 2 },   { left: 56, top: 26, index: 3 },
+      { left: 68, top: 32, index: 4 }, { left: 82, top: 22, index: 5 },
+      { left: 52, top: 44, index: 6 }, { left: 76, top: 48, index: 7 },
+      { left: 64, top: 58, index: 8 }, { left: 88, top: 38, index: 9 }
+    ];
+
     roots.forEach(function(root) {
+      if (root.classList.contains('hero-headlines-town-drift')) {
+        if (window.matchMedia('(min-width: 768px)').matches) {
+          initScatteredTownPop(root, {
+            anchors: headlinesTownAnchors,
+            maxActive: 6,
+            minLeft: 44,
+            maxLeft: 92,
+            minTop: 6,
+            maxTop: 72,
+            proximity: 120,
+            jitterX: 8,
+            jitterY: 7,
+            allowCenter: true
+          });
+        }
+        return;
+      }
       if (root.classList.contains('hero-promise-town-drift') &&
           window.matchMedia('(max-width: 767px)').matches) {
-        initHeroTownPop(root);
+        initScatteredTownPop(root);
         return;
       }
 
